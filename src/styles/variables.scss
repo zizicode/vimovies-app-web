@@ -1,0 +1,371 @@
+// ============================================================
+// _variables.scss — Vimovies Design Tokens (Frontend Público)
+// ============================================================
+// Tema: Claro / Light
+// Primario: Violeta #950FF5
+// Acento decorativo: Gold #e8a030 (solo elementos, nunca texto)
+// Fondos: Blancos y cremas escalonados
+// Texto: Oscuros sobre blanco
+// ============================================================
+
+
+// ── TIPOGRAFÍA ───────────────────────────────────────────────
+$font-display : 'Syne', sans-serif;
+$font-body    : 'DM Sans', sans-serif;
+
+$font-size-xxs  : 10px;
+$font-size-xs   : 11px;
+$font-size-sm   : 12px;
+$font-size-md   : 13px;
+$font-size-body : 13.5px;
+$font-size-base : 14px;
+$font-size-lg   : 15px;
+$font-size-xl   : 17px;
+$font-size-2xl  : 18px;
+$font-size-3xl  : 20px;
+$font-size-4xl  : 22px;
+$font-size-5xl  : 24px;
+$font-size-6xl  : 28px;
+$font-size-7xl  : 32px;
+
+$font-weight-light    : 300;
+$font-weight-regular  : 400;
+$font-weight-medium   : 500;
+$font-weight-semibold : 600;
+$font-weight-bold     : 700;
+$font-weight-extrabold: 800;
+
+$letter-spacing-tight  : -0.5px;
+$letter-spacing-snug   : -0.3px;
+$letter-spacing-normal : 0;
+$letter-spacing-wide   : 0.05em;
+$letter-spacing-wider  : 0.06em;
+$letter-spacing-widest : 0.08em;
+
+$line-height-tight  : 1.3;
+$line-height-snug   : 1.4;
+$line-height-normal : 1.5;
+$line-height-relaxed: 1.65;
+$line-height-loose  : 1.75;
+
+
+// ── COLORES — FONDOS (de más claro a más oscuro) ─────────────
+//
+// Jerarquía visual de profundidad:
+//   bg-root     → fondo de página (crema muy suave)
+//   bg-surface  → tarjetas, paneles, contenedores principales
+//   bg-raised   → inputs, items de lista, hover backgrounds
+//   bg-overlay  → tooltips, dropdowns, popovers
+//   bg-deep     → separadores de sección, skeleton loaders
+//   bg-sunken   → estados desactivados, fondos de código
+
+$bg-root    : #f5f4f2;   // Crema neutra — fondo raíz de página
+$bg-surface : #ffffff;   // Blanco puro — tarjetas y contenedores
+$bg-raised  : #faf9f8;   // Blanco cálido — inputs, hovers
+$bg-overlay : #f0eeec;   // Crema suave — overlays, tooltips
+$bg-deep    : #e8e6e3;   // Gris crema — separadores, skeletons
+$bg-sunken  : #dedad6;   // Gris medio — disabled, fondos inactivos
+
+
+// ── COLORES — BORDES ─────────────────────────────────────────
+//
+// Siempre semitransparentes sobre oscuro para adaptarse a
+// cualquier fondo dentro de la escala de cremas.
+
+$border-subtle  : rgba(22, 20, 31, 0.07);   // Separadores casi invisibles
+$border-default : rgba(22, 20, 31, 0.12);   // Borde estándar de inputs y cards
+$border-strong  : rgba(22, 20, 31, 0.20);   // Borde de énfasis, focus rings
+$border-heavy   : rgba(22, 20, 31, 0.32);   // Borde visible en contextos oscuros
+
+
+// ── COLORES — TEXTO ──────────────────────────────────────────
+//
+// Nunca usar gold para texto. Solo escala de grises con
+// tinte violeta sutil en secundario y muted para dar identidad.
+
+$text-primary   : #16141f;   // Casi negro con base violeta — titulares, body
+$text-secondary : #4a4660;   // Gris azul-violeta — subtítulos, labels
+$text-muted     : #8c88a3;   // Gris lila — hints, placeholders, metadata
+$text-hint      : #b8b5cc;   // Gris muy claro — texto decorativo, captions
+$text-disabled  : #ccc9dc;   // Texto desactivado — no interactivo
+$text-inverse   : #ffffff;   // Texto sobre fondos violeta o oscuros
+
+
+// ── COLORES — VIOLETA (Primario) ─────────────────────────────
+//
+// Escala completa de 8 pasos para cubrir todos los contextos:
+// desde fondos fantasma hasta texto sobre colores oscuros.
+//
+//   ghost    → fondo de badges, chips, nav activo
+//   bg       → fondo de secciones destacadas
+//   pale     → bordes violeta suaves
+//   soft     → iconos, indicadores, progress bars
+//   mid      → hover de botones, links secundarios
+//   base     → color primario — botones, links, CTA principal
+//   rich     → pressed / active states
+//   deep     → texto sobre fondos violeta pálido
+
+$violet-ghost : #f9f2ff;              // Fondo fantasma — nav active, badges
+$violet-bg    : #f4e8fe;              // Fondo suave — secciones hero, highlights
+$violet-pale  : #e8c8fd;              // Border violeta sutil
+$violet-soft  : #c96dfa;              // Iconos, barras de progreso, chips
+$violet-mid   : #aa2ff7;              // Hover de botones, links
+$violet       : #950FF5;              // BASE — botones primarios, CTA, links
+$violet-rich  : #7c0dcc;              // Active / pressed
+$violet-deep  : #6b08b0;              // Texto sobre fondos violeta claros
+
+// Transparencias violeta (para hovers, focus rings, overlays)
+$violet-hover-bg   : rgba(149, 15, 245, 0.06);   // Hover de nav items
+$violet-active-bg  : rgba(149, 15, 245, 0.10);   // Active / selected bg
+$violet-focus-ring : rgba(149, 15, 245, 0.18);   // Focus ring de inputs
+$violet-overlay    : rgba(149, 15, 245, 0.04);   // Tinte muy sutil en secciones
+
+// Bordes violeta
+$border-violet         : rgba(149, 15, 245, 0.20);   // Borde suave
+$border-violet-default : rgba(149, 15, 245, 0.30);   // Borde visible
+$border-violet-strong  : rgba(149, 15, 245, 0.50);   // Borde énfasis, focus
+$border-violet-active  : rgba(149, 15, 245, 0.70);   // Borde activo, selected
+
+
+// ── COLORES — GOLD (Acento decorativo, NUNCA para texto) ─────
+//
+// Solo para: ratings, estrellas, iconos decorativos, bordes
+// de elementos premium, progress bars de popularidad.
+// PROHIBIDO: usar como color de texto o label.
+
+$gold          : #e8a030;              // Base — estrella de rating, iconos
+$gold-hover    : #f0aa38;              // Hover de elementos gold
+$gold-dim      : #c4841f;             // Variante oscura — sobre fondos claros
+$gold-soft     : #f5c878;             // Suave — barras, indicadores
+$gold-pale     : #faebd0;             // Muy claro — fondos de badge gold
+$gold-bg       : rgba(232, 160, 48, 0.09);   // Fondo tenue — stat cards
+$gold-bg-hover : rgba(232, 160, 48, 0.16);   // Hover en elementos gold
+$gold-border   : rgba(232, 160, 48, 0.22);   // Borde gold
+$gold-border-pg: rgba(232, 160, 48, 0.35);   // Borde gold más visible
+
+
+// ── COLORES — SEMÁNTICOS ─────────────────────────────────────
+
+// Éxito / Verde
+$green          : #16a34a;
+$green-hover    : #15803d;
+$green-bg       : rgba(22, 163, 74, 0.09);
+$green-border   : rgba(22, 163, 74, 0.22);
+
+// Peligro / Rojo
+$red            : #dc2626;
+$red-hover      : #b91c1c;
+$red-bg         : rgba(220, 38, 38, 0.09);
+$red-border     : rgba(220, 38, 38, 0.22);
+
+// Info / Azul
+$blue           : #2563eb;
+$blue-hover     : #1d4ed8;
+$blue-bg        : rgba(37, 99, 235, 0.09);
+$blue-border    : rgba(37, 99, 235, 0.22);
+
+// Advertencia / Ámbar semántico (distinto al gold decorativo)
+$warning        : #d97706;
+$warning-bg     : rgba(217, 119, 6, 0.09);
+$warning-border : rgba(217, 119, 6, 0.22);
+
+
+// ── COLORES — LOGO MARK ──────────────────────────────────────
+$logo-mark-bg   : $violet;          // Fondo del ícono del logo
+$logo-mark-icon : #ffffff;          // Color del ícono dentro
+
+
+// ── COLORES — AVATAR / PERSONA ───────────────────────────────
+$avatar-bg-from : $violet-soft;
+$avatar-bg-to   : $violet;
+$avatar-text    : #ffffff;
+
+
+// ── BORDER RADIUS ────────────────────────────────────────────
+$radius-xs   : 3px;    // kbd, scrollbar thumb
+$radius-sm   : 4px;    // poster thumbnails, small chips
+$radius-md   : 6px;    // botones, inputs, nav items, badges
+$radius-lg   : 10px;   // cards, panels, stat cards
+$radius-xl   : 14px;   // modales, login card, hero sections
+$radius-2xl  : 20px;   // imagen de película en detalle
+$radius-full : 999px;  // pills, avatares, tags redondeados
+
+
+// ── ESPACIADO ────────────────────────────────────────────────
+$space-1 : 2px;
+$space-2 : 4px;
+$space-3 : 6px;
+$space-4 : 8px;
+$space-5 : 10px;
+$space-6 : 12px;
+$space-7 : 14px;
+$space-8 : 16px;
+$space-9 : 18px;
+$space-10: 20px;
+$space-12: 24px;
+$space-14: 28px;
+$space-16: 32px;
+$space-18: 36px;
+$space-20: 40px;
+$space-24: 48px;
+$space-32: 64px;
+
+
+// ── LAYOUT ───────────────────────────────────────────────────
+$topbar-height  : 58px;
+$view-padding   : 28px;
+$content-max-w  : 1200px;  // max-width del contenido público
+
+
+// ── DIMENSIONES — COMPONENTES ────────────────────────────────
+
+// Logo
+$logo-mark-size    : 30px;
+$logo-mark-size-lg : 40px;
+
+// Avatar
+$avatar-size-xs : 24px;
+$avatar-size-sm : 30px;
+$avatar-size-md : 40px;
+$avatar-size-lg : 64px;
+
+// Topbar / Nav
+$topbar-btn-size   : 34px;
+$search-bar-width  : 210px;
+
+// Botones
+$btn-padding-y   : 8px;
+$btn-padding-x   : 16px;
+$btn-padding-sm-y: 6px;
+$btn-padding-sm-x: 12px;
+$btn-gap         : 7px;
+$btn-icon-size   : 15px;
+
+// Inputs
+$input-padding-y : 9px;
+$input-padding-x : 13px;
+$input-height    : 38px;
+
+// Cards
+$card-header-padding : 16px 20px;
+$card-body-padding   : 18px 20px;
+
+// Tabla
+$table-th-padding : 10px 14px;
+$table-td-padding : 11px 14px;
+
+// Badges y pills
+$badge-padding-y : 3px;
+$badge-padding-x : 9px;
+$badge-icon-size : 11px;
+
+// Poster de película
+$poster-thumb-w : 34px;
+$poster-thumb-h : 50px;
+$poster-sm-w    : 80px;
+$poster-sm-h    : 120px;
+$poster-md-w    : 130px;
+$poster-md-h    : 195px;
+$poster-lg-w    : 200px;
+$poster-lg-h    : 300px;
+
+// Cast / persona
+$cast-photo-size : 64px;
+$cast-item-width : 80px;
+
+// Barras de progreso y score
+$score-bar-height    : 4px;
+$progress-bar-height : 4px;
+
+// Paginación
+$page-btn-size : 32px;
+
+// Mini chart / sparkline
+$mini-chart-height : 48px;
+
+// Scrollbar
+$scrollbar-size : 5px;
+
+// Rating star
+$star-size : 14px;
+
+// Plataforma / provider dot
+$platform-dot-size : 8px;
+
+
+// ── SOMBRAS ──────────────────────────────────────────────────
+// En tema claro se usan sombras sutiles en lugar de bordes
+// para la elevación de tarjetas y dropdowns.
+
+$shadow-sm  : 0 1px 3px rgba(22, 20, 31, 0.07), 0 1px 2px rgba(22, 20, 31, 0.05);
+$shadow-md  : 0 4px 12px rgba(22, 20, 31, 0.08), 0 2px 4px rgba(22, 20, 31, 0.05);
+$shadow-lg  : 0 8px 24px rgba(22, 20, 31, 0.10), 0 4px 8px rgba(22, 20, 31, 0.06);
+$shadow-xl  : 0 16px 40px rgba(22, 20, 31, 0.12), 0 6px 12px rgba(22, 20, 31, 0.07);
+
+// Sombra coloreada para elementos violeta (CTA, botones primarios)
+$shadow-violet : 0 4px 16px rgba(149, 15, 245, 0.28);
+$shadow-violet-lg: 0 8px 32px rgba(149, 15, 245, 0.22);
+
+
+// ── TRANSICIONES ─────────────────────────────────────────────
+$transition-speed-fast    : 0.10s;
+$transition-speed-default : 0.12s;
+$transition-speed-medium  : 0.15s;
+$transition-speed-slow    : 0.20s;
+
+$transition-easing-default : ease;
+$transition-easing-out     : cubic-bezier(0.16, 1, 0.3, 1);
+$transition-easing-in-out  : cubic-bezier(0.4, 0, 0.2, 1);
+
+$transition-default : all $transition-speed-default $transition-easing-default;
+$transition-bg      : background-color $transition-speed-fast $transition-easing-default;
+$transition-border  : border-color $transition-speed-default $transition-easing-default;
+$transition-color   : color $transition-speed-fast $transition-easing-default;
+$transition-opacity : opacity $transition-speed-medium $transition-easing-default;
+$transition-shadow  : box-shadow $transition-speed-medium $transition-easing-default;
+$transition-transform: transform $transition-speed-medium $transition-easing-out;
+
+
+// ── ANIMACIONES ──────────────────────────────────────────────
+$animation-fadein-duration : 0.15s;
+$animation-slidein-duration: 0.20s;
+$animation-spin-duration   : 0.75s;
+$animation-pulse-duration  : 2.0s;
+
+
+// ── Z-INDEX ──────────────────────────────────────────────────
+$z-base     : 1;
+$z-dropdown : 50;
+$z-sticky   : 60;
+$z-overlay  : 80;
+$z-modal    : 100;
+$z-toast    : 120;
+$z-tooltip  : 130;
+
+
+// ── GRIDS — LAYOUT PÚBLICO ───────────────────────────────────
+$grid-movies-xl   : repeat(5, 1fr);    // Desktop grande
+$grid-movies-lg   : repeat(4, 1fr);    // Desktop normal
+$grid-movies-md   : repeat(3, 1fr);    // Tablet
+$grid-movies-sm   : repeat(2, 1fr);    // Mobile
+
+$grid-stats-cols  : repeat(4, 1fr);
+$grid-two-col     : 1fr 1fr;
+$grid-detail      : 200px 1fr;         // Poster + info en detalle de película
+$grid-aside       : 1fr 320px;         // Contenido principal + aside
+
+$grid-gap-xs  : 8px;
+$grid-gap-sm  : 12px;
+$grid-gap-md  : 16px;
+$grid-gap-lg  : 20px;
+$grid-gap-xl  : 24px;
+$grid-gap-2xl : 32px;
+
+
+// ── BREAKPOINTS ──────────────────────────────────────────────
+$bp-xs  : 480px;
+$bp-sm  : 640px;
+$bp-md  : 768px;
+$bp-lg  : 1024px;
+$bp-xl  : 1280px;
+$bp-2xl : 1440px;

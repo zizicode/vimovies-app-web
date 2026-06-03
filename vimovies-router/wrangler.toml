@@ -1,0 +1,12 @@
+# wrangler.toml — Configuración del Worker de VIMovies
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
+
+name       = "vimovies-router"
+main       = "worker.ts"
+account_id = "TU_ACCOUNT_ID"       # Encuéntralo en dash.cloudflare.com → perfil derecho
+compatibility_date = "2024-09-01"
+
+# Asocia el worker a tu dominio real
+[[routes]]
+pattern = "vimovies.com/*"
+zone_name = "vimovies.com"

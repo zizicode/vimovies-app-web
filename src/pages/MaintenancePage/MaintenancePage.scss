@@ -1,0 +1,280 @@
+// ============================================================
+// MaintenancePage.scss
+// Usa las variables globales de _variables.scss — no se importan
+// ============================================================
+
+.maintenance-page {
+  position: relative;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $bg-root;
+  overflow: hidden;
+  padding: $space-8;
+
+  // ── Fondo decorativo ───────────────────────────────────────
+  &__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &__bg-orb {
+    position: absolute;
+    border-radius: $radius-full;
+    filter: blur(80px);
+    opacity: 0.45;
+
+    &--1 {
+      width: min(600px, 90vw);
+      height: min(600px, 90vw);
+      top: -15%;
+      left: -10%;
+      background: radial-gradient(circle, $violet-bg 0%, transparent 70%);
+      animation: orb-drift 12s ease-in-out infinite alternate;
+    }
+
+    &--2 {
+      width: min(500px, 70vw);
+      height: min(500px, 70vw);
+      bottom: -10%;
+      right: -8%;
+      background: radial-gradient(circle, $gold-pale 0%, transparent 70%);
+      animation: orb-drift 16s ease-in-out infinite alternate-reverse;
+    }
+  }
+
+  &__bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient($border-subtle 1px, transparent 1px),
+      linear-gradient(90deg, $border-subtle 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 100%);
+  }
+
+  // ── Contenido principal ────────────────────────────────────
+  &__content {
+    position: relative;
+    z-index: $z-base;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: $space-8;
+    max-width: 560px;
+    width: 100%;
+    animation: fade-up 0.6s $transition-easing-out both;
+  }
+
+  // ── Logo ───────────────────────────────────────────────────
+  &__logo-image {
+    width: 120px;
+    height: auto;
+  }
+
+  &__logo {
+    margin-bottom: $space-2;
+  }
+
+  &__logo-placeholder {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: $logo-mark-size-lg;
+    height: $logo-mark-size-lg;
+    background: $violet;
+    color: $logo-mark-icon;
+    font-family: $font-display;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    border-radius: $radius-md;
+    box-shadow: $shadow-violet;
+    letter-spacing: $letter-spacing-tight;
+  }
+
+  &__logo-name {
+    font-family: $font-display;
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+    letter-spacing: $letter-spacing-tight;
+  }
+
+  // ── Badge pill ─────────────────────────────────────────────
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $badge-padding-y $badge-padding-x;
+    background: $violet-ghost;
+    border: 1px solid $border-violet;
+    border-radius: $radius-full;
+    font-family: $font-body;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: $violet;
+    letter-spacing: $letter-spacing-wider;
+    text-transform: uppercase;
+  }
+
+  &__badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: $radius-full;
+    background: $violet-soft;
+    animation: pulse-dot 2s $transition-easing-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  // ── Título ─────────────────────────────────────────────────
+  &__title {
+    font-family: $font-display;
+    font-size: clamp($font-size-7xl, 6vw, 42px);
+    font-weight: $font-weight-extrabold;
+    line-height: $line-height-tight;
+    letter-spacing: $letter-spacing-tight;
+    color: $violet;
+    margin: 0;
+    animation: fade-up 0.6s $transition-easing-out 0.1s both;
+  }
+
+  // ── Descripción ────────────────────────────────────────────
+  &__description {
+    font-family: $font-body;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-regular;
+    line-height: $line-height-relaxed;
+    color: $text-secondary;
+    margin: 0;
+    max-width: 480px;
+    animation: fade-up 0.6s $transition-easing-out 0.2s both;
+  }
+
+  // ── Countdown ──────────────────────────────────────────────
+  &__countdown {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-6;
+    margin-top: $space-4;
+    animation: fade-up 0.6s $transition-easing-out 0.3s both;
+
+    @media (max-width: $bp-xs) {
+      gap: $space-4;
+    }
+  }
+
+  &__countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__countdown-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(64px, 16vw, 88px);
+    height: clamp(64px, 16vw, 88px);
+    background: $bg-surface;
+    border: 1px solid $border-default;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-md;
+    overflow: hidden;
+
+    // Línea decorativa gold en la parte superior
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 15%;
+      right: 15%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, $gold, transparent);
+      border-radius: $radius-full;
+    }
+
+    // Separador horizontal central
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: $border-subtle;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__countdown-number {
+    font-family: $font-display;
+    font-size: clamp($font-size-5xl, 5vw, 36px);
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+    letter-spacing: $letter-spacing-tight;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__countdown-label {
+    font-family: $font-body;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: $text-muted;
+    letter-spacing: $letter-spacing-widest;
+    text-transform: uppercase;
+  }
+
+  // ── Footer ─────────────────────────────────────────────────
+  &__footer {
+    font-family: $font-body;
+    font-size: $font-size-sm;
+    color: $text-hint;
+    letter-spacing: $letter-spacing-wide;
+    margin: 0;
+    animation: fade-up 0.6s $transition-easing-out 0.4s both;
+
+    span {
+      color: $violet-soft;
+      font-weight: $font-weight-medium;
+    }
+  }
+}
+
+// ── Keyframes ─────────────────────────────────────────────────
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes orb-drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(30px, 20px) scale(1.05); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+

@@ -1,0 +1,34 @@
+{
+  "common": {
+    "actions": {
+      "search": "Buscar",
+      "save": "Guardar",
+      "cancel": "Cancelar"
+    }
+  },
+  "app": {
+    "title": "Vimovies",
+    "subtitle": "Te recomiendo ver",
+    "language": "Idioma",
+    "country": "País",
+    "locale": "Locale",
+    "welcome": "Bienvenido",
+    "change_language": "Cambiar idioma"
+  },
+  "movie": {
+    "info": {
+      "runtime": "{{minutes}} min",
+      "year": "{{year}}"
+    },
+    "sections": {
+      "cast": "Reparto",
+      "director": "Director",
+      "genres": "Géneros"
+    }
+  },
+  "search": {
+    "results": "{{count}} resultado para \"{{query}}\"",
+    "results_plural": "{{count}} resultados para \"{{query}}\"",
+    "no_results": "No se encontraron resultados"
+  }
+}

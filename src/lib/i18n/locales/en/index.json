@@ -1,0 +1,34 @@
+{
+  "common": {
+    "actions": {
+      "search": "Search",
+      "save": "Save",
+      "cancel": "Cancel"
+    }
+  },
+  "app": {
+    "title": "Vimovies",
+    "subtitle": "I recommend you watch",
+    "language": "Language",
+    "country": "Country",
+    "locale": "Locale",
+    "welcome": "Welcome",
+    "change_language": "Change language"
+  },
+  "movie": {
+    "info": {
+      "runtime": "{{minutes}} min",
+      "year": "{{year}}"
+    },
+    "sections": {
+      "cast": "Cast",
+      "director": "Director",
+      "genres": "Genres"
+    }
+  },
+  "search": {
+    "results": "{{count}} result for \"{{query}}\"",
+    "results_plural": "{{count}} results for \"{{query}}\"",
+    "no_results": "No results found"
+  }
+}
