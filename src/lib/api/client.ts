@@ -13,7 +13,12 @@ export const apiClient = axios.create({
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
-    console.error('[API Error]', error.response?.data || error.message)
+    console.error('[API Error]', {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+      url: error.config?.url
+    })
     return Promise.reject(error)
   }
 )

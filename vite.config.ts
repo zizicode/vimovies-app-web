@@ -9,6 +9,19 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
+  build: {
+    minify: 'esbuild',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'router': ['react-router-dom'],
+          'axios': ['axios'],
+          'helmet': ['react-helmet-async'],
+        }
+      }
+    }
+  },
   css: {
     modules: {
       localsConvention: 'camelCase',
@@ -16,7 +29,7 @@ export default defineConfig({
     },
     preprocessorOptions: {
       scss: {
-        api: 'modern-compiler',
+        // api: 'modern-compiler',
         additionalData: `@use "@/styles/variables.scss" as *;`,
       },
     },
@@ -24,6 +37,14 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      '@services': path.resolve(__dirname, './src/services'),
+      '@api': path.resolve(__dirname, './src/api'),
+      '@components': path.resolve(__dirname, './src/components'),
+      '@mocks': path.resolve(__dirname, './src/mocks'),
+      '@store': path.resolve(__dirname, './src/store'),
+      '@router': path.resolve(__dirname, './src/router'),
+      '@types': path.resolve(__dirname, './src/types'),
+      '@styles': path.resolve(__dirname, './src/styles'),
     },
   },
 })

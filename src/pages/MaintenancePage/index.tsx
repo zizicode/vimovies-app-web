@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { Helmet } from 'react-helmet-async'
+import type { FC } from 'react'
 import './MaintenancePage.scss'
 import logoImage from '/favicon.svg'
 
@@ -23,7 +25,7 @@ function getTimeLeft(): TimeLeft {
   }
 }
 
-export default function MaintenancePage() {
+const MaintenancePage: FC = () => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(getTimeLeft)
 
   useEffect(() => {
@@ -40,6 +42,11 @@ export default function MaintenancePage() {
 
   return (
     <div className="maintenance-page">
+      <Helmet>
+        <title>Vimovies | Muy pronto - Tu destino definitivo para el cine</title>
+        <meta name="description" content="Estamos preparando algo especial. Vimovies será tu plataforma de referencia para descubrir películas, series, críticas y dónde ver el mejor contenido." />
+        <meta name="robots" content="noindex, follow" />
+      </Helmet>
 
       {/* Fondo decorativo */}
       <div className="maintenance-page__bg" aria-hidden="true">
@@ -52,7 +59,7 @@ export default function MaintenancePage() {
 
         {/* Logo */}
         <div className="maintenance-page__logo">
-          <img src={logoImage} alt="VIMovies Logo" className="maintenance-page__logo-image" />
+          <img src={logoImage} alt="Vimovies Logo" className="maintenance-page__logo-image" />
         </div>
 
         {/* Pill badge */}
@@ -96,3 +103,6 @@ export default function MaintenancePage() {
     </div>
   )
 }
+
+
+export default MaintenancePage

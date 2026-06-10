@@ -1,0 +1,3374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- ═══ SEO META ═══ -->
+  <title>Vimov — Descubre las mejores películas y series | Recomendaciones editoriales</title>
+  <meta name="description" content="Vimov es tu guía editorial de cine y series. Descubre dónde ver, rankings, reseñas de expertos y listas curadas de las mejores películas en Netflix, Prime Video, Disney+ y más." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://vimov.com/es/" />
+
+  <!-- ═══ OPEN GRAPH ═══ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Vimov" />
+  <meta property="og:title" content="Vimov — Descubre las mejores películas y series" />
+  <meta property="og:description" content="Tu guía editorial de cine y series. Rankings, reseñas de expertos y listas curadas." />
+  <meta property="og:url" content="https://vimov.com/es/" />
+  <meta property="og:image" content="https://vimov.com/og-home.jpg" />
+  <meta property="og:locale" content="es_ES" />
+
+  <!-- ═══ TWITTER CARD ═══ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@vimov" />
+  <meta name="twitter:title" content="Vimov — Descubre las mejores películas y series" />
+  <meta name="twitter:image" content="https://vimov.com/og-home.jpg" />
+
+  <!-- ═══ SCHEMA.ORG — WebSite ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Vimov",
+    "url": "https://vimov.com",
+    "description": "Guía editorial de cine y series. Rankings, reseñas y listas curadas.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://vimov.com/es/buscar?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- ═══ FONTS ═══ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       DESIGN TOKENS — derivados de _variables.scss
+    ═══════════════════════════════════════════════════════ */
+    :root {
+      /* Fonts */
+      --font-display: 'Oswald', sans-serif;
+      --font-body: 'Raleway', sans-serif;
+
+      /* Backgrounds */
+      --bg-root: #f5f4f2;
+      --bg-surface: #ffffff;
+      --bg-raised: #faf9f8;
+      --bg-overlay: #f0eeec;
+      --bg-deep: #e8e6e3;
+      --bg-sunken: #dedad6;
+
+      /* Borders */
+      --border-subtle: rgba(22,20,31,0.07);
+      --border-default: rgba(22,20,31,0.12);
+      --border-strong: rgba(22,20,31,0.20);
+
+      /* Text */
+      --text-primary: #16141f;
+      --text-secondary: #4a4660;
+      --text-muted: #8c88a3;
+      --text-hint: #b8b5cc;
+      --text-disabled: #ccc9dc;
+      --text-inverse: #ffffff;
+
+      /* Violet */
+      --violet-ghost: #f9f2ff;
+      --violet-bg: #f4e8fe;
+      --violet-pale: #e8c8fd;
+      --violet-soft: #c96dfa;
+      --violet-mid: #aa2ff7;
+      --violet: #950FF5;
+      --violet-rich: #7c0dcc;
+      --violet-deep: #6b08b0;
+      --violet-hover-bg: rgba(149,15,245,0.06);
+      --violet-active-bg: rgba(149,15,245,0.10);
+      --violet-focus-ring: rgba(149,15,245,0.18);
+      --border-violet: rgba(149,15,245,0.20);
+      --border-violet-strong: rgba(149,15,245,0.50);
+
+      /* Gold */
+      --gold: #e8a030;
+      --gold-hover: #f0aa38;
+      --gold-dim: #c4841f;
+      --gold-soft: #f5c878;
+      --gold-pale: #faebd0;
+      --gold-bg: rgba(232,160,48,0.09);
+      --gold-border: rgba(232,160,48,0.22);
+
+      /* Semantic */
+      --green: #16a34a;
+      --red: #dc2626;
+      --blue: #2563eb;
+
+      /* Shadows */
+      --shadow-sm: 0 1px 3px rgba(22,20,31,0.07), 0 1px 2px rgba(22,20,31,0.05);
+      --shadow-md: 0 4px 12px rgba(22,20,31,0.08), 0 2px 4px rgba(22,20,31,0.05);
+      --shadow-lg: 0 8px 24px rgba(22,20,31,0.10), 0 4px 8px rgba(22,20,31,0.06);
+      --shadow-xl: 0 16px 40px rgba(22,20,31,0.12), 0 6px 12px rgba(22,20,31,0.07);
+      --shadow-violet: 0 4px 16px rgba(149,15,245,0.28);
+      --shadow-violet-lg: 0 8px 32px rgba(149,15,245,0.22);
+
+      /* Radius */
+      --r-xs: 3px; --r-sm: 4px; --r-md: 6px; --r-lg: 10px;
+      --r-xl: 14px; --r-2xl: 20px; --r-full: 999px;
+
+      /* Layout */
+      --topbar-h: 58px;
+      --content-max: 1200px;
+
+      /* Transitions */
+      --t-fast: 0.10s ease;
+      --t-default: 0.12s ease;
+      --t-medium: 0.15s ease;
+      --t-slow: 0.20s ease;
+      --t-out: 0.20s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       RESET & BASE
+    ═══════════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 14px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-root);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { border: none; background: none; cursor: pointer; font-family: inherit; }
+    input { font-family: inherit; }
+
+    /* ═══════════════════════════════════════════════════════
+       UTILITIES
+    ═══════════════════════════════════════════════════════ */
+    .container {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    .visually-hidden { @extend .sr-only; }
+
+    /* ═══════════════════════════════════════════════════════
+       SECTION HEADER COMPONENT
+    ═══════════════════════════════════════════════════════ */
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      gap: 16px;
+    }
+    .section-header__left { display: flex; align-items: center; gap: 12px; }
+    .section-header__eyebrow {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--violet);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .section-header__eyebrow::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--violet);
+      border-radius: 2px;
+    }
+    .section-header__title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+      margin-top: 4px;
+    }
+    .section-header__link {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--violet);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: color var(--t-fast);
+      white-space: nowrap;
+    }
+    .section-header__link:hover { color: var(--violet-rich); }
+    .section-header__link svg { width: 14px; height: 14px; }
+
+    /* ═══════════════════════════════════════════════════════
+       RATING BADGE COMPONENT
+    ═══════════════════════════════════════════════════════ */
+    .rating-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: var(--r-sm);
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .rating-badge--gold {
+      background: var(--gold-bg);
+      color: var(--gold-dim);
+      border: 1px solid var(--gold-border);
+    }
+    .rating-badge--violet {
+      background: var(--violet-ghost);
+      color: var(--violet-deep);
+      border: 1px solid var(--border-violet);
+    }
+    .rating-badge--green {
+      background: rgba(22,163,74,0.09);
+      color: #15803d;
+      border: 1px solid rgba(22,163,74,0.22);
+    }
+    .rating-badge svg { width: 11px; height: 11px; fill: currentColor; }
+    .star-icon { color: var(--gold); }
+
+    /* ═══════════════════════════════════════════════════════
+       MOVIE CARD COMPONENT
+    ═══════════════════════════════════════════════════════ */
+    .movie-card {
+      background: var(--bg-surface);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      transition: transform var(--t-out), box-shadow var(--t-slow);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .movie-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .movie-card__poster {
+      position: relative;
+      aspect-ratio: 2/3;
+      overflow: hidden;
+      background: var(--bg-deep);
+    }
+    .movie-card__poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .movie-card:hover .movie-card__poster img { transform: scale(1.04); }
+    .movie-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(22,20,31,0.85) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity var(--t-slow);
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+    .movie-card:hover .movie-card__overlay { opacity: 1; }
+    .movie-card__quick-info { display: flex; flex-direction: column; gap: 6px; width: 100%; }
+    .movie-card__genres { display: flex; gap: 5px; flex-wrap: wrap; }
+    .movie-card__genre-tag {
+      font-family: var(--font-display);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 2px 7px;
+      border-radius: var(--r-xs);
+    }
+    .movie-card__watch-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      padding: 8px;
+      background: var(--violet);
+      color: white;
+      border-radius: var(--r-md);
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background var(--t-fast);
+      margin-top: 4px;
+    }
+    .movie-card__watch-btn:hover { background: var(--violet-rich); }
+    .movie-card__badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-family: var(--font-display);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: var(--r-xs);
+    }
+    .movie-card__badge--new {
+      background: var(--violet);
+      color: white;
+    }
+    .movie-card__badge--editorial {
+      background: var(--gold);
+      color: white;
+    }
+    .movie-card__wishlist {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: var(--r-full);
+      background: rgba(22,20,31,0.5);
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: background var(--t-fast);
+    }
+    .movie-card__wishlist:hover { background: var(--violet); }
+    .movie-card__wishlist svg { width: 14px; height: 14px; }
+    .movie-card__body { padding: 14px 14px 16px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+    .movie-card__title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.2px;
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .movie-card__meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .movie-card__meta-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--text-hint);
+      flex-shrink: 0;
+    }
+    .movie-card__ratings { display: flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 8px; border-top: 1px solid var(--border-subtle); }
+    .movie-card__platforms { display: flex; gap: 4px; align-items: center; margin-left: auto; }
+    .platform-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: var(--r-xs);
+      background: var(--bg-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      overflow: hidden;
+    }
+    .platform-dot img { width: 100%; height: 100%; object-fit: contain; }
+
+    /* Placeholder poster colors */
+    .poster-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+    .poster-1 { background: linear-gradient(135deg, #1a0533 0%, #3d1180 50%, #6b08b0 100%); }
+    .poster-2 { background: linear-gradient(135deg, #0c1a2e 0%, #163d6b 50%, #1d5fa5 100%); }
+    .poster-3 { background: linear-gradient(135deg, #1a0c0c 0%, #6b1a1a 50%, #a32d2d 100%); }
+    .poster-4 { background: linear-gradient(135deg, #0c1a0c 0%, #2d6b2d 50%, #3b6d11 100%); }
+    .poster-5 { background: linear-gradient(135deg, #1a150c 0%, #6b4a0c 50%, #ba7517 100%); }
+    .poster-6 { background: linear-gradient(135deg, #1a0c1a 0%, #6b0d6b 50%, #993356 100%); }
+    .poster-7 { background: linear-gradient(135deg, #0c1a1a 0%, #0d6b5a 50%, #1d9e75 100%); }
+    .poster-8 { background: linear-gradient(135deg, #180c0c 0%, #722b13 50%, #d85a30 100%); }
+
+    /* ═══════════════════════════════════════════════════════
+       HEADER / TOPBAR
+    ═══════════════════════════════════════════════════════ */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--topbar-h);
+      background: rgba(245,244,242,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 60;
+      display: flex;
+      align-items: center;
+    }
+    .topbar__inner {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      width: 100%;
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* Logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      flex-shrink: 0;
+      margin-right: 32px;
+    }
+    .logo__mark {
+      width: 30px; height: 30px;
+      background: var(--violet);
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-violet);
+    }
+    .logo__mark svg { width: 16px; height: 16px; fill: white; }
+    .logo__name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+    }
+    .logo__name span { color: var(--violet); }
+
+    /* Nav */
+    .topbar__nav { display: flex; align-items: center; gap: 2px; flex: 1; }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      border-radius: var(--r-md);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: background var(--t-fast), color var(--t-fast);
+      white-space: nowrap;
+    }
+    .nav-link:hover { background: var(--violet-hover-bg); color: var(--violet); }
+    .nav-link--active { color: var(--violet); background: var(--violet-ghost); }
+    .nav-link svg { width: 14px; height: 14px; }
+
+    /* Search */
+    .topbar__search {
+      position: relative;
+      margin-left: 16px;
+      flex-shrink: 0;
+    }
+    .topbar__search-icon {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+    .topbar__search-icon svg { width: 15px; height: 15px; display: block; }
+    .search-input {
+      width: 210px;
+      height: 36px;
+      padding: 0 12px 0 36px;
+      background: var(--bg-raised);
+      border: 1px solid var(--border-default);
+      border-radius: var(--r-md);
+      font-size: 13px;
+      color: var(--text-primary);
+      transition: border-color var(--t-default), box-shadow var(--t-default), width var(--t-out);
+      outline: none;
+    }
+    .search-input::placeholder { color: var(--text-muted); }
+    .search-input:focus {
+      border-color: var(--violet);
+      box-shadow: 0 0 0 3px var(--violet-focus-ring);
+      width: 280px;
+    }
+
+    /* CTA */
+    .topbar__cta { display: flex; align-items: center; gap: 8px; margin-left: 16px; }
+    .btn-ghost {
+      padding: 7px 14px;
+      border-radius: var(--r-md);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-default);
+      background: transparent;
+      transition: all var(--t-default);
+      cursor: pointer;
+      font-family: var(--font-body);
+    }
+    .btn-ghost:hover { background: var(--bg-overlay); border-color: var(--border-strong); color: var(--text-primary); }
+    .btn-primary {
+      padding: 7px 16px;
+      border-radius: var(--r-md);
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      background: var(--violet);
+      border: 1px solid transparent;
+      transition: background var(--t-fast), box-shadow var(--t-medium);
+      cursor: pointer;
+      font-family: var(--font-body);
+      box-shadow: var(--shadow-violet);
+    }
+    .btn-primary:hover { background: var(--violet-mid); box-shadow: var(--shadow-violet-lg); }
+
+    /* ═══════════════════════════════════════════════════════
+       HERO SLIDER
+    ═══════════════════════════════════════════════════════ */
+    .hero {
+      margin-top: var(--topbar-h);
+      position: relative;
+      height: 580px;
+      overflow: hidden;
+      background: #0a0812;
+    }
+    .hero__slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      pointer-events: none;
+    }
+    .hero__slide.active { opacity: 1; pointer-events: auto; }
+    .hero__backdrop {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .hero__backdrop-placeholder {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .hero-bg-1 { background: linear-gradient(120deg, #0a0812 0%, #1a0533 40%, #2d0a5c 70%, #3d1180 100%); }
+    .hero-bg-2 { background: linear-gradient(120deg, #0c0c0c 0%, #0c1a2e 40%, #163d6b 70%, #1d5fa5 100%); }
+    .hero-bg-3 { background: linear-gradient(120deg, #0c0808 0%, #1a0c0c 40%, #3d1010 70%, #6b1a1a 100%); }
+
+    /* Cinematic grain overlay */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .hero__gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(10,8,18,0.92) 0%, rgba(10,8,18,0.6) 50%, rgba(10,8,18,0.1) 100%);
+      z-index: 1;
+    }
+    .hero__gradient-bottom {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 200px;
+      background: linear-gradient(to top, var(--bg-root) 0%, transparent 100%);
+      z-index: 1;
+    }
+    .hero__content {
+      position: relative;
+      z-index: 3;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    .hero__info { max-width: 560px; }
+    .hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .hero__badge {
+      font-family: var(--font-display);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--violet-soft);
+      background: rgba(149,15,245,0.15);
+      border: 1px solid rgba(149,15,245,0.3);
+      padding: 4px 10px;
+      border-radius: var(--r-xs);
+    }
+    .hero__type-label {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      color: white;
+      line-height: 1.05;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .hero__title em { color: var(--violet-soft); font-style: normal; }
+    .hero__meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .hero__meta-item {
+      font-size: 12px;
+      color: rgba(255,255,255,0.65);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .hero__meta-item svg { width: 13px; height: 13px; opacity: 0.7; }
+    .hero__meta-sep { color: rgba(255,255,255,0.2); font-size: 14px; }
+    .hero__genres { display: flex; gap: 6px; margin-bottom: 20px; }
+    .hero__genre {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 4px 10px;
+      border-radius: var(--r-sm);
+    }
+    .hero__synopsis {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.65;
+      margin-bottom: 28px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .hero__ratings {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .hero__rating-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero__rating-score {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+    }
+    .hero__rating-source {
+      font-size: 10px;
+      color: rgba(255,255,255,0.45);
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: 0.04em;
+    }
+    .hero__rating-sep { width: 1px; height: 28px; background: rgba(255,255,255,0.12); }
+    .hero__actions { display: flex; align-items: center; gap: 12px; }
+    .btn-hero-primary {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--violet);
+      color: white;
+      border-radius: var(--r-lg);
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      transition: background var(--t-fast), box-shadow var(--t-medium), transform var(--t-out);
+      cursor: pointer;
+      box-shadow: var(--shadow-violet-lg);
+    }
+    .btn-hero-primary:hover { background: var(--violet-mid); transform: translateY(-1px); box-shadow: 0 12px 36px rgba(149,15,245,0.4); }
+    .btn-hero-primary svg { width: 16px; height: 16px; }
+    .btn-hero-secondary {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: rgba(255,255,255,0.08);
+      color: white;
+      border-radius: var(--r-lg);
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: background var(--t-fast);
+      cursor: pointer;
+    }
+    .btn-hero-secondary:hover { background: rgba(255,255,255,0.14); }
+    .btn-hero-secondary svg { width: 16px; height: 16px; }
+
+    /* Hero poster */
+    .hero__poster-col {
+      position: absolute;
+      right: 28px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+    }
+    .hero__poster {
+      width: 160px;
+      height: 240px;
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      border: 2px solid rgba(255,255,255,0.08);
+    }
+    .hero__poster .poster-placeholder { font-size: 24px; }
+
+    /* Hero controls */
+    .hero__controls {
+      position: absolute;
+      bottom: 64px;
+      right: 28px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero__dot {
+      width: 6px; height: 6px;
+      border-radius: var(--r-full);
+      background: rgba(255,255,255,0.3);
+      transition: all var(--t-default);
+      cursor: pointer;
+      border: none;
+    }
+    .hero__dot.active { width: 24px; background: var(--violet-soft); }
+    .hero__arrows {
+      position: absolute;
+      bottom: 56px;
+      left: 28px;
+      z-index: 3;
+      display: flex;
+      gap: 8px;
+    }
+    .hero__arrow {
+      width: 36px; height: 36px;
+      border-radius: var(--r-full);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: white;
+      cursor: pointer;
+      transition: background var(--t-fast);
+    }
+    .hero__arrow:hover { background: rgba(149,15,245,0.35); border-color: rgba(149,15,245,0.5); }
+    .hero__arrow svg { width: 16px; height: 16px; }
+
+    /* ═══════════════════════════════════════════════════════
+       PAGE SECTIONS
+    ═══════════════════════════════════════════════════════ */
+    main { padding-bottom: 0; }
+    .section { padding: 56px 0; }
+    .section--alt { background: var(--bg-surface); }
+    .section--dark { background: #0d0b14; }
+
+    /* ═══════════════════════════════════════════════════════
+       MOVIE GRID
+    ═══════════════════════════════════════════════════════ */
+    .movie-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+    .movie-grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+    /* Carrusel / scroll horizontal */
+    .scroll-row {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .scroll-row::-webkit-scrollbar { height: 4px; }
+    .scroll-row::-webkit-scrollbar-track { background: transparent; }
+    .scroll-row::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: var(--r-full); }
+    .scroll-row > * { scroll-snap-align: start; flex-shrink: 0; }
+
+    /* ═══════════════════════════════════════════════════════
+       GENRE CARD COMPONENT
+    ═══════════════════════════════════════════════════════ */
+    .genre-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 130px;
+      height: 90px;
+      border-radius: var(--r-xl);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      transition: transform var(--t-out), box-shadow var(--t-slow), border-color var(--t-default);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+    }
+    .genre-card:hover { transform: translateY(-3px) scale(1.02); box-shadow: var(--shadow-md); border-color: var(--border-violet); }
+    .genre-card__icon {
+      width: 36px; height: 36px;
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .genre-card__name {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: 0.02em;
+      text-align: center;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       PLATFORM CARD COMPONENT
+    ═══════════════════════════════════════════════════════ */
+    .platform-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 200px;
+      padding: 14px 16px;
+      border-radius: var(--r-xl);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      transition: transform var(--t-out), box-shadow var(--t-slow), border-color var(--t-default);
+      cursor: pointer;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .platform-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--border-strong); }
+    .platform-card__logo {
+      width: 38px; height: 38px;
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .platform-card__name {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .platform-card__type {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .platform-card__count {
+      margin-left: auto;
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--violet);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       PERSON CARD COMPONENT
+    ═══════════════════════════════════════════════════════ */
+    .person-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 110px;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .person-card__photo {
+      width: 80px; height: 80px;
+      border-radius: var(--r-full);
+      overflow: hidden;
+      background: var(--bg-deep);
+      border: 2px solid var(--border-subtle);
+      transition: border-color var(--t-default), transform var(--t-out);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .person-card:hover .person-card__photo { border-color: var(--violet-soft); transform: scale(1.04); }
+    .person-avatar {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+    }
+    .person-avatar--1 { background: linear-gradient(135deg, var(--violet-soft), var(--violet)); }
+    .person-avatar--2 { background: linear-gradient(135deg, #2563eb, #1d5fa5); }
+    .person-avatar--3 { background: linear-gradient(135deg, #16a34a, #0f6e56); }
+    .person-avatar--4 { background: linear-gradient(135deg, #d85a30, #993c1d); }
+    .person-avatar--5 { background: linear-gradient(135deg, #e8a030, #c4841f); }
+    .person-avatar--6 { background: linear-gradient(135deg, #d4537e, #993556); }
+    .person-avatar--7 { background: linear-gradient(135deg, #1d9e75, #0f6e56); }
+    .person-avatar--8 { background: linear-gradient(135deg, #7c0dcc, var(--violet-deep)); }
+    .person-card__name {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+    .person-card__role {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-top: -4px;
+    }
+    .person-card__known-for {
+      font-size: 10px;
+      color: var(--text-hint);
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       ARTICLE CARD COMPONENT
+    ═══════════════════════════════════════════════════════ */
+    .article-card {
+      background: var(--bg-surface);
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      transition: transform var(--t-out), box-shadow var(--t-slow);
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+    }
+    .article-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .article-card__cover {
+      position: relative;
+      height: 180px;
+      overflow: hidden;
+    }
+    .article-card__cover-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .article-card:hover .article-card__cover-img { transform: scale(1.04); }
+    .article-cover-1 { background: linear-gradient(135deg, #1a0533 0%, #6b08b0 100%); }
+    .article-cover-2 { background: linear-gradient(135deg, #0c1a2e 0%, #1d5fa5 100%); }
+    .article-cover-3 { background: linear-gradient(135deg, #1a0c0c 0%, #a32d2d 100%); }
+    .article-cover-4 { background: linear-gradient(135deg, #0c1a0c 0%, #3b6d11 100%); }
+    .article-card__category {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-family: var(--font-display);
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: var(--r-xs);
+      background: var(--violet);
+      color: white;
+    }
+    .article-card__body { padding: 16px 18px 20px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+    .article-card__meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .article-card__title {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.3;
+      letter-spacing: -0.2px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .article-card:hover .article-card__title { color: var(--violet); }
+    .article-card__excerpt {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex: 1;
+    }
+    .article-card__footer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-subtle);
+    }
+    .article-card__author-avatar {
+      width: 24px; height: 24px;
+      border-radius: var(--r-full);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-size: 9px;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(135deg, var(--violet-soft), var(--violet));
+    }
+    .article-card__author-name {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+    .article-card__read-time {
+      margin-left: auto;
+      font-size: 10px;
+      color: var(--text-hint);
+      font-weight: 500;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       EDITORIAL BLOCK
+    ═══════════════════════════════════════════════════════ */
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .editorial-featured {
+      background: var(--bg-surface);
+      border-radius: var(--r-xl);
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow var(--t-slow);
+    }
+    .editorial-featured:hover { box-shadow: var(--shadow-lg); }
+    .editorial-featured__cover {
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+    .editorial-featured__cover-inner {
+      width: 100%; height: 100%;
+    }
+    .editorial-featured__cover-inner.ef-1 { background: linear-gradient(135deg, #1a0533 0%, #6b08b0 60%, #950FF5 100%); }
+    .editorial-featured__label {
+      position: absolute;
+      top: 14px; left: 14px;
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      background: var(--gold-pale);
+      border: 1px solid var(--gold-border);
+      padding: 4px 10px;
+      border-radius: var(--r-xs);
+    }
+    .editorial-rating-overlay {
+      position: absolute;
+      bottom: 14px; right: 14px;
+      background: rgba(10,8,18,0.85);
+      border: 1px solid rgba(232,160,48,0.2);
+      border-radius: var(--r-md);
+      padding: 8px 12px;
+      text-align: center;
+    }
+    .editorial-rating-score {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .editorial-rating-label {
+      font-size: 9px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .editorial-featured__body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .editorial-featured__title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+    .editorial-featured__verdict {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-style: italic;
+      font-weight: 500;
+    }
+    .editorial-featured__review {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .editorial-featured__footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    /* Editorial list items */
+    .editorial-list { display: flex; flex-direction: column; gap: 12px; }
+    .editorial-list-item {
+      display: flex;
+      gap: 12px;
+      padding: 14px;
+      background: var(--bg-surface);
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border-subtle);
+      transition: border-color var(--t-default), box-shadow var(--t-slow);
+      cursor: pointer;
+    }
+    .editorial-list-item:hover { border-color: var(--border-violet); box-shadow: var(--shadow-sm); }
+    .editorial-list-item__poster {
+      width: 52px; height: 78px;
+      border-radius: var(--r-md);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .editorial-list-item__body { flex: 1; display: flex; flex-direction: column; gap: 5px; }
+    .editorial-list-item__title {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+    .editorial-list-item__meta {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .editorial-list-item__verdict {
+      font-size: 11px;
+      color: var(--text-secondary);
+      font-style: italic;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .editorial-list-item__rating { margin-top: auto; }
+
+    /* ═══════════════════════════════════════════════════════
+       RANKING SECTION
+    ═══════════════════════════════════════════════════════ */
+    .ranking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .ranking-panel {
+      background: var(--bg-surface);
+      border-radius: var(--r-xl);
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+    }
+    .ranking-panel__header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ranking-panel__title {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .ranking-panel__subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .ranking-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background var(--t-fast);
+      cursor: pointer;
+    }
+    .ranking-item:last-child { border-bottom: none; }
+    .ranking-item:hover { background: var(--bg-raised); }
+    .ranking-item__pos {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-hint);
+      width: 28px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .ranking-item--top1 .ranking-item__pos { color: var(--gold); }
+    .ranking-item--top2 .ranking-item__pos { color: var(--text-muted); }
+    .ranking-item--top3 .ranking-item__pos { color: #c4841f; }
+    .ranking-item__poster {
+      width: 34px; height: 50px;
+      border-radius: var(--r-sm);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .ranking-item__info { flex: 1; min-width: 0; }
+    .ranking-item__title {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ranking-item__meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .ranking-item__score {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+    }
+    .ranking-item__trend {
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+    .trend-up { color: var(--green); }
+    .trend-down { color: var(--red); }
+    .trend-flat { color: var(--text-muted); }
+
+    /* ═══════════════════════════════════════════════════════
+       NEWSLETTER
+    ═══════════════════════════════════════════════════════ */
+    .newsletter {
+      background: linear-gradient(135deg, #0d0b14 0%, #1a0533 40%, #2d0a5c 100%);
+      padding: 64px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .newsletter::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(149,15,245,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .newsletter__inner {
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+    .newsletter__eyebrow {
+      font-family: var(--font-display);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--violet-soft);
+      margin-bottom: 16px;
+    }
+    .newsletter__title {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .newsletter__title span { color: var(--violet-soft); }
+    .newsletter__desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+      margin-bottom: 32px;
+    }
+    .newsletter__form {
+      display: flex;
+      gap: 10px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .newsletter__input {
+      flex: 1;
+      height: 46px;
+      padding: 0 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--r-lg);
+      font-size: 14px;
+      color: white;
+      outline: none;
+      font-family: var(--font-body);
+      transition: border-color var(--t-default), box-shadow var(--t-default);
+    }
+    .newsletter__input::placeholder { color: rgba(255,255,255,0.35); }
+    .newsletter__input:focus { border-color: var(--violet-soft); box-shadow: 0 0 0 3px rgba(149,15,245,0.2); }
+    .newsletter__btn {
+      height: 46px;
+      padding: 0 22px;
+      background: var(--violet);
+      color: white;
+      border: none;
+      border-radius: var(--r-lg);
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background var(--t-fast), box-shadow var(--t-medium);
+      white-space: nowrap;
+      box-shadow: var(--shadow-violet);
+    }
+    .newsletter__btn:hover { background: var(--violet-mid); box-shadow: var(--shadow-violet-lg); }
+    .newsletter__terms {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 16px;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       FAQs
+    ═══════════════════════════════════════════════════════ */
+    .faq-list { display: flex; flex-direction: column; gap: 0; max-width: 800px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .faq-item:first-child { border-top: 1px solid var(--border-subtle); }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 0;
+      text-align: left;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: var(--font-body);
+    }
+    .faq-question:hover .faq-q-text { color: var(--violet); }
+    .faq-q-text {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      transition: color var(--t-fast);
+      text-align: left;
+    }
+    .faq-icon {
+      width: 22px; height: 22px;
+      border-radius: var(--r-full);
+      background: var(--bg-deep);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background var(--t-default), transform var(--t-default);
+    }
+    .faq-icon svg { width: 12px; height: 12px; color: var(--text-muted); }
+    .faq-item.open .faq-icon { background: var(--violet); transform: rotate(45deg); }
+    .faq-item.open .faq-icon svg { color: white; }
+    .faq-answer {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 400px; }
+    .faq-answer-inner {
+      padding: 0 0 18px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       STATS STRIP
+    ═══════════════════════════════════════════════════════ */
+    .stats-strip {
+      background: var(--violet);
+      padding: 32px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+    .stat-item + .stat-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.2);
+    }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.5px;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+      margin-top: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════════════ */
+    footer {
+      background: #0d0b14;
+      color: rgba(255,255,255,0.7);
+      padding: 64px 0 32px;
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 280px 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer__brand { }
+    .footer__brand .logo { margin-bottom: 16px; }
+    .footer__brand .logo__name { color: white; }
+    .footer__desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .footer__socials { display: flex; gap: 8px; }
+    .footer__social {
+      width: 34px; height: 34px;
+      border-radius: var(--r-md);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5);
+      transition: background var(--t-fast), color var(--t-fast);
+    }
+    .footer__social:hover { background: var(--violet); color: white; border-color: transparent; }
+    .footer__social svg { width: 15px; height: 15px; }
+    .footer__col-title {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 16px;
+    }
+    .footer__links { display: flex; flex-direction: column; gap: 10px; }
+    .footer__link {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      transition: color var(--t-fast);
+    }
+    .footer__link:hover { color: white; }
+    .footer__bottom {
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer__copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer__legal { display: flex; gap: 20px; }
+    .footer__legal a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      transition: color var(--t-fast);
+    }
+    .footer__legal a:hover { color: rgba(255,255,255,0.7); }
+
+    /* ═══════════════════════════════════════════════════════
+       TRENDING NUMBER BADGE
+    ═══════════════════════════════════════════════════════ */
+    .trend-card {
+      position: relative;
+      flex-shrink: 0;
+      width: 160px;
+    }
+    .trend-card__number {
+      position: absolute;
+      bottom: 62px;
+      left: -8px;
+      font-family: var(--font-display);
+      font-size: 60px;
+      font-weight: 700;
+      color: transparent;
+      -webkit-text-stroke: 2px rgba(22,20,31,0.12);
+      line-height: 1;
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════ */
+    @media (max-width: 1200px) {
+      .movie-grid { grid-template-columns: repeat(4, 1fr); }
+      .footer__grid { grid-template-columns: 240px 1fr 1fr; }
+      .footer__grid > *:last-child { display: none; }
+    }
+    @media (max-width: 1024px) {
+      .movie-grid { grid-template-columns: repeat(3, 1fr); }
+      .editorial-grid { grid-template-columns: 1fr; }
+      .ranking-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid .stat-item:nth-child(2)::before { display: none; }
+      .hero__poster-col { display: none; }
+    }
+    @media (max-width: 768px) {
+      .topbar__nav { display: none; }
+      .topbar__search { display: none; }
+      .btn-ghost { display: none; }
+      .hero { height: auto; min-height: 500px; }
+      .hero__content { padding-top: 60px; padding-bottom: 100px; }
+      .movie-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+      .newsletter__form { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .section { padding: 40px 0; }
+      .movie-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .section-header__title { font-size: 18px; }
+      .footer__grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Scroll indicator animation */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero__info { animation: fadeInUp 0.6s ease both; }
+
+    /* Skeleton pulse */
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+    /* Underline decoration for section titles */
+    .has-underline { position: relative; display: inline-block; }
+    .has-underline::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 40px; height: 3px;
+      background: var(--violet);
+      border-radius: 2px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HEADER / TOPBAR
+═══════════════════════════════════════════════════════════ -->
+<header role="banner">
+  <nav class="topbar" aria-label="Navegación principal">
+    <div class="topbar__inner">
+
+      <!-- Logo -->
+      <a href="/es/" class="logo" aria-label="Vimov — Inicio">
+        <div class="logo__mark" aria-hidden="true">
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 2L8 13L13 2H11L8 8.5L5 2H3Z"/>
+          </svg>
+        </div>
+        <span class="logo__name">Vim<span>ov</span></span>
+      </a>
+
+      <!-- Primary Nav -->
+      <ul class="topbar__nav" role="list">
+        <li><a href="/es/" class="nav-link nav-link--active" aria-current="page">Inicio</a></li>
+        <li><a href="/es/peliculas/" class="nav-link">Películas</a></li>
+        <li><a href="/es/series/" class="nav-link">Series</a></li>
+        <li><a href="/es/generos/" class="nav-link">Géneros</a></li>
+        <li><a href="/es/plataformas/" class="nav-link">Plataformas</a></li>
+        <li><a href="/es/actores/" class="nav-link">Actores</a></li>
+        <li><a href="/es/articulos/" class="nav-link">Editorial</a></li>
+      </ul>
+
+      <!-- Search -->
+      <div class="topbar__search" role="search">
+        <div class="topbar__search-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </div>
+        <input
+          type="search"
+          class="search-input"
+          placeholder="Buscar película, serie, actor…"
+          aria-label="Buscar contenido"
+          autocomplete="off"
+        />
+      </div>
+
+      <!-- CTA -->
+      <div class="topbar__cta">
+        <button class="btn-ghost" type="button">Iniciar sesión</button>
+        <button class="btn-primary" type="button">Registrarse</button>
+      </div>
+
+    </div>
+  </nav>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MAIN CONTENT
+═══════════════════════════════════════════════════════════ -->
+<main id="main-content">
+
+  <!-- ─────────────────────────────────────────
+       HERO SLIDER
+  ───────────────────────────────────────── -->
+  <section class="hero" aria-label="Películas destacadas" id="hero-slider">
+
+    <!-- Slide 1 -->
+    <div class="hero__slide active" id="slide-0">
+      <div class="hero__backdrop-placeholder hero-bg-1"></div>
+      <div class="hero__gradient"></div>
+      <div class="hero__gradient-bottom"></div>
+      <div class="hero__content">
+        <div class="hero__info">
+          <div class="hero__eyebrow">
+            <span class="hero__badge">Elección editorial</span>
+            <span class="hero__type-label">Película · 2024</span>
+          </div>
+          <h1 class="hero__title">Dune: <em>Parte Dos</em></h1>
+          <div class="hero__meta">
+            <span class="hero__meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              166 min
+            </span>
+            <span class="hero__meta-sep">·</span>
+            <span class="hero__meta-item">Dir. Denis Villeneuve</span>
+            <span class="hero__meta-sep">·</span>
+            <span class="hero__meta-item">EE.UU.</span>
+          </div>
+          <div class="hero__genres">
+            <span class="hero__genre">Ciencia Ficción</span>
+            <span class="hero__genre">Aventura</span>
+            <span class="hero__genre">Drama</span>
+          </div>
+          <p class="hero__synopsis">Paul Atreides se une a Chani y los Fremen en una guerra de venganza contra los conspiradores que destruyeron a su familia. Con poderes extraordinarios, enfrenta una elección entre el amor de su vida y el destino del universo conocido.</p>
+          <div class="hero__ratings">
+            <div class="hero__rating-item">
+              <div>
+                <div class="hero__rating-score" style="color: var(--gold);">8.5</div>
+                <div class="hero__rating-source">TMDB</div>
+              </div>
+            </div>
+            <div class="hero__rating-sep"></div>
+            <div class="hero__rating-item">
+              <div>
+                <div class="hero__rating-score">8.8</div>
+                <div class="hero__rating-source">IMDb</div>
+              </div>
+            </div>
+            <div class="hero__rating-sep"></div>
+            <div class="hero__rating-item">
+              <div>
+                <div class="hero__rating-score" style="color: var(--violet-soft);">9.2</div>
+                <div class="hero__rating-source">Vimov</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero__actions">
+            <button class="btn-hero-primary" type="button">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              Ver dónde está
+            </button>
+            <button class="btn-hero-secondary" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              Mi lista
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__poster-col" aria-hidden="true">
+        <div class="hero__poster">
+          <div class="poster-placeholder poster-1">DUNE</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="hero__slide" id="slide-1">
+      <div class="hero__backdrop-placeholder hero-bg-2"></div>
+      <div class="hero__gradient"></div>
+      <div class="hero__gradient-bottom"></div>
+      <div class="hero__content">
+        <div class="hero__info">
+          <div class="hero__eyebrow">
+            <span class="hero__badge">Tendencia</span>
+            <span class="hero__type-label">Serie · 2024</span>
+          </div>
+          <h1 class="hero__title">Shōgun: <em>El Señor</em></h1>
+          <div class="hero__meta">
+            <span class="hero__meta-item">10 episodios</span>
+            <span class="hero__meta-sep">·</span>
+            <span class="hero__meta-item">Dir. Rachel Kondo</span>
+            <span class="hero__meta-sep">·</span>
+            <span class="hero__meta-item">EE.UU. / Japón</span>
+          </div>
+          <div class="hero__genres">
+            <span class="hero__genre">Drama</span>
+            <span class="hero__genre">Historia</span>
+            <span class="hero__genre">Acción</span>
+          </div>
+          <p class="hero__synopsis">Un navegante inglés varado en el Japón feudal del siglo XVII navega la traicionera política samurái, mientras un señor de la guerra local busca aliados para su conquista del poder. Una historia épica de honor, ambición y choque de culturas.</p>
+          <div class="hero__ratings">
+            <div class="hero__rating-item">
+              <div>
+                <div class="hero__rating-score" style="color: var(--gold);">8.6</div>
+                <div class="hero__rating-source">TMDB</div>
+              </div>
+            </div>
+            <div class="hero__rating-sep"></div>
+            <div class="hero__rating-item">
+              <div>
+                <div class="hero__rating-score">8.9</div>
+                <div class="hero__rating-source">IMDb</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero__actions">
+            <button class="btn-hero-primary" type="button">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              Ver en Disney+
+            </button>
+            <button class="btn-hero-secondary" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              Mi lista
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="hero__poster-col" aria-hidden="true">
+        <div class="hero__poster">
+          <div class="poster-placeholder poster-2">SHOGUN</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="hero__slide" id="slide-2">
+      <div class="hero__backdrop-placeholder hero-bg-3"></div>
+      <div class="hero__gradient"></div>
+      <div class="hero__gradient-bottom"></div>
+      <div class="hero__content">
+        <div class="hero__info">
+          <div class="hero__eyebrow">
+            <span class="hero__badge" style="background:rgba(232,160,48,0.15); border-color:rgba(232,160,48,0.3); color:var(--gold-soft);">Nuevo estreno</span>
+            <span class="hero__type-label">Película · 2024</span>
+          </div>
+          <h1 class="hero__title">Alien: <em>Romulus</em></h1>
+          <div class="hero__meta">
+            <span class="hero__meta-item">119 min</span>
+            <span class="hero__meta-sep">·</span>
+            <span class="hero__meta-item">Dir. Fede Álvarez</span>
+            <span class="hero__meta-sep">·</span>
+            <span class="hero__meta-item">Terror · Ciencia Ficción</span>
+          </div>
+          <div class="hero__genres">
+            <span class="hero__genre">Terror</span>
+            <span class="hero__genre">Ciencia Ficción</span>
+            <span class="hero__genre">Thriller</span>
+          </div>
+          <p class="hero__synopsis">Un grupo de jóvenes colonizadores, explorando las profundidades de una estación espacial abandonada, descubren la forma de vida más aterradora del universo. El regreso visceral al horror claustrofóbico que definió a la franquicia.</p>
+          <div class="hero__ratings">
+            <div class="hero__rating-item">
+              <div>
+                <div class="hero__rating-score" style="color: var(--gold);">7.4</div>
+                <div class="hero__rating-source">TMDB</div>
+              </div>
+            </div>
+            <div class="hero__rating-sep"></div>
+            <div class="hero__rating-item">
+              <div>
+                <div class="hero__rating-score">7.3</div>
+                <div class="hero__rating-source">IMDb</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero__actions">
+            <button class="btn-hero-primary" type="button">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              Ver dónde está
+            </button>
+            <button class="btn-hero-secondary" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              Mi lista
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="hero__poster-col" aria-hidden="true">
+        <div class="hero__poster">
+          <div class="poster-placeholder poster-3">ALIEN</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="hero__arrows" aria-hidden="true">
+      <button class="hero__arrow" id="hero-prev" type="button" aria-label="Anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="hero__arrow" id="hero-next" type="button" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+    <div class="hero__controls" aria-label="Diapositivas" role="group">
+      <button class="hero__dot active" data-slide="0" type="button" aria-label="Ir a diapositiva 1"></button>
+      <button class="hero__dot" data-slide="1" type="button" aria-label="Ir a diapositiva 2"></button>
+      <button class="hero__dot" data-slide="2" type="button" aria-label="Ir a diapositiva 3"></button>
+    </div>
+
+  </section>
+
+  <!-- ─────────────────────────────────────────
+       STATS STRIP
+  ───────────────────────────────────────── -->
+  <div class="stats-strip" aria-label="Estadísticas de Vimov">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">850K+</div>
+          <div class="stat-label">Películas y series</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">10</div>
+          <div class="stat-label">Plataformas indexadas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">2.4M</div>
+          <div class="stat-label">Reseñas de usuarios</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">99</div>
+          <div class="stat-label">Críticos editoriales</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────────────────
+       TENDENCIAS
+  ───────────────────────────────────────── -->
+  <section class="section" aria-labelledby="tendencias-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header__left">
+          <div>
+            <div class="section-header__eyebrow">Esta semana</div>
+            <h2 class="section-header__title" id="tendencias-heading">Tendencias</h2>
+          </div>
+        </div>
+        <a href="/es/tendencias/" class="section-header__link">
+          Ver todo
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <div class="scroll-row" role="list" aria-label="Películas en tendencia">
+
+        <!-- Trending 1 -->
+        <div class="trend-card" role="listitem">
+          <div class="trend-card__number" aria-hidden="true">1</div>
+          <article class="movie-card" style="width:160px;">
+            <div class="movie-card__poster">
+              <div class="poster-placeholder poster-1">DUNE 2</div>
+              <div class="movie-card__overlay">
+                <div class="movie-card__quick-info">
+                  <div class="movie-card__genres">
+                    <span class="movie-card__genre-tag">Sci-Fi</span>
+                    <span class="movie-card__genre-tag">Aventura</span>
+                  </div>
+                  <a href="/es/peliculas/dune-parte-dos/" class="movie-card__watch-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M8 5v14l11-7z"/></svg>
+                    Dónde ver
+                  </a>
+                </div>
+              </div>
+              <span class="movie-card__badge movie-card__badge--editorial">Top</span>
+              <button class="movie-card__wishlist" type="button" aria-label="Añadir a mi lista">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              </button>
+            </div>
+            <div class="movie-card__body">
+              <h3 class="movie-card__title">Dune: Parte Dos</h3>
+              <div class="movie-card__meta">
+                <span>2024</span>
+                <span class="movie-card__meta-dot"></span>
+                <span>166 min</span>
+              </div>
+              <div class="movie-card__ratings">
+                <span class="rating-badge rating-badge--gold">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  8.5
+                </span>
+                <div class="movie-card__platforms">
+                  <div class="platform-dot" title="Prime Video" style="background:#00A8E1;color:white;font-size:7px;font-weight:700;">PV</div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Trending 2 -->
+        <div class="trend-card" role="listitem">
+          <div class="trend-card__number" aria-hidden="true">2</div>
+          <article class="movie-card" style="width:160px;">
+            <div class="movie-card__poster">
+              <div class="poster-placeholder poster-4">IO</div>
+              <div class="movie-card__overlay">
+                <div class="movie-card__quick-info">
+                  <div class="movie-card__genres">
+                    <span class="movie-card__genre-tag">Animación</span>
+                  </div>
+                  <a href="/es/peliculas/inside-out-2/" class="movie-card__watch-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M8 5v14l11-7z"/></svg>
+                    Dónde ver
+                  </a>
+                </div>
+              </div>
+              <span class="movie-card__badge movie-card__badge--new">Nuevo</span>
+              <button class="movie-card__wishlist" type="button" aria-label="Añadir a mi lista">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              </button>
+            </div>
+            <div class="movie-card__body">
+              <h3 class="movie-card__title">Intensamente 2</h3>
+              <div class="movie-card__meta">
+                <span>2024</span>
+                <span class="movie-card__meta-dot"></span>
+                <span>100 min</span>
+              </div>
+              <div class="movie-card__ratings">
+                <span class="rating-badge rating-badge--gold">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  7.9
+                </span>
+                <div class="movie-card__platforms">
+                  <div class="platform-dot" title="Disney+" style="background:#113CCF;color:white;font-size:7px;font-weight:700;">D+</div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Trending 3 -->
+        <div class="trend-card" role="listitem">
+          <div class="trend-card__number" aria-hidden="true">3</div>
+          <article class="movie-card" style="width:160px;">
+            <div class="movie-card__poster">
+              <div class="poster-placeholder poster-5">FURIOSA</div>
+              <div class="movie-card__overlay">
+                <div class="movie-card__quick-info">
+                  <div class="movie-card__genres">
+                    <span class="movie-card__genre-tag">Acción</span>
+                  </div>
+                  <a href="/es/peliculas/furiosa/" class="movie-card__watch-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M8 5v14l11-7z"/></svg>
+                    Dónde ver
+                  </a>
+                </div>
+              </div>
+              <button class="movie-card__wishlist" type="button" aria-label="Añadir a mi lista">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              </button>
+            </div>
+            <div class="movie-card__body">
+              <h3 class="movie-card__title">Furiosa: De la saga Mad Max</h3>
+              <div class="movie-card__meta">
+                <span>2024</span>
+                <span class="movie-card__meta-dot"></span>
+                <span>148 min</span>
+              </div>
+              <div class="movie-card__ratings">
+                <span class="rating-badge rating-badge--gold">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  7.6
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Trending 4 -->
+        <div class="trend-card" role="listitem">
+          <div class="trend-card__number" aria-hidden="true">4</div>
+          <article class="movie-card" style="width:160px;">
+            <div class="movie-card__poster">
+              <div class="poster-placeholder poster-6">SHOGUN</div>
+              <div class="movie-card__overlay">
+                <div class="movie-card__quick-info">
+                  <div class="movie-card__genres">
+                    <span class="movie-card__genre-tag">Drama</span>
+                    <span class="movie-card__genre-tag">Historia</span>
+                  </div>
+                  <a href="/es/series/shogun/" class="movie-card__watch-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M8 5v14l11-7z"/></svg>
+                    Dónde ver
+                  </a>
+                </div>
+              </div>
+              <span class="movie-card__badge movie-card__badge--editorial" style="background:var(--gold);">Emmy</span>
+              <button class="movie-card__wishlist" type="button" aria-label="Añadir a mi lista">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              </button>
+            </div>
+            <div class="movie-card__body">
+              <h3 class="movie-card__title">Shōgun</h3>
+              <div class="movie-card__meta">
+                <span>2024</span>
+                <span class="movie-card__meta-dot"></span>
+                <span>Serie</span>
+              </div>
+              <div class="movie-card__ratings">
+                <span class="rating-badge rating-badge--gold">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  8.6
+                </span>
+                <div class="movie-card__platforms">
+                  <div class="platform-dot" title="Disney+" style="background:#113CCF;color:white;font-size:7px;font-weight:700;">D+</div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Trending 5 -->
+        <div class="trend-card" role="listitem">
+          <div class="trend-card__number" aria-hidden="true">5</div>
+          <article class="movie-card" style="width:160px;">
+            <div class="movie-card__poster">
+              <div class="poster-placeholder poster-7">ALIEN R</div>
+              <div class="movie-card__overlay">
+                <div class="movie-card__quick-info">
+                  <div class="movie-card__genres">
+                    <span class="movie-card__genre-tag">Terror</span>
+                    <span class="movie-card__genre-tag">Sci-Fi</span>
+                  </div>
+                  <a href="/es/peliculas/alien-romulus/" class="movie-card__watch-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M8 5v14l11-7z"/></svg>
+                    Dónde ver
+                  </a>
+                </div>
+              </div>
+              <button class="movie-card__wishlist" type="button" aria-label="Añadir a mi lista">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              </button>
+            </div>
+            <div class="movie-card__body">
+              <h3 class="movie-card__title">Alien: Romulus</h3>
+              <div class="movie-card__meta">
+                <span>2024</span>
+                <span class="movie-card__meta-dot"></span>
+                <span>119 min</span>
+              </div>
+              <div class="movie-card__ratings">
+                <span class="rating-badge rating-badge--gold">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  7.4
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Trending 6 -->
+        <div class="trend-card" role="listitem">
+          <div class="trend-card__number" aria-hidden="true">6</div>
+          <article class="movie-card" style="width:160px;">
+            <div class="movie-card__poster">
+              <div class="poster-placeholder poster-8">PERFECT DAYS</div>
+              <div class="movie-card__overlay">
+                <div class="movie-card__quick-info">
+                  <div class="movie-card__genres">
+                    <span class="movie-card__genre-tag">Drama</span>
+                  </div>
+                  <a href="/es/peliculas/perfect-days/" class="movie-card__watch-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M8 5v14l11-7z"/></svg>
+                    Dónde ver
+                  </a>
+                </div>
+              </div>
+              <span class="movie-card__badge movie-card__badge--editorial" style="background:rgba(149,15,245,0.85);">MUBI</span>
+              <button class="movie-card__wishlist" type="button" aria-label="Añadir a mi lista">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              </button>
+            </div>
+            <div class="movie-card__body">
+              <h3 class="movie-card__title">Perfect Days</h3>
+              <div class="movie-card__meta">
+                <span>2023</span>
+                <span class="movie-card__meta-dot"></span>
+                <span>124 min</span>
+              </div>
+              <div class="movie-card__ratings">
+                <span class="rating-badge rating-badge--gold">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  7.9
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────
+       GÉNEROS
+  ───────────────────────────────────────── -->
+  <section class="section section--alt" aria-labelledby="generos-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header__left">
+          <div>
+            <div class="section-header__eyebrow">Explorar por</div>
+            <h2 class="section-header__title" id="generos-heading">Géneros</h2>
+          </div>
+        </div>
+        <a href="/es/generos/" class="section-header__link">
+          Todos los géneros
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+      <div class="scroll-row" role="list" aria-label="Géneros de películas">
+        <a href="/es/generos/accion/" class="genre-card" role="listitem">
+          <div class="genre-card__icon" style="background:#fff0e8;">💥</div>
+          <span class="genre-card__name">Acción</span>
+        </a>
+        <a href="/es/generos/thriller/" class="genre-card" role="listitem">
+          <div class="genre-card__icon" style="background:var(--violet-ghost);">🔪</div>
+          <span class="genre-card__name">Thriller</span>
+        </a>
+        <a href="/es/generos/ciencia-ficcion/" class="genre-card" role="listitem">
+          <div class="genre-card__icon" style="background:#e8f0ff;">🚀</div>
+          <span class="genre-card__name">Ciencia Ficción</span>
+        </a>
+        <a href="/es/generos/drama/" class="genre-card" role="listitem">
+          <div class="genre-card__icon" style="background:#e8ffe8;">🎭</div>
+          <span class="genre-card__name">Drama</span>
+        </a>
+        <a href="/es/generos/terror/" class="genre-card" role="listitem">
+          <div class="genre-card__icon" style="background:#ffe8e8;">👻</div>
+          <span class="genre-card__name">Terror</span>
+        </a>
+        <a href="/es/generos/comedia/" class="genre-card" role="listitem">
+          <div class="genre-card__icon" style="background:var(--gold-pale);">😂</div>
+          <span class="genre-card__name">Comedia</span>
+        </a>
+        <a href="/es/generos/animacion/" class="genre-card" role="listitem">
+          <div class="genre-card__icon" style="background:#e8fff4;">✨</div>
+          <span class="genre-card__name">Animación</span>
+        </a>
+        <a href="/es/generos/romance/" class="genre-card" role="listitem">
+          <div class="genre-card__icon" style="background:#ffe8f0;">❤️</div>
+          <span class="genre-card__name">Romance</span>
+        </a>
+        <a href="/es/generos/aventura/" class="genre-card" role="listitem">
+          <div class="genre-card__icon" style="background:#fff4e8;">🗺️</div>
+          <span class="genre-card__name">Aventura</span>
+        </a>
+        <a href="/es/generos/misterio/" class="genre-card" role="listitem">
+          <div class="genre-card__icon" style="background:#f0e8ff;">🔍</div>
+          <span class="genre-card__name">Misterio</span>
+        </a>
+        <a href="/es/generos/documental/" class="genre-card" role="listitem">
+          <div class="genre-card__icon" style="background:#e8f8ff;">🎬</div>
+          <span class="genre-card__name">Documental</span>
+        </a>
+        <a href="/es/generos/historia/" class="genre-card" role="listitem">
+          <div class="genre-card__icon" style="background:#f0ffe8;">📜</div>
+          <span class="genre-card__name">Historia</span>
+        </a>
+        <a href="/es/generos/fantasia/" class="genre-card" role="listitem">
+          <div class="genre-card__icon" style="background:var(--violet-bg);">🧙</div>
+          <span class="genre-card__name">Fantasía</span>
+        </a>
+        <a href="/es/generos/western/" class="genre-card" role="listitem">
+          <div class="genre-card__icon" style="background:#fff8e8;">🤠</div>
+          <span class="genre-card__name">Western</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────
+       ESTRENOS RECIENTES
+  ───────────────────────────────────────── -->
+  <section class="section" aria-labelledby="estrenos-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header__left">
+          <div>
+            <div class="section-header__eyebrow">Recién llegados</div>
+            <h2 class="section-header__title" id="estrenos-heading">Estrenos Recientes</h2>
+          </div>
+        </div>
+        <a href="/es/estrenos/" class="section-header__link">
+          Ver todos
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+      <div class="movie-grid" role="list" aria-label="Estrenos recientes">
+
+        <article class="movie-card" role="listitem">
+          <div class="movie-card__poster">
+            <div class="poster-placeholder poster-1">CONCLAVE</div>
+            <div class="movie-card__overlay">
+              <div class="movie-card__quick-info">
+                <div class="movie-card__genres"><span class="movie-card__genre-tag">Drama</span><span class="movie-card__genre-tag">Thriller</span></div>
+                <a href="/es/peliculas/conclave/" class="movie-card__watch-btn"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M8 5v14l11-7z"/></svg>Dónde ver</a>
+              </div>
+            </div>
+            <span class="movie-card__badge movie-card__badge--new">Nuevo</span>
+            <button class="movie-card__wishlist" type="button" aria-label="Añadir a mi lista"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Cónclave</h3>
+            <div class="movie-card__meta"><span>2024</span><span class="movie-card__meta-dot"></span><span>120 min</span></div>
+            <div class="movie-card__ratings">
+              <span class="rating-badge rating-badge--gold"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>7.2</span>
+              <div class="movie-card__platforms"><div class="platform-dot" style="background:#000;color:white;font-size:7px;font-weight:700;">AP</div></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="movie-card" role="listitem">
+          <div class="movie-card__poster">
+            <div class="poster-placeholder poster-2">GLADIATOR 2</div>
+            <div class="movie-card__overlay">
+              <div class="movie-card__quick-info">
+                <div class="movie-card__genres"><span class="movie-card__genre-tag">Acción</span><span class="movie-card__genre-tag">Historia</span></div>
+                <a href="/es/peliculas/gladiator-2/" class="movie-card__watch-btn"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M8 5v14l11-7z"/></svg>Dónde ver</a>
+              </div>
+            </div>
+            <span class="movie-card__badge movie-card__badge--new">Nuevo</span>
+            <button class="movie-card__wishlist" type="button" aria-label="Añadir a mi lista"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Gladiator II</h3>
+            <div class="movie-card__meta"><span>2024</span><span class="movie-card__meta-dot"></span><span>148 min</span></div>
+            <div class="movie-card__ratings">
+              <span class="rating-badge rating-badge--gold"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>7.1</span>
+              <div class="movie-card__platforms"><div class="platform-dot" style="background:#003FBE;color:white;font-size:7px;font-weight:700;">PP</div></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="movie-card" role="listitem">
+          <div class="movie-card__poster">
+            <div class="poster-placeholder poster-3">HERETIC</div>
+            <div class="movie-card__overlay">
+              <div class="movie-card__quick-info">
+                <div class="movie-card__genres"><span class="movie-card__genre-tag">Terror</span><span class="movie-card__genre-tag">Thriller</span></div>
+                <a href="/es/peliculas/heretic/" class="movie-card__watch-btn"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M8 5v14l11-7z"/></svg>Dónde ver</a>
+              </div>
+            </div>
+            <button class="movie-card__wishlist" type="button" aria-label="Añadir a mi lista"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Heretic</h3>
+            <div class="movie-card__meta"><span>2024</span><span class="movie-card__meta-dot"></span><span>110 min</span></div>
+            <div class="movie-card__ratings">
+              <span class="rating-badge rating-badge--gold"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>7.3</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="movie-card" role="listitem">
+          <div class="movie-card__poster">
+            <div class="poster-placeholder poster-7">THE BRUTALIST</div>
+            <div class="movie-card__overlay">
+              <div class="movie-card__quick-info">
+                <div class="movie-card__genres"><span class="movie-card__genre-tag">Drama</span><span class="movie-card__genre-tag">Historia</span></div>
+                <a href="/es/peliculas/the-brutalist/" class="movie-card__watch-btn"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M8 5v14l11-7z"/></svg>Dónde ver</a>
+              </div>
+            </div>
+            <span class="movie-card__badge movie-card__badge--editorial">Óscar</span>
+            <button class="movie-card__wishlist" type="button" aria-label="Añadir a mi lista"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">El Brutalista</h3>
+            <div class="movie-card__meta"><span>2024</span><span class="movie-card__meta-dot"></span><span>215 min</span></div>
+            <div class="movie-card__ratings">
+              <span class="rating-badge rating-badge--gold"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>7.8</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="movie-card" role="listitem">
+          <div class="movie-card__poster">
+            <div class="poster-placeholder poster-6">EMILIA PEREZ</div>
+            <div class="movie-card__overlay">
+              <div class="movie-card__quick-info">
+                <div class="movie-card__genres"><span class="movie-card__genre-tag">Musical</span><span class="movie-card__genre-tag">Drama</span></div>
+                <a href="/es/peliculas/emilia-perez/" class="movie-card__watch-btn"><svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12"><path d="M8 5v14l11-7z"/></svg>Dónde ver</a>
+              </div>
+            </div>
+            <span class="movie-card__badge movie-card__badge--editorial">Cannes</span>
+            <button class="movie-card__wishlist" type="button" aria-label="Añadir a mi lista"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></button>
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Emilia Pérez</h3>
+            <div class="movie-card__meta"><span>2024</span><span class="movie-card__meta-dot"></span><span>130 min</span></div>
+            <div class="movie-card__ratings">
+              <span class="rating-badge rating-badge--gold"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>6.8</span>
+              <div class="movie-card__platforms"><div class="platform-dot" style="background:#E50914;color:white;font-size:7px;font-weight:700;">NF</div></div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────
+       PLATAFORMAS DE STREAMING
+  ───────────────────────────────────────── -->
+  <section class="section section--alt" aria-labelledby="plataformas-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header__left">
+          <div>
+            <div class="section-header__eyebrow">Dónde ver</div>
+            <h2 class="section-header__title" id="plataformas-heading">Plataformas de Streaming</h2>
+          </div>
+        </div>
+        <a href="/es/plataformas/" class="section-header__link">
+          Ver todas
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+      <div class="scroll-row" role="list" aria-label="Plataformas de streaming disponibles">
+
+        <a href="/es/plataformas/netflix/" class="platform-card" role="listitem">
+          <div class="platform-card__logo" style="background:#E50914;">
+            <span style="color:white;font-family:var(--font-display);font-size:12px;font-weight:700;">N</span>
+          </div>
+          <div>
+            <div class="platform-card__name">Netflix</div>
+            <div class="platform-card__type">SVOD</div>
+          </div>
+          <div class="platform-card__count">6.2K</div>
+        </a>
+
+        <a href="/es/plataformas/prime-video/" class="platform-card" role="listitem">
+          <div class="platform-card__logo" style="background:#00A8E1;">
+            <span style="color:white;font-family:var(--font-display);font-size:12px;font-weight:700;">P</span>
+          </div>
+          <div>
+            <div class="platform-card__name">Prime Video</div>
+            <div class="platform-card__type">SVOD</div>
+          </div>
+          <div class="platform-card__count">5.8K</div>
+        </a>
+
+        <a href="/es/plataformas/disney-plus/" class="platform-card" role="listitem">
+          <div class="platform-card__logo" style="background:#113CCF;">
+            <span style="color:white;font-family:var(--font-display);font-size:12px;font-weight:700;">D+</span>
+          </div>
+          <div>
+            <div class="platform-card__name">Disney+</div>
+            <div class="platform-card__type">SVOD</div>
+          </div>
+          <div class="platform-card__count">1.1K</div>
+        </a>
+
+        <a href="/es/plataformas/hbo-max/" class="platform-card" role="listitem">
+          <div class="platform-card__logo" style="background:#1C1CFF;">
+            <span style="color:white;font-family:var(--font-display);font-size:12px;font-weight:700;">Max</span>
+          </div>
+          <div>
+            <div class="platform-card__name">Max</div>
+            <div class="platform-card__type">SVOD</div>
+          </div>
+          <div class="platform-card__count">2.4K</div>
+        </a>
+
+        <a href="/es/plataformas/apple-tv-plus/" class="platform-card" role="listitem">
+          <div class="platform-card__logo" style="background:#000000;">
+            <span style="color:white;font-family:var(--font-display);font-size:12px;font-weight:700;">TV+</span>
+          </div>
+          <div>
+            <div class="platform-card__name">Apple TV+</div>
+            <div class="platform-card__type">SVOD</div>
+          </div>
+          <div class="platform-card__count">330</div>
+        </a>
+
+        <a href="/es/plataformas/paramount/" class="platform-card" role="listitem">
+          <div class="platform-card__logo" style="background:#003FBE;">
+            <span style="color:white;font-family:var(--font-display);font-size:11px;font-weight:700;">P+</span>
+          </div>
+          <div>
+            <div class="platform-card__name">Paramount+</div>
+            <div class="platform-card__type">SVOD</div>
+          </div>
+          <div class="platform-card__count">890</div>
+        </a>
+
+        <a href="/es/plataformas/mubi/" class="platform-card" role="listitem">
+          <div class="platform-card__logo" style="background:#000000;">
+            <span style="color:white;font-family:var(--font-display);font-size:11px;font-weight:700;">MUBI</span>
+          </div>
+          <div>
+            <div class="platform-card__name">MUBI</div>
+            <div class="platform-card__type">SVOD</div>
+          </div>
+          <div class="platform-card__count">450</div>
+        </a>
+
+        <a href="/es/plataformas/crunchyroll/" class="platform-card" role="listitem">
+          <div class="platform-card__logo" style="background:#F47521;">
+            <span style="color:white;font-family:var(--font-display);font-size:10px;font-weight:700;">CR</span>
+          </div>
+          <div>
+            <div class="platform-card__name">Crunchyroll</div>
+            <div class="platform-card__type">SVOD</div>
+          </div>
+          <div class="platform-card__count">1.2K</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────
+       BLOQUE EDITORIAL
+  ───────────────────────────────────────── -->
+  <section class="section" aria-labelledby="editorial-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header__left">
+          <div>
+            <div class="section-header__eyebrow">Nuestro criterio</div>
+            <h2 class="section-header__title" id="editorial-heading">Recomendaciones del Equipo</h2>
+          </div>
+        </div>
+        <a href="/es/editorial/" class="section-header__link">
+          Ver más
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+
+      <div class="editorial-grid">
+
+        <!-- Featured editorial -->
+        <article class="editorial-featured" aria-label="Recomendación editorial destacada">
+          <div class="editorial-featured__cover">
+            <div class="editorial-featured__cover-inner ef-1" style="background:linear-gradient(135deg,#0d0b14 0%,#1a0533 40%,#3d1180 70%,#950FF5 100%);"></div>
+            <span class="editorial-featured__label">Elección del editor</span>
+            <div class="editorial-rating-overlay">
+              <div class="editorial-rating-score">9.2</div>
+              <div class="editorial-rating-label">Vimov Score</div>
+            </div>
+          </div>
+          <div class="editorial-featured__body">
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span class="rating-badge rating-badge--gold"><svg viewBox="0 0 24 24" fill="currentColor" style="width:11px;height:11px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>8.5 TMDB</span>
+              <span class="rating-badge rating-badge--violet">Ciencia Ficción · 2024</span>
+            </div>
+            <h3 class="editorial-featured__title">Dune: Parte Dos — La epopeya del siglo</h3>
+            <p class="editorial-featured__verdict">"Una obra maestra de la ciencia ficción moderna que redefine el cine de espectáculo."</p>
+            <p class="editorial-featured__review">Denis Villeneuve completa su adaptación de la novela de Frank Herbert con una segunda parte que eleva cada elemento de la primera. Las actuaciones de Zendaya y Chalamet alcanzan una dimensión trágica que trasciende el género. Visualmente abrumadora, narrativamente ambiciosa y temáticamente urgente.</p>
+            <div class="editorial-featured__footer">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div class="article-card__author-avatar">MA</div>
+                <div>
+                  <div style="font-size:12px;font-weight:600;color:var(--text-primary);">Miguel Arévalo</div>
+                  <div style="font-size:11px;color:var(--text-muted);">Crítico de cine</div>
+                </div>
+              </div>
+              <a href="/es/peliculas/dune-parte-dos/" style="font-family:var(--font-display);font-size:12px;font-weight:600;color:var(--violet);letter-spacing:0.04em;text-transform:uppercase;display:flex;align-items:center;gap:4px;">
+                Leer análisis
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="13" height="13"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Editorial list -->
+        <div class="editorial-list" aria-label="Más recomendaciones editoriales">
+
+          <article class="editorial-list-item">
+            <div class="editorial-list-item__poster">
+              <div class="poster-placeholder poster-2" style="height:78px;border-radius:var(--r-md);font-size:8px;">SHOGUN</div>
+            </div>
+            <div class="editorial-list-item__body">
+              <h3 class="editorial-list-item__title">Shōgun — Honor y traición en el Japón feudal</h3>
+              <div class="editorial-list-item__meta">Serie · 2024 · Disney+</div>
+              <p class="editorial-list-item__verdict">"La serie del año. Cinematografía de película, actuaciones monumentales."</p>
+              <div class="editorial-list-item__rating">
+                <span class="rating-badge rating-badge--violet">9.0 Vimov</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="editorial-list-item">
+            <div class="editorial-list-item__poster">
+              <div class="poster-placeholder poster-7" style="height:78px;border-radius:var(--r-md);font-size:8px;">PERFECT DAYS</div>
+            </div>
+            <div class="editorial-list-item__body">
+              <h3 class="editorial-list-item__title">Perfect Days — El arte de lo ordinario</h3>
+              <div class="editorial-list-item__meta">Película · 2023 · MUBI</div>
+              <p class="editorial-list-item__verdict">"Wim Wenders en estado de gracia. Silenciosa y completamente necesaria."</p>
+              <div class="editorial-list-item__rating">
+                <span class="rating-badge rating-badge--green">8.5 Vimov</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="editorial-list-item">
+            <div class="editorial-list-item__poster">
+              <div class="poster-placeholder poster-6" style="height:78px;border-radius:var(--r-md);font-size:8px;">EMILIA P</div>
+            </div>
+            <div class="editorial-list-item__body">
+              <h3 class="editorial-list-item__title">Emilia Pérez — El musical que nadie esperaba</h3>
+              <div class="editorial-list-item__meta">Película · 2024 · Netflix</div>
+              <p class="editorial-list-item__verdict">"Audaz, provocadora y visualmente fulgurante. Audiard rompe todos los moldes."</p>
+              <div class="editorial-list-item__rating">
+                <span class="rating-badge rating-badge--violet">8.2 Vimov</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="editorial-list-item">
+            <div class="editorial-list-item__poster">
+              <div class="poster-placeholder poster-3" style="height:78px;border-radius:var(--r-md);font-size:8px;">CONCLAVE</div>
+            </div>
+            <div class="editorial-list-item__body">
+              <h3 class="editorial-list-item__title">Cónclave — El thriller papal del año</h3>
+              <div class="editorial-list-item__meta">Película · 2024 · Apple TV+</div>
+              <p class="editorial-list-item__verdict">"Suspense sin efectos especiales. Solo poder, secretos y fe en juego."</p>
+              <div class="editorial-list-item__rating">
+                <span class="rating-badge rating-badge--gold"><svg viewBox="0 0 24 24" fill="currentColor" style="width:11px;height:11px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>8.0 Vimov</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────
+       ACTORES Y DIRECTORES DESTACADOS
+  ───────────────────────────────────────── -->
+  <section class="section section--alt" aria-labelledby="personas-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header__left">
+          <div>
+            <div class="section-header__eyebrow">Talento</div>
+            <h2 class="section-header__title" id="personas-heading">Actores y Directores Destacados</h2>
+          </div>
+        </div>
+        <a href="/es/actores/" class="section-header__link">
+          Ver todos
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+      <div class="scroll-row" role="list" aria-label="Actores y directores populares" style="gap:20px;">
+
+        <a href="/es/actores/timothee-chalamet/" class="person-card" role="listitem">
+          <div class="person-card__photo"><div class="person-avatar person-avatar--1">TC</div></div>
+          <div class="person-card__name">Timothée Chalamet</div>
+          <div class="person-card__role">Actor</div>
+          <div class="person-card__known-for">Dune, Wonka, Call Me By Your Name</div>
+        </a>
+
+        <a href="/es/actores/zendaya/" class="person-card" role="listitem">
+          <div class="person-card__photo"><div class="person-avatar person-avatar--5">ZE</div></div>
+          <div class="person-card__name">Zendaya</div>
+          <div class="person-card__role">Actriz</div>
+          <div class="person-card__known-for">Dune, Euphoria, Challengers</div>
+        </a>
+
+        <a href="/es/directores/denis-villeneuve/" class="person-card" role="listitem">
+          <div class="person-card__photo"><div class="person-avatar person-avatar--8">DV</div></div>
+          <div class="person-card__name">Denis Villeneuve</div>
+          <div class="person-card__role">Director</div>
+          <div class="person-card__known-for">Dune, Blade Runner 2049, Arrival</div>
+        </a>
+
+        <a href="/es/actores/ryan-gosling/" class="person-card" role="listitem">
+          <div class="person-card__photo"><div class="person-avatar person-avatar--2">RG</div></div>
+          <div class="person-card__name">Ryan Gosling</div>
+          <div class="person-card__role">Actor</div>
+          <div class="person-card__known-for">Barbie, La La Land, Drive</div>
+        </a>
+
+        <a href="/es/actores/cate-blanchett/" class="person-card" role="listitem">
+          <div class="person-card__photo"><div class="person-avatar person-avatar--7">CB</div></div>
+          <div class="person-card__name">Cate Blanchett</div>
+          <div class="person-card__role">Actriz</div>
+          <div class="person-card__known-for">Tár, Nightmare Alley, Carol</div>
+        </a>
+
+        <a href="/es/directores/christopher-nolan/" class="person-card" role="listitem">
+          <div class="person-card__photo"><div class="person-avatar person-avatar--4">CN</div></div>
+          <div class="person-card__name">Christopher Nolan</div>
+          <div class="person-card__role">Director</div>
+          <div class="person-card__known-for">Oppenheimer, Inception, Tenet</div>
+        </a>
+
+        <a href="/es/actores/margot-robbie/" class="person-card" role="listitem">
+          <div class="person-card__photo"><div class="person-avatar person-avatar--6">MR</div></div>
+          <div class="person-card__name">Margot Robbie</div>
+          <div class="person-card__role">Actriz</div>
+          <div class="person-card__known-for">Barbie, Babylon, Once Upon a Time</div>
+        </a>
+
+        <a href="/es/directores/greta-gerwig/" class="person-card" role="listitem">
+          <div class="person-card__photo"><div class="person-avatar person-avatar--3">GG</div></div>
+          <div class="person-card__name">Greta Gerwig</div>
+          <div class="person-card__role">Directora</div>
+          <div class="person-card__known-for">Barbie, Lady Bird, Little Women</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────
+       RANKINGS
+  ───────────────────────────────────────── -->
+  <section class="section" aria-labelledby="rankings-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header__left">
+          <div>
+            <div class="section-header__eyebrow">Lo mejor</div>
+            <h2 class="section-header__title" id="rankings-heading">Rankings Vimov</h2>
+          </div>
+        </div>
+        <a href="/es/rankings/" class="section-header__link">
+          Ver todos los rankings
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+      <div class="ranking-grid">
+
+        <!-- Top Películas 2024 -->
+        <div class="ranking-panel" aria-label="Top 5 películas del año">
+          <div class="ranking-panel__header">
+            <div>
+              <div class="ranking-panel__title">Top Películas 2024</div>
+              <div class="ranking-panel__subtitle">Según puntuación editorial</div>
+            </div>
+            <span class="rating-badge rating-badge--violet" style="font-size:10px;">Año</span>
+          </div>
+
+          <div class="ranking-item ranking-item--top1">
+            <span class="ranking-item__pos">1</span>
+            <div class="ranking-item__poster"><div class="poster-placeholder poster-1" style="height:50px;border-radius:var(--r-sm);font-size:6px;">DUNE 2</div></div>
+            <div class="ranking-item__info">
+              <div class="ranking-item__title">Dune: Parte Dos</div>
+              <div class="ranking-item__meta">Ciencia Ficción · Denis Villeneuve</div>
+            </div>
+            <span class="ranking-item__score">9.2</span>
+            <span class="ranking-item__trend trend-up">▲</span>
+          </div>
+
+          <div class="ranking-item ranking-item--top2">
+            <span class="ranking-item__pos">2</span>
+            <div class="ranking-item__poster"><div class="poster-placeholder poster-7" style="height:50px;border-radius:var(--r-sm);font-size:6px;">PERFECT</div></div>
+            <div class="ranking-item__info">
+              <div class="ranking-item__title">Perfect Days</div>
+              <div class="ranking-item__meta">Drama · Wim Wenders</div>
+            </div>
+            <span class="ranking-item__score">8.5</span>
+            <span class="ranking-item__trend trend-flat">—</span>
+          </div>
+
+          <div class="ranking-item ranking-item--top3">
+            <span class="ranking-item__pos">3</span>
+            <div class="ranking-item__poster"><div class="poster-placeholder poster-2" style="height:50px;border-radius:var(--r-sm);font-size:6px;">SHOGUN</div></div>
+            <div class="ranking-item__info">
+              <div class="ranking-item__title">Shōgun</div>
+              <div class="ranking-item__meta">Drama · Serie · Disney+</div>
+            </div>
+            <span class="ranking-item__score">9.0</span>
+            <span class="ranking-item__trend trend-up">▲</span>
+          </div>
+
+          <div class="ranking-item">
+            <span class="ranking-item__pos">4</span>
+            <div class="ranking-item__poster"><div class="poster-placeholder poster-6" style="height:50px;border-radius:var(--r-sm);font-size:6px;">EMILIA</div></div>
+            <div class="ranking-item__info">
+              <div class="ranking-item__title">Emilia Pérez</div>
+              <div class="ranking-item__meta">Musical · Jacques Audiard</div>
+            </div>
+            <span class="ranking-item__score">8.2</span>
+            <span class="ranking-item__trend trend-up">▲</span>
+          </div>
+
+          <div class="ranking-item">
+            <span class="ranking-item__pos">5</span>
+            <div class="ranking-item__poster"><div class="poster-placeholder poster-3" style="height:50px;border-radius:var(--r-sm);font-size:6px;">CONCLAVE</div></div>
+            <div class="ranking-item__info">
+              <div class="ranking-item__title">Cónclave</div>
+              <div class="ranking-item__meta">Thriller · Edward Berger</div>
+            </div>
+            <span class="ranking-item__score">8.0</span>
+            <span class="ranking-item__trend trend-down">▼</span>
+          </div>
+        </div>
+
+        <!-- Top Series 2024 -->
+        <div class="ranking-panel" aria-label="Top 5 series del año">
+          <div class="ranking-panel__header">
+            <div>
+              <div class="ranking-panel__title">Top Series 2024</div>
+              <div class="ranking-panel__subtitle">Según puntuación de usuarios</div>
+            </div>
+            <span class="rating-badge rating-badge--gold" style="font-size:10px;">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:10px;height:10px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              Usuarios
+            </span>
+          </div>
+
+          <div class="ranking-item ranking-item--top1">
+            <span class="ranking-item__pos">1</span>
+            <div class="ranking-item__poster"><div class="poster-placeholder poster-2" style="height:50px;border-radius:var(--r-sm);font-size:6px;">SHOGUN</div></div>
+            <div class="ranking-item__info">
+              <div class="ranking-item__title">Shōgun</div>
+              <div class="ranking-item__meta">Drama · FX / Disney+</div>
+            </div>
+            <span class="ranking-item__score">8.9</span>
+            <span class="ranking-item__trend trend-up">▲</span>
+          </div>
+
+          <div class="ranking-item ranking-item--top2">
+            <span class="ranking-item__pos">2</span>
+            <div class="ranking-item__poster"><div class="poster-placeholder poster-5" style="height:50px;border-radius:var(--r-sm);font-size:6px;">FALLOUT</div></div>
+            <div class="ranking-item__info">
+              <div class="ranking-item__title">Fallout</div>
+              <div class="ranking-item__meta">Ciencia Ficción · Prime Video</div>
+            </div>
+            <span class="ranking-item__score">8.5</span>
+            <span class="ranking-item__trend trend-up">▲</span>
+          </div>
+
+          <div class="ranking-item ranking-item--top3">
+            <span class="ranking-item__pos">3</span>
+            <div class="ranking-item__poster"><div class="poster-placeholder poster-4" style="height:50px;border-radius:var(--r-sm);font-size:6px;">PINGUINO</div></div>
+            <div class="ranking-item__info">
+              <div class="ranking-item__title">The Penguin</div>
+              <div class="ranking-item__meta">Acción · Max</div>
+            </div>
+            <span class="ranking-item__score">8.4</span>
+            <span class="ranking-item__trend trend-flat">—</span>
+          </div>
+
+          <div class="ranking-item">
+            <span class="ranking-item__pos">4</span>
+            <div class="ranking-item__poster"><div class="poster-placeholder poster-8" style="height:50px;border-radius:var(--r-sm);font-size:6px;">HOUSE DRAGON</div></div>
+            <div class="ranking-item__info">
+              <div class="ranking-item__title">House of the Dragon T2</div>
+              <div class="ranking-item__meta">Fantasía · Max</div>
+            </div>
+            <span class="ranking-item__score">8.2</span>
+            <span class="ranking-item__trend trend-down">▼</span>
+          </div>
+
+          <div class="ranking-item">
+            <span class="ranking-item__pos">5</span>
+            <div class="ranking-item__poster"><div class="poster-placeholder poster-1" style="height:50px;border-radius:var(--r-sm);font-size:6px;">RINGS POWER</div></div>
+            <div class="ranking-item__info">
+              <div class="ranking-item__title">Anillos de Poder T2</div>
+              <div class="ranking-item__meta">Fantasía · Prime Video</div>
+            </div>
+            <span class="ranking-item__score">7.6</span>
+            <span class="ranking-item__trend trend-up">▲</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────
+       ARTÍCULOS RECIENTES
+  ───────────────────────────────────────── -->
+  <section class="section section--alt" aria-labelledby="articulos-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-header__left">
+          <div>
+            <div class="section-header__eyebrow">Editorial</div>
+            <h2 class="section-header__title" id="articulos-heading">Artículos Recientes</h2>
+          </div>
+        </div>
+        <a href="/es/articulos/" class="section-header__link">
+          Ver todos los artículos
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+      <div class="movie-grid movie-grid--4" role="list" aria-label="Artículos editoriales">
+
+        <a href="/es/articulos/mejores-peliculas-ciencia-ficcion-2024/" class="article-card" role="listitem">
+          <div class="article-card__cover">
+            <div class="article-card__cover-img article-cover-1"></div>
+            <span class="article-card__category">Mejores Películas</span>
+          </div>
+          <div class="article-card__body">
+            <div class="article-card__meta">
+              <time datetime="2024-08-15">15 ago 2024</time>
+              <span>·</span>
+              <span>8 min</span>
+            </div>
+            <h3 class="article-card__title">Las 15 mejores películas de ciencia ficción de 2024 que no puedes perderte</h3>
+            <p class="article-card__excerpt">Dune, Alien, Furiosa y más. Analizamos los grandes títulos del género que marcaron este año.</p>
+            <div class="article-card__footer">
+              <div class="article-card__author-avatar">MA</div>
+              <span class="article-card__author-name">Miguel Arévalo</span>
+              <span class="article-card__read-time">8 min</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/es/articulos/donde-ver-series-historicas/" class="article-card" role="listitem">
+          <div class="article-card__cover">
+            <div class="article-card__cover-img article-cover-2"></div>
+            <span class="article-card__category">Dónde Ver</span>
+          </div>
+          <div class="article-card__body">
+            <div class="article-card__meta">
+              <time datetime="2024-08-10">10 ago 2024</time>
+              <span>·</span>
+              <span>5 min</span>
+            </div>
+            <h3 class="article-card__title">Dónde ver las mejores series históricas en streaming ahora mismo</h3>
+            <p class="article-card__excerpt">Shōgun, Rome, Vikingos y los mejores dramas de época disponibles en Netflix, Disney+ y Max.</p>
+            <div class="article-card__footer">
+              <div class="article-card__author-avatar" style="background:linear-gradient(135deg,#2563eb,#1d5fa5);">LC</div>
+              <span class="article-card__author-name">Laura Castellano</span>
+              <span class="article-card__read-time">5 min</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/es/articulos/analisis-dune-parte-dos/" class="article-card" role="listitem">
+          <div class="article-card__cover">
+            <div class="article-card__cover-img article-cover-3"></div>
+            <span class="article-card__category" style="background:var(--gold);color:white;">Análisis</span>
+          </div>
+          <div class="article-card__body">
+            <div class="article-card__meta">
+              <time datetime="2024-03-01">1 mar 2024</time>
+              <span>·</span>
+              <span>12 min</span>
+            </div>
+            <h3 class="article-card__title">Análisis: Por qué Dune: Parte Dos es la película del año sin discusión</h3>
+            <p class="article-card__excerpt">Una disección completa de la obra maestra de Denis Villeneuve: narrativa, fotografía y legado.</p>
+            <div class="article-card__footer">
+              <div class="article-card__author-avatar">MA</div>
+              <span class="article-card__author-name">Miguel Arévalo</span>
+              <span class="article-card__read-time">12 min</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/es/articulos/novedades-netflix-septiembre-2024/" class="article-card" role="listitem">
+          <div class="article-card__cover">
+            <div class="article-card__cover-img article-cover-4"></div>
+            <span class="article-card__category" style="background:#E50914;">Novedades</span>
+          </div>
+          <div class="article-card__body">
+            <div class="article-card__meta">
+              <time datetime="2024-09-01">1 sep 2024</time>
+              <span>·</span>
+              <span>4 min</span>
+            </div>
+            <h3 class="article-card__title">Todas las novedades de Netflix en septiembre 2024: películas y series</h3>
+            <p class="article-card__excerpt">Emilia Pérez lidera un mes cargado de estrenos en la plataforma roja. Todo lo que llega.</p>
+            <div class="article-card__footer">
+              <div class="article-card__author-avatar" style="background:linear-gradient(135deg,#16a34a,#0f6e56);">SR</div>
+              <span class="article-card__author-name">Sara Ramos</span>
+              <span class="article-card__read-time">4 min</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────
+       NEWSLETTER
+  ───────────────────────────────────────── -->
+  <section class="newsletter" aria-labelledby="newsletter-heading">
+    <div class="container">
+      <div class="newsletter__inner">
+        <div class="newsletter__eyebrow">Sin spoilers, prometido</div>
+        <h2 class="newsletter__title" id="newsletter-heading">Cine en tu bandeja<span> cada semana</span></h2>
+        <p class="newsletter__desc">Recibe nuestras recomendaciones editoriales, los estrenos más esperados, análisis exclusivos y lo que no deberías perderte en streaming. Sin spam.</p>
+        <form class="newsletter__form" action="/es/newsletter/suscribirse" method="post" novalidate>
+          <label for="newsletter-email" class="sr-only">Tu correo electrónico</label>
+          <input
+            type="email"
+            id="newsletter-email"
+            name="email"
+            class="newsletter__input"
+            placeholder="tu@correo.com"
+            required
+            autocomplete="email"
+          />
+          <button type="submit" class="newsletter__btn">Suscribirme</button>
+        </form>
+        <p class="newsletter__terms">Al suscribirte aceptas nuestra <a href="/es/privacidad/" style="color:rgba(255,255,255,0.5);text-decoration:underline;">política de privacidad</a>. Puedes cancelar en cualquier momento.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────────────────
+       FAQs — SCHEMA.ORG OPTIMIZADAS
+  ───────────────────────────────────────── -->
+
+  <!-- FAQ Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué es Vimov?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Vimov es una guía editorial de cine y series que te ayuda a descubrir dónde ver películas y series en streaming, con recomendaciones de expertos, rankings curados y análisis en profundidad."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Dónde puedo ver las últimas películas de estreno?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En Vimov puedes consultar en qué plataforma está disponible cada película: Netflix, Prime Video, Disney+, Max, Apple TV+, Paramount+ y más. Nuestra base de datos se actualiza constantemente."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo se calculan las puntuaciones Vimov?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La puntuación Vimov combina la valoración editorial de nuestro equipo de críticos especializados con las valoraciones de usuarios registrados, ponderando ambas fuentes para ofrecer una nota final equilibrada."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo crear listas de películas para ver más tarde?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Los usuarios registrados pueden crear watchlists ilimitadas, marcar películas como vistas y hacer sus listas públicas o privadas para compartirlas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Vimov tiene aplicación móvil?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Actualmente Vimov está disponible como aplicación web optimizada para móvil. Las apps nativas para iOS y Android están en desarrollo y estarán disponibles próximamente."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <section class="section" aria-labelledby="faq-heading" style="background:var(--bg-surface);">
+    <div class="container">
+      <div class="section-header" style="margin-bottom:32px;">
+        <div class="section-header__left">
+          <div>
+            <div class="section-header__eyebrow">Preguntas frecuentes</div>
+            <h2 class="section-header__title" id="faq-heading">Todo lo que necesitas saber</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-list" role="list">
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-1">
+            <span class="faq-q-text">¿Qué es Vimov y cómo me puede ayudar a elegir qué ver?</span>
+            <div class="faq-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </button>
+          <div class="faq-answer" id="faq-1" role="region">
+            <div class="faq-answer-inner">
+              Vimov es una guía editorial de cine y series que combina crítica especializada con datos de 10 plataformas de streaming. Te ayudamos a decidir qué ver con recomendaciones honestas, rankings curados por género y año, y una herramienta que te dice exactamente en qué plataforma está disponible cada título en tu región.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-2">
+            <span class="faq-q-text">¿Dónde puedo ver las últimas películas y series de estreno?</span>
+            <div class="faq-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </button>
+          <div class="faq-answer" id="faq-2" role="region">
+            <div class="faq-answer-inner">
+              En cada ficha de película y serie encontrarás una sección "Dónde ver" que muestra en tiempo real en qué plataformas está disponible: Netflix, Prime Video, Disney+, Max, Apple TV+, Paramount+, Star+, MUBI, Crunchyroll y Pluto TV. También indicamos si está disponible para compra o alquiler digital.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-3">
+            <span class="faq-q-text">¿Cómo se calculan las puntuaciones y ratings de Vimov?</span>
+            <div class="faq-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </button>
+          <div class="faq-answer" id="faq-3" role="region">
+            <div class="faq-answer-inner">
+              La puntuación Vimov (escala 0–10) pondera la valoración editorial de nuestro equipo de críticos especializados junto con las reseñas de usuarios verificados. También mostramos puntuaciones externas de TMDB, IMDb, Rotten Tomatoes (críticos y audiencia) para que tengas el panorama completo antes de decidir.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-4">
+            <span class="faq-q-text">¿Puedo crear listas de películas y series para ver más tarde?</span>
+            <div class="faq-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </button>
+          <div class="faq-answer" id="faq-4" role="region">
+            <div class="faq-answer-inner">
+              Sí. Al crear una cuenta gratuita en Vimov puedes añadir títulos a watchlists ilimitadas, marcar lo que ya has visto, escribir reseñas y hacer tus listas públicas para compartirlas o privadas para tu uso personal. La sincronización está disponible en todos tus dispositivos.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-5">
+            <span class="faq-q-text">¿Vimov tiene aplicación para móvil (iOS y Android)?</span>
+            <div class="faq-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </button>
+          <div class="faq-answer" id="faq-5" role="region">
+            <div class="faq-answer-inner">
+              Actualmente Vimov funciona como Progressive Web App (PWA), totalmente optimizada para móvil. Puedes añadirla a tu pantalla de inicio desde el navegador para una experiencia nativa. Las aplicaciones nativas para iOS y Android se lanzarán próximamente — regístrate en el newsletter para ser el primero en saberlo.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+
+      <!-- Brand -->
+      <div class="footer__brand">
+        <a href="/es/" class="logo" aria-label="Vimov — Inicio">
+          <div class="logo__mark" style="box-shadow:none;">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 2L8 13L13 2H11L8 8.5L5 2H3Z"/>
+            </svg>
+          </div>
+          <span class="logo__name">Vim<span>ov</span></span>
+        </a>
+        <p class="footer__desc">Tu guía editorial de cine y series. Descubrimiento, análisis y dónde ver los mejores títulos en streaming.</p>
+        <div class="footer__socials">
+          <a href="https://twitter.com/vimov" class="footer__social" aria-label="Vimov en Twitter" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://instagram.com/vimov" class="footer__social" aria-label="Vimov en Instagram" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://letterboxd.com/vimov" class="footer__social" aria-label="Vimov en Letterboxd" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Descubrir -->
+      <nav aria-label="Descubrir contenido">
+        <div class="footer__col-title">Descubrir</div>
+        <ul class="footer__links">
+          <li><a href="/es/peliculas/" class="footer__link">Películas</a></li>
+          <li><a href="/es/series/" class="footer__link">Series</a></li>
+          <li><a href="/es/documentales/" class="footer__link">Documentales</a></li>
+          <li><a href="/es/estrenos/" class="footer__link">Estrenos</a></li>
+          <li><a href="/es/proximos-estrenos/" class="footer__link">Próximos estrenos</a></li>
+          <li><a href="/es/generos/" class="footer__link">Explorar por género</a></li>
+          <li><a href="/es/rankings/" class="footer__link">Rankings</a></li>
+        </ul>
+      </nav>
+
+      <!-- Plataformas -->
+      <nav aria-label="Plataformas de streaming">
+        <div class="footer__col-title">Plataformas</div>
+        <ul class="footer__links">
+          <li><a href="/es/plataformas/netflix/" class="footer__link">Netflix</a></li>
+          <li><a href="/es/plataformas/prime-video/" class="footer__link">Prime Video</a></li>
+          <li><a href="/es/plataformas/disney-plus/" class="footer__link">Disney+</a></li>
+          <li><a href="/es/plataformas/hbo-max/" class="footer__link">Max</a></li>
+          <li><a href="/es/plataformas/apple-tv-plus/" class="footer__link">Apple TV+</a></li>
+          <li><a href="/es/plataformas/mubi/" class="footer__link">MUBI</a></li>
+          <li><a href="/es/plataformas/" class="footer__link">Ver todas →</a></li>
+        </ul>
+      </nav>
+
+      <!-- Vimov -->
+      <nav aria-label="Información sobre Vimov">
+        <div class="footer__col-title">Vimov</div>
+        <ul class="footer__links">
+          <li><a href="/es/articulos/" class="footer__link">Editorial</a></li>
+          <li><a href="/es/acerca/" class="footer__link">Sobre nosotros</a></li>
+          <li><a href="/es/equipo/" class="footer__link">Nuestro equipo</a></li>
+          <li><a href="/es/contacto/" class="footer__link">Contacto</a></li>
+          <li><a href="/es/anunciantes/" class="footer__link">Publicidad</a></li>
+          <li><a href="/sitemap.xml" class="footer__link">Mapa del sitio</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <!-- Footer bottom -->
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2024 Vimov. Todos los derechos reservados. Las imágenes de películas pertenecen a sus respectivos propietarios.</p>
+      <nav class="footer__legal" aria-label="Legal">
+        <a href="/es/privacidad/">Privacidad</a>
+        <a href="/es/terminos/">Términos de uso</a>
+        <a href="/es/cookies/">Cookies</a>
+        <a href="/es/accesibilidad/">Accesibilidad</a>
+      </nav>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     JAVASCRIPT — Interacciones mínimas (sin framework)
+═══════════════════════════════════════════════════════════ -->
+<script>
+  // ── HERO SLIDER ─────────────────────────────────────────
+  (function() {
+    const slides = document.querySelectorAll('.hero__slide');
+    const dots = document.querySelectorAll('.hero__dot');
+    let current = 0;
+    let autoPlay;
+
+    function goTo(index) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function startAuto() {
+      autoPlay = setInterval(() => goTo(current + 1), 5500);
+    }
+
+    function resetAuto() {
+      clearInterval(autoPlay);
+      startAuto();
+    }
+
+    document.getElementById('hero-prev')?.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+    document.getElementById('hero-next')?.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => { goTo(+dot.dataset.slide); resetAuto(); });
+    });
+
+    startAuto();
+
+    // Pause on hover
+    const hero = document.getElementById('hero-slider');
+    hero?.addEventListener('mouseenter', () => clearInterval(autoPlay));
+    hero?.addEventListener('mouseleave', startAuto);
+  })();
+
+  // ── FAQ ACCORDION ────────────────────────────────────────
+  (function() {
+    const items = document.querySelectorAll('.faq-item');
+    items.forEach(item => {
+      const btn = item.querySelector('.faq-question');
+      btn?.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        // Close all
+        items.forEach(i => { i.classList.remove('open'); i.querySelector('.faq-question')?.setAttribute('aria-expanded', 'false'); });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  })();
+
+  // ── WISHLIST BUTTON TOGGLE ────────────────────────────────
+  (function() {
+    document.querySelectorAll('.movie-card__wishlist').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const active = btn.dataset.active === 'true';
+        btn.dataset.active = !active;
+        btn.style.background = active ? 'rgba(22,20,31,0.5)' : 'var(--violet)';
+        btn.setAttribute('aria-label', active ? 'Añadir a mi lista' : 'Eliminar de mi lista');
+      });
+    });
+  })();
+
+  // ── SEARCH FOCUS ENHANCEMENT ─────────────────────────────
+  (function() {
+    const input = document.querySelector('.search-input');
+    if (!input) return;
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { input.blur(); input.value = ''; }
+    });
+  })();
+</script>
+
+</body>
+</html>

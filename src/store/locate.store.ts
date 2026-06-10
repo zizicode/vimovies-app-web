@@ -25,6 +25,8 @@ interface LocaleState {
   locale: Locale
   /** true mientras se carga el JSON del idioma */
   isLoading: boolean
+  /** true mientras se está cambiando de idioma (activa el PageLoader) */
+  isChangingLocale: boolean
   /** Función de traducción lista para usar en componentes */
   t: Translator
 }
@@ -66,6 +68,7 @@ export const useLocaleStore = create<LocaleStore>()(
       // ── State ────────────────────────────────────────────────────────────
       locale: DEFAULT_LOCALE,
       isLoading: true,
+      isChangingLocale: false,
       t: noopTranslator,
 
       // ── Actions ──────────────────────────────────────────────────────────
@@ -79,7 +82,7 @@ export const useLocaleStore = create<LocaleStore>()(
         // Si ya es el idioma activo, no hacer nada
         if (get().locale === locale && !get().isLoading) return
 
-        set({ isLoading: true })
+        set({ isLoading: true, isChangingLocale: true })
 
         try {
           await loadLocale(locale)
@@ -89,7 +92,7 @@ export const useLocaleStore = create<LocaleStore>()(
           }
 
           const t = createTranslator(locale)
-          set({ locale, t, isLoading: false })
+          set({ locale, t, isLoading: false, isChangingLocale: false })
           syncCookie(locale)
 
           // Actualizar atributo lang en <html> para accesibilidad y SEO
@@ -98,7 +101,7 @@ export const useLocaleStore = create<LocaleStore>()(
           }
         } catch (err) {
           console.error(`[i18n] Failed to load locale "${locale}":`, err)
-          set({ isLoading: false })
+          set({ isLoading: false, isChangingLocale: false })
         }
       },
 
@@ -118,7 +121,7 @@ export const useLocaleStore = create<LocaleStore>()(
     {
       name: "vimovies_locale",             // clave en localStorage
       storage: createJSONStorage(() => localStorage),
-      // Solo persistimos el locale, no el translator (no es serializable)
+      // Solo persistimos el locale, no el translator ni isChangingLocale (no son serializables)
       partialize: (state) => ({ locale: state.locale }),
     }
   )
@@ -145,7 +148,7 @@ export const useSetLocale = () => useLocaleStore((s) => s.setLocale)
  *
  * @example
  * ```tsx
- * const { t, locale, setLocale } = useI18n()
+ * const { t, locale, setLocale, isChangingLocale } = useI18n()
  *
  * // Traducción simple
  * t("common.actions.search")           // → "Buscar"
@@ -165,7 +168,8 @@ export function useI18n() {
   const t = useLocaleStore((s) => s.t)
   const locale = useLocaleStore((s) => s.locale)
   const isLoading = useLocaleStore((s) => s.isLoading)
+  const isChangingLocale = useLocaleStore((s) => s.isChangingLocale)
   const setLocale = useLocaleStore((s) => s.setLocale)
 
-  return { t, locale, isLoading, setLocale }
+  return { t, locale, isLoading, isChangingLocale, setLocale }
 }

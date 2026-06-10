@@ -1,0 +1,561 @@
+// ── HeaderMovie.scss ──────────────────────────────────────────────────────────
+// Layout: [poster anclado al fondo] + [info flex-col] en flex-row.
+// El poster tiene protagonismo visual: sombra profunda, glow violeta,
+// borde inferior degradado y brillo especular en esquina superior.
+// Desktop: poster align-self: flex-end → base del poster = base del info.
+// Mobile:  poster 80px, align-self: flex-start → alineado al top del info.
+
+.hms-root {
+    position: relative;
+    width: 100%;
+    height: calc(70vh - #{$topbar-height + $nav-height-desktop});
+    min-height: 520px;
+    max-height: 820px;
+    overflow: hidden;
+    background-color: #08070f;
+
+    // ── Slide ────────────────────────────────────────────────────────────────
+    .hm-slide {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+        z-index: 1;
+        contain: layout; // Mejora el rendimiento de renderizado
+
+        &--active {
+            opacity: 1;
+            pointer-events: all;
+            z-index: 2;
+        }
+    }
+
+    // ── Backdrop ─────────────────────────────────────────────────────────────
+    .hm-backdrop-container {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+
+        .hm-backdrop-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 25%;
+            z-index: 1;
+        }
+
+        .hm-backdrop-blur {
+            position: absolute;
+            inset: -30px;
+            background-image: var(--hm-backdrop-small);
+            background-size: cover;
+            background-position: center 25%;
+            filter: blur(80px) brightness(0.22) saturate(1);
+            transform: scale(1.1);
+            z-index: 0;
+            will-change: filter;
+        }
+    }
+
+    // ── Gradiente cinematográfico ────────────────────────────────────────────
+    .hm-gradient {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+            // de abajo a arriba: oscuro hasta transparente
+            linear-gradient(
+                to top,
+                #08070f 0%,
+                rgba(8, 7, 15, 0.97) 14%,
+                rgba(8, 7, 15, 0.65) 38%,
+                rgba(8, 7, 15, 0.18) 80%,
+                transparent 100%
+            ),
+            // de izquierda a derecha: oscuro hasta transparente
+            linear-gradient(
+                to right,
+                rgba(8, 7, 15, 0.9) 0%,
+                rgba(8, 7, 15, 0.45) 42%,
+                rgba(8, 7, 15, 0.1) 70%,
+                transparent 100%
+            ),
+            // toque violeta sutil en la esquina superior izquierda
+            linear-gradient(
+                148deg,
+                rgba($violet, 0.08) 0%,
+                transparent 52%
+            );
+    }
+
+    // ── Contenedor principal ─────────────────────────────────────────────────
+    .hm-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: $content-max-w;
+        margin: 0 auto;
+        padding: 0 $view-padding clamp(56px, 7.5vh, 84px);
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;   // poster e info: base alineada
+        gap: 28px;
+
+        @media (max-width: $bp-md) {
+            padding: 0 $view-padding clamp(64px, 9vh, 80px);
+            align-items: flex-start;
+            gap: 14px;
+        }
+    }
+
+    // ── Poster ───────────────────────────────────────────────────────────────
+    .hm-poster-wrap {
+        flex-shrink: 0;
+        align-self: flex-end;
+        width: clamp(160px, 15vw, 220px);
+        border-radius: $radius-xl;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+        // Sombra profunda + glow violeta
+        box-shadow:
+            0 28px 64px rgba(0, 0, 0, 0.85),
+            0 0 0 1px rgba(255, 255, 255, 0.09),
+            0 -6px 28px rgba($violet, 0.22);
+
+        &:hover { transform: translateY(-4px); }
+
+        img {
+            width: 100%;
+            display: block;
+            aspect-ratio: 2 / 3;
+            object-fit: cover;
+        }
+
+        // Brillo especular esquina superior
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.14) 0%,
+                transparent 44%
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        // Acento inferior degradado violeta
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            // background: linear-gradient(90deg, $violet, $violet-soft);
+            z-index: 2;
+        }
+
+        @media (max-width: $bp-md) {
+            align-self: flex-start;
+            width: 115px;
+            border-radius: $radius-lg;
+            box-shadow:
+                0 14px 32px rgba(0, 0, 0, 0.7),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                0 -4px 16px rgba($violet, 0.18);
+        }
+
+        @media (max-width: 380px) { width: 90px; }
+    }
+
+    // ── Info ─────────────────────────────────────────────────────────────────
+    .hm-info {
+        flex: 1;
+        min-width: 0;  // previene overflow en flex
+        display: flex;
+        flex-direction: column;
+        gap: clamp(9px, 1.3vh, 14px);
+
+        @media (max-width: $bp-md) { gap: 8px; }
+    }
+
+    // ── Badges ───────────────────────────────────────────────────────────────
+    .hm-badges {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+
+    .hm-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-family: $font-body;
+        font-size: 10px;
+        font-weight: $font-weight-bold;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 3px 9px;
+        border-radius: $radius-full;
+        line-height: 1;
+        backdrop-filter: blur(8px);
+
+        &--genre {
+            background: rgba($violet, 0.18);
+            color: $violet-soft;
+            border: 1px solid rgba($violet, 0.3);
+        }
+        &--year {
+            background: rgba(255, 255, 255, 0.07);
+            color: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.11);
+        }
+        &--rating {
+            background: rgba($gold, 0.14);
+            color: $gold-soft;
+            border: 1px solid rgba($gold, 0.28);
+            gap: 4px;
+        }
+        &--mpaa {
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    }
+
+    // ── Título ───────────────────────────────────────────────────────────────
+    .hm-title {
+        font-family: $font-display;
+        font-size: clamp(30px, 5vw, 64px);
+        font-weight: $font-weight-extrabold;
+        color: $text-inverse;
+        line-height: 0.94;
+        letter-spacing: $letter-spacing-tight;
+        text-shadow: 0 2px 28px rgba(0, 0, 0, 0.7);
+        margin: 0;
+
+        span { color: $violet-soft; }   // titleAccent
+
+        @media (max-width: $bp-md) {
+            font-size: clamp(22px, 6.5vw, 30px);
+        }
+    }
+
+    // ── Meta ─────────────────────────────────────────────────────────────────
+    .hm-meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .hm-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        color: rgba(255, 255, 255, 0.52);
+
+        svg { opacity: 0.6; flex-shrink: 0; }
+
+        @media (max-width: $bp-md) { font-size: $font-size-xs; }
+    }
+
+    .hm-meta-sep {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        flex-shrink: 0;
+    }
+
+    // ── Sinopsis ─────────────────────────────────────────────────────────────
+    .hm-synopsis {
+        font-size: $font-size-base;
+        line-height: 1.65;
+        color: rgba(255, 255, 255, 0.58);
+        margin: 0;
+        max-width: 520px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        @media (max-width: $bp-md) {
+            font-size: $font-size-sm;
+            line-height: 1.55;
+            -webkit-line-clamp: 2;
+            max-width: 100%;
+        }
+    }
+
+    // ── Acciones ─────────────────────────────────────────────────────────────
+    .hm-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+
+        @media (max-width: $bp-md) { gap: 6px; }
+    }
+
+    .hm-actions-secondary {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .hm-btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: $violet;
+        color: $text-inverse;
+        border: none;
+        border-radius: $radius-md;
+        padding: 10px 20px;
+        font-family: $font-body;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-bold;
+        cursor: pointer;
+        box-shadow: 0 4px 24px rgba($violet, 0.4);
+        transition: $transition-default;
+        white-space: nowrap;
+
+        &:hover {
+            background: $violet-mid;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 32px rgba($violet, 0.55);
+        }
+        &:active { transform: translateY(0); }
+
+        @media (max-width: $bp-md) {
+            padding: 8px 15px;
+            font-size: $font-size-xs;
+        }
+    }
+
+    .hm-btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: rgba(255, 255, 255, 0.06);
+        color: $text-inverse;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: $radius-md;
+        padding: 9px 18px;
+        font-family: $font-body;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        cursor: pointer;
+        backdrop-filter: blur(12px);
+        transition: $transition-default;
+        white-space: nowrap;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.11);
+            border-color: rgba(255, 255, 255, 0.24);
+            transform: translateY(-1px);
+        }
+        &:active { transform: translateY(0); }
+
+        @media (max-width: $bp-md) {
+            padding: 8px 14px;
+            font-size: $font-size-xs;
+        }
+    }
+
+    .hm-btn-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: $radius-md;
+        cursor: pointer;
+        backdrop-filter: blur(12px);
+        transition: $transition-default;
+        flex-shrink: 0;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: $text-inverse;
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+        &:active { transform: translateY(0); }
+    }
+
+    .hm-score {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1px;
+        padding: 5px 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: $radius-md;
+        backdrop-filter: blur(12px);
+        height: 38px;
+        min-width: 56px;
+
+        &-val {
+            font-family: $font-display;
+            font-size: $font-size-lg;
+            font-weight: $font-weight-extrabold;
+            color: $text-inverse;
+            line-height: 1;
+        }
+        &-lbl {
+            font-size: 9px;
+            font-weight: $font-weight-bold;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.3);
+            line-height: 1;
+        }
+    }
+
+    // ── Plataformas ───────────────────────────────────────────────────────────
+    .hm-platforms {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        flex-wrap: wrap;
+    }
+
+    .hm-plat-lbl {
+        font-size: 10px;
+        font-weight: $font-weight-bold;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.28);
+    }
+
+    .hm-plat-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: $radius-full;
+        padding: 4px 12px;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-bold;
+        color: rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(8px);
+        transition: $transition-default;
+        cursor: pointer;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: $text-inverse;
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        &-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+    }
+
+    // ── Controles del slider ──────────────────────────────────────────────────
+    .hm-controls {
+        position: absolute;
+        bottom: clamp(14px, 2.2vh, 26px);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 7px 16px;
+        background: rgba(0, 0, 0, 0.42);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: $radius-full;
+
+        @media (max-width: $bp-md) {
+            gap: 10px;
+            padding: 6px 13px;
+        }
+    }
+
+    .hm-ctrl-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.11);
+        border-radius: 50%;
+        color: rgba(255, 255, 255, 0.75);
+        cursor: pointer;
+        transition: $transition-default;
+        padding: 0;
+        flex-shrink: 0;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(255, 255, 255, 0.22);
+            color: $text-inverse;
+        }
+        &:active { transform: scale(0.92); }
+
+        &--prev:hover svg { transform: translateX(-2px); }
+        &--next:hover svg { transform: translateX(2px); }
+
+        svg { transition: transform 0.16s ease; }
+
+        @media (max-width: $bp-md) {
+            width: 24px;
+            height: 24px;
+            svg { width: 14px; height: 14px; }
+        }
+    }
+
+    .hm-dots {
+        display: flex;
+        gap: 7px;
+        align-items: center;
+    }
+
+    .hm-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        cursor: pointer;
+        transition: all 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+        padding: 0;
+        flex-shrink: 0;
+
+        &:hover { background: rgba(255, 255, 255, 0.45); }
+
+        &--active {
+            background: #ffffff;
+            width: 22px;
+            border-radius: 4px;
+            box-shadow: 0 0 9px rgba($violet, 0.5);
+        }
+    }
+}

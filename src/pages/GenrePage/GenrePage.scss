@@ -1,0 +1,190 @@
+@use '../../styles/variables.scss' as *;
+
+.genre-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0a0a0a 0%, #141414 100%);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at top, rgba(149, 15, 245, 0.1) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &__header {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 100%);
+    padding: $space-6 $space-4;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__container {
+    max-width: $content-max-w;
+    margin: 0 auto;
+    padding: 0 $space-4;
+  }
+
+  &__controls {
+    padding: $space-6 $space-4 $space-8;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__title-section {
+    padding: $space-10 $space-4 $space-6;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent 0%, $violet 50%, transparent 100%);
+      border-radius: $radius-full;
+      opacity: 0.8;
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: $font-size-6xl;
+    font-weight: $font-weight-extrabold;
+    color: white;
+    margin-bottom: $space-3;
+    letter-spacing: $letter-spacing-tight;
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, $violet 0%, $violet-soft 50%, $violet 100%);
+      border-radius: $radius-full;
+      opacity: 0.6;
+    }
+  }
+
+  &__description {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: $font-size-base;
+    line-height: $line-height-relaxed;
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: $font-weight-regular;
+    position: relative;
+  }
+
+  &__grid-section {
+    padding: $space-6 $space-4 $space-12;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $space-16 0;
+  }
+
+  &__spinner {
+    width: 3rem;
+    height: 3rem;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: $violet;
+    border-radius: $radius-full;
+    animation: spin $animation-spin-duration linear infinite;
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-2;
+    margin-top: $space-8;
+    padding: $space-4;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: $radius-lg;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+  }
+
+  &__pagination-btn {
+    padding: $space-3 $space-4;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: $radius-md;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    font-family: $font-body;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    transition: $transition-default;
+    min-width: $page-btn-size;
+
+    &:hover:not(:disabled) {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+    }
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    &--active {
+      background-color: $violet;
+      color: white;
+      border-color: $violet;
+      box-shadow: $shadow-violet;
+
+      &:hover {
+        background-color: $violet-rich;
+      }
+    }
+  }
+
+  &__results-info {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: $space-4;
+    font-size: $font-size-sm;
+  }
+
+  &__no-results {
+    text-align: center;
+    padding: $space-16 $space-8;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: $radius-lg;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: $font-size-lg;
+      line-height: $line-height-relaxed;
+    }
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

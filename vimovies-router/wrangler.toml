@@ -1,4 +1,4 @@
-# wrangler.toml — Configuración del Worker de VIMovies
+# wrangler.toml — Configuración del Worker de Vimovies
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
 
 name       = "vimovies-router"

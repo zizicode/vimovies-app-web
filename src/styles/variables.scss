@@ -8,6 +8,61 @@
 // Texto: Oscuros sobre blanco
 // ============================================================
 
+// ─────────────────────────────────────────
+// src/styles/_platforms.scss
+// ─────────────────────────────────────────
+
+// NETFLIX
+$platform-netflix-bg       : #E50914;
+$platform-netflix-gradient : linear-gradient(135deg, #E50914 0%, #B20710 100%);
+$platform-netflix-text     : #ffffff;
+
+// PRIME VIDEO
+$platform-prime-bg         : #00A8E0;
+$platform-prime-gradient   : linear-gradient(135deg, #00A8E0 0%, #0072C6 100%);
+$platform-prime-text       : #ffffff;
+
+// DISNEY+
+$platform-disney-bg        : #0063E5;
+$platform-disney-gradient  : linear-gradient(135deg, #0063E5 0%, #001A6E 100%);
+$platform-disney-text      : #ffffff;
+
+// MAX
+$platform-max-bg           : #002BE7;
+$platform-max-gradient     : linear-gradient(135deg, #4B47FF 0%, #002BE7 50%, #00073D 100%);
+$platform-max-text         : #ffffff;
+
+// APPLE TV+
+$platform-apple-bg         : #1c1c1e;
+$platform-apple-gradient   : linear-gradient(135deg, #3a3a3c 0%, #1c1c1e 50%, #000000 100%);
+$platform-apple-text       : #ffffff;
+$platform-apple-border     : rgba(255,255,255,0.12); // borde sutil sobre #000
+
+// PARAMOUNT+
+$platform-paramount-bg     : #0064FF;
+$platform-paramount-gradient: linear-gradient(135deg, #0064FF 0%, #003A99 100%);
+$platform-paramount-text   : #ffffff;
+
+// STAR+
+$platform-star-bg          : #1B1464;
+$platform-star-gradient    : linear-gradient(135deg, #4A2FBF 0%, #1B1464 50%, #0D0A3A 100%);
+$platform-star-text        : #ffffff;
+
+// MUBI
+$platform-mubi-bg          : #101820;
+$platform-mubi-gradient    : linear-gradient(135deg, #1E3A4A 0%, #101820 60%, #040810 100%);
+$platform-mubi-text        : #ffffff;
+$platform-mubi-border      : rgba(255,255,255,0.10);
+
+// CRUNCHYROLL
+$platform-crunchyroll-bg       : #F47521;
+$platform-crunchyroll-gradient : linear-gradient(135deg, #FF9A4D 0%, #F47521 50%, #C25000 100%);
+$platform-crunchyroll-text     : #ffffff;
+
+// PLUTO TV
+$platform-pluto-bg         : #FFCC00;
+$platform-pluto-gradient   : linear-gradient(135deg, #FFE066 0%, #FFCC00 50%, #CC9900 100%);
+$platform-pluto-text       : #000000;
 
 // ── TIPOGRAFÍA ───────────────────────────────────────────────
 $font-display : 'Syne', sans-serif;
@@ -27,6 +82,8 @@ $font-size-4xl  : 22px;
 $font-size-5xl  : 24px;
 $font-size-6xl  : 28px;
 $font-size-7xl  : 32px;
+$font-size-8xl  : 40px;
+$font-size-9xl  : 52px;
 
 $font-weight-light    : 300;
 $font-weight-regular  : 400;
@@ -212,7 +269,7 @@ $space-32: 64px;
 
 
 // ── LAYOUT ───────────────────────────────────────────────────
-$topbar-height  : 58px;
+$topbar-height  : 60px;
 $view-padding   : 28px;
 $content-max-w  : 1200px;  // max-width del contenido público
 
@@ -230,9 +287,9 @@ $avatar-size-md : 40px;
 $avatar-size-lg : 64px;
 
 // Topbar / Nav
-$topbar-btn-size   : 34px;
+$topbar-btn-size   : 30px;
 $search-bar-width  : 210px;
-
+$nav-height-desktop        : 35px;
 // Botones
 $btn-padding-y   : 8px;
 $btn-padding-x   : 16px;

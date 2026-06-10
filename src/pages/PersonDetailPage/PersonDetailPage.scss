@@ -1,0 +1,284 @@
+.PersonDetailPage {
+  min-height: 100vh;
+  background: #f0f2f5;
+
+  &__loading,
+  &__error,
+  &__not-found {
+    text-align: center;
+    padding: 4rem 2rem;
+    font-size: 1.125rem;
+    color: #6b7280;
+  }
+
+  &__error {
+    color: #dc2626;
+  }
+
+  &__container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  // Header
+  &__header {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  &__photo {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  &__photo-placeholder {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    background: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    svg {
+      width: 80px;
+      height: 80px;
+      color: #9ca3af;
+    }
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &__name {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1c1e21;
+    margin: 0 0 1rem 0;
+  }
+
+  &__popularity-wrapper {
+    margin-bottom: 1rem;
+  }
+
+  &__popularity-badge {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+  }
+
+  &__popularity-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #8B5CF6;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__meta-item {
+    font-size: 0.95rem;
+    color: #65676b;
+  }
+
+  &__stats {
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1c1e21;
+  }
+
+  &__stat-label {
+    font-size: 0.875rem;
+    color: #65676b;
+  }
+
+  // Accordion
+  &__accordion {
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  &__accordion-header {
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    background: white;
+    border: none;
+    border-bottom: 1px solid #e4e6eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: #f2f2f2;
+    }
+  }
+
+  &__accordion-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1c1e21;
+    margin: 0;
+  }
+
+  &__accordion-icon {
+    width: 20px;
+    height: 20px;
+    color: #65676b;
+    transition: transform 0.3s ease;
+
+    &.open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__accordion-content {
+    padding: 1.5rem;
+  }
+
+  &__bio {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #65676b;
+    margin: 0;
+    white-space: pre-wrap;
+  }
+
+  // Filmography
+  &__filmography {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+
+  &__section-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1c1e21;
+    margin: 0 0 1.5rem 0;
+  }
+
+  &__filmography-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  &__movie-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__movie-poster {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  &__movie-info {
+    padding: 0.25rem 0;
+  }
+
+  &__movie-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1c1e21;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+  }
+
+  &__movie-role {
+    font-size: 0.8rem;
+    color: #65676b;
+    margin: 0 0 0.25rem 0;
+  }
+
+  &__movie-year {
+    font-size: 0.75rem;
+    color: #8a8d91;
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .PersonDetailPage {
+    &__container {
+      padding: 1rem;
+    }
+
+    &__header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    &__photo,
+    &__photo-placeholder {
+      width: 150px;
+      height: 150px;
+    }
+
+    &__photo-placeholder svg {
+      width: 60px;
+      height: 60px;
+    }
+
+    &__name {
+      font-size: 1.5rem;
+    }
+
+    &__meta {
+      justify-content: center;
+    }
+
+    &__stats {
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    &__filmography-grid {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+  }
+}

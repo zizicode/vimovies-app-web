@@ -1,0 +1,335 @@
+.CookiesPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+
+  &__header {
+    background: linear-gradient(135deg, #8B5CF6 0%, #6d28d9 100%);
+    padding: 2.5rem 1rem 3.5rem;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: 60px 60px;
+    }
+  }
+
+  &__header-content {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  &__title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.02em;
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-weight: 400;
+  }
+
+  &__container {
+    max-width: 900px;
+    margin: -2rem auto 0;
+    padding: 0 1rem 3rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__section {
+    margin-bottom: 2rem;
+  }
+
+  &__welcome-card {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &__welcome-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1c1e21;
+    margin: 0 0 1rem 0;
+  }
+
+  &__welcome-text {
+    font-size: 1.05rem;
+    color: #4b5563;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  &__card {
+    background: white;
+    border-radius: 0;
+    padding: 1.5rem;
+    box-shadow: none;
+    border-top: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #f9fafb;
+    }
+
+    &:first-child {
+      border-top: none;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+  }
+
+  &__card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  &__card-number {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #6d28d9 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.125rem;
+    flex-shrink: 0;
+  }
+
+  &__card-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1c1e21;
+    margin: 0;
+  }
+
+  &__card-content {
+    color: #4b5563;
+  }
+
+  &__card-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0 0 0.75rem 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      font-weight: 600;
+      color: #1c1e21;
+    }
+  }
+
+  &__card-list {
+    margin: 0 0 0.75rem 0;
+    padding-left: 1.5rem;
+
+    li {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 0.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__table {
+    margin: 1rem 0;
+    overflow-x: auto;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    thead {
+      tr {
+        background: #f3f4f6;
+      }
+
+      th {
+        padding: 0.75rem;
+        text-align: left;
+        font-weight: 600;
+        color: #1c1e21;
+        border-bottom: 2px solid #e5e7eb;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #e5e7eb;
+
+        &:hover {
+          background: #f9fafb;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      td {
+        padding: 0.75rem;
+        color: #4b5563;
+      }
+    }
+  }
+
+  &__contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  &__contact-link {
+    color: #8B5CF6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #6d28d9;
+      text-decoration: underline;
+    }
+  }
+
+  &__footer {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  &__footer-text {
+    font-size: 0.95rem;
+    color: #6b7280;
+    font-style: italic;
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .CookiesPage {
+    &__header {
+      padding: 2rem 1rem 2.5rem;
+    }
+
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__subtitle {
+      font-size: 0.9rem;
+    }
+
+    &__container {
+      margin: -1.5rem auto 0;
+      padding: 0 1rem 2rem;
+    }
+
+    &__section {
+      margin-bottom: 1.5rem;
+    }
+
+    &__welcome-card {
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &__welcome-title {
+      font-size: 1.25rem;
+    }
+
+    &__welcome-text {
+      font-size: 1rem;
+    }
+
+    &__content {
+      gap: 0;
+    }
+
+    &__card {
+      padding: 1.25rem;
+
+      &:last-child {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+    }
+
+    &__card-header {
+      gap: 0.75rem;
+    }
+
+    &__card-number {
+      width: 36px;
+      height: 36px;
+      font-size: 1rem;
+    }
+
+    &__card-title {
+      font-size: 1.1rem;
+    }
+
+    &__card-text {
+      font-size: 0.95rem;
+    }
+
+    &__card-list li {
+      font-size: 0.95rem;
+    }
+
+    &__table {
+      table {
+        font-size: 0.85rem;
+      }
+
+      thead th,
+      tbody td {
+        padding: 0.5rem;
+      }
+    }
+  }
+}

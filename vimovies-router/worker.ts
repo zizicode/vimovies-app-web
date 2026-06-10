@@ -1,5 +1,5 @@
 // ============================================================
-// worker.ts — Cloudflare Worker · VIMovies
+// worker.ts — Cloudflare Worker · Vimovies
 // Detecta bots vs usuarios y enruta el tráfico correctamente
 // Deploy: wrangler deploy
 // ============================================================
@@ -22,30 +22,35 @@ const HONO_ROUTES = [
 
 export default {
   async fetch(request: Request): Promise<Response> {
-    const url = new URL(request.url)
-    const ua  = request.headers.get('user-agent') || ''
-    const isBot = BOT_PATTERN.test(ua)
+    try {
+      const url = new URL(request.url)
+      const ua = request.headers.get('user-agent') || ''
+      const isBot = BOT_PATTERN.test(ua)
 
-    // 1. Rutas estáticas SEO → siempre van a Hono
-    if (HONO_ROUTES.includes(url.pathname)) {
-      return proxyToHono(url.pathname + url.search)
-    }
-
-    // 2. Bot detectado → SSR desde Hono
-    if (isBot) {
-      const ssrPath = '/ssr' + url.pathname + url.search
-      const response = await proxyToHono(ssrPath)
-
-      // Si Hono no tiene esa ruta SSR todavía (404), devuelve HTML mínimo válido
-      if (response.status === 404) {
-        return fallbackBotResponse(url.pathname)
+      // 1. Rutas estáticas SEO → siempre van a Hono
+      if (HONO_ROUTES.includes(url.pathname)) {
+        return await proxyToHono(url.pathname + url.search)
       }
 
-      return response
-    }
+      // 2. Bot detectado → SSR desde Hono
+      if (isBot) {
+        const renderPath = '/render' + url.pathname + url.search
+        try {
+          const response = await proxyToHono(renderPath)
+          if (response.status === 404) {
+            return fallbackBotResponse(url.pathname)
+          }
+          return response
+        } catch {
+          return fallbackBotResponse(url.pathname)
+        }
+      }
 
-    // 3. Usuario normal → React SPA en Vercel
-    return proxyToVercel(request, url)
+      // 3. Usuario normal → React SPA en Vercel
+      return await proxyToVercel(request, url)
+    } catch (err) {
+      return new Response('Internal Server Error', { status: 500 })
+    }
   },
 }
 
@@ -87,13 +92,13 @@ function fallbackBotResponse(pathname: string): Response {
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>VIMovies — El mejor catálogo de películas</title>
-  <meta name="description" content="Descubre películas, trailers, sinopsis y dónde verlas online en VIMovies.">
+  <title>Vimovies — El mejor catálogo de películas</title>
+  <meta name="description" content="Descubre películas, trailers, sinopsis y dónde verlas online en Vimovies.">
   <link rel="canonical" href="https://vimovies.com${pathname}">
   <meta name="robots" content="noindex">
 </head>
 <body>
-  <h1>VIMovies</h1>
+  <h1>Vimovies</h1>
   <p>Tu destino para descubrir cine: trailers, reseñas y dónde ver tus películas favoritas online.</p>
 </body>
 </html>`

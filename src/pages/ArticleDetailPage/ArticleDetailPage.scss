@@ -1,0 +1,322 @@
+
+.article-detail-page {
+  min-height: 100vh;
+  background-color: #fff;
+
+  &__container {
+    max-width: $content-max-w;
+    margin: 0 auto;
+    padding: 0 $view-padding;
+  }
+
+  // Loading
+  &__loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+  }
+
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid $border-default;
+    border-top-color: $violet;
+    border-radius: $radius-full;
+    animation: spin 0.8s linear infinite;
+  }
+
+  // Error
+  &__error {
+    text-align: center;
+    padding: $space-16;
+    color: $text-muted;
+  }
+
+  &__retry-btn {
+    margin-top: $space-4;
+    padding: $btn-padding-y $btn-padding-x;
+    font-family: $font-body;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $text-inverse;
+    background-color: $violet;
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: $transition-default;
+
+    &:hover {
+      background-color: $violet-mid;
+    }
+  }
+
+  // Not found
+  &__not-found {
+    text-align: center;
+    padding: $space-16;
+    color: $text-muted;
+    font-size: $font-size-lg;
+  }
+
+  // Hero
+  &__hero {
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    margin-bottom: $space-10;
+  }
+
+  &__hero-image {
+    position: absolute;
+    inset: 0;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+  }
+
+  &__hero-content {
+    position: relative;
+    z-index: 1;
+    padding: $space-8 0;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+    margin-bottom: $space-4;
+  }
+
+  &__tag {
+    padding: $space-2 $space-4;
+    font-family: $font-body;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $violet;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: $radius-full;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: $font-size-5xl;
+    font-weight: $font-weight-extrabold;
+    color: white;
+    margin-bottom: $space-4;
+    line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-family: $font-body;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  &__meta-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  // Main content
+  &__main {
+    padding: $space-8 0 $space-20;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: $space-10;
+    align-items: start;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__content {
+    max-width: 800px;
+
+    @media (max-width: 1024px) {
+      max-width: 100%;
+    }
+  }
+
+  &__excerpt {
+    font-family: $font-body;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-regular;
+    color: $text-secondary;
+    line-height: $line-height-relaxed;
+    margin-bottom: $space-8;
+    font-style: italic;
+  }
+
+  &__body {
+    font-family: $font-body;
+    font-size: $font-size-base;
+    font-weight: $font-weight-regular;
+    color: $text-primary;
+    line-height: $line-height-relaxed;
+    margin-bottom: $space-10;
+
+    // Estilos para contenido HTML
+    h2 {
+      font-family: $font-display;
+      font-size: $font-size-2xl;
+      font-weight: $font-weight-semibold;
+      color: $text-primary;
+      margin-top: $space-8;
+      margin-bottom: $space-4;
+    }
+
+    h3 {
+      font-family: $font-display;
+      font-size: $font-size-xl;
+      font-weight: $font-weight-semibold;
+      color: $text-primary;
+      margin-top: $space-6;
+      margin-bottom: $space-3;
+    }
+
+    p {
+      margin-bottom: $space-4;
+    }
+
+    ul, ol {
+      margin-bottom: $space-4;
+      padding-left: $space-6;
+    }
+
+    li {
+      margin-bottom: $space-2;
+    }
+
+    a {
+      color: $violet;
+      text-decoration: underline;
+
+      &:hover {
+        color: $violet-mid;
+      }
+    }
+
+    blockquote {
+      border-left: 4px solid $violet;
+      padding-left: $space-4;
+      margin: $space-6 0;
+      font-style: italic;
+      color: $text-secondary;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: $radius-lg;
+      margin: $space-6 0;
+    }
+  }
+
+  // FAQs
+  &__faqs {
+    margin-top: $space-12;
+    padding-top: $space-8;
+    border-top: 1px solid $border-default;
+  }
+
+  &__section-title {
+    font-family: $font-display;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-extrabold;
+    color: $text-primary;
+    margin-bottom: $space-6;
+  }
+
+  &__faqs-list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+  }
+
+  &__faq {
+    background: $bg-surface;
+    border: 1px solid $border-default;
+    border-radius: $radius-lg;
+    padding: $space-6;
+  }
+
+  &__faq-question {
+    font-family: $font-display;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $text-primary;
+    margin-bottom: $space-3;
+  }
+
+  &__faq-answer {
+    font-family: $font-body;
+    font-size: $font-size-base;
+    font-weight: $font-weight-regular;
+    color: $text-secondary;
+    line-height: $line-height-relaxed;
+  }
+
+  // Sidebar
+  &__sidebar {
+    position: sticky;
+    top: $space-6;
+
+    @media (max-width: 1024px) {
+      position: static;
+    }
+  }
+
+  &__sidebar-section {
+    background: white;
+    border: 1px solid $border-default;
+    border-radius: $radius-lg;
+    padding: $space-6;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  &__sidebar-title {
+    font-family: $font-display;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $text-primary;
+    margin-bottom: $space-4;
+  }
+
+  &__mentioned-movies {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: $space-4;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,292 @@
+// ============================================================
+// VIMOVIES UI — QUICK REFERENCE (no importar, solo referencia)
+// ============================================================
+// Este archivo es SOLO para consulta. NO importarlo en ningún lado.
+// ============================================================
+
+// ── FONDOS (de más claro a más oscuro) ─────────────────────
+// $bg-root      (#f5f4f2) → fondo de página completa
+// $bg-surface   (#ffffff) → tarjetas, contenedores, modales
+// $bg-raised    (#faf9f8) → inputs, items hover, subpaneles
+// $bg-overlay   (#f0eeec) → tooltips, dropdowns
+// $bg-deep      (#e8e6e3) → separadores, skeletons
+// $bg-sunken    (#dedad6) → disabled, fondos inactivos
+
+// ── TEXTO (de más prominente a más sutil) ───────────────────
+// $text-primary   (#16141f) → títulos, body principal
+// $text-secondary (#4a4660) → subtítulos, labels activos
+// $text-muted     (#8c88a3) → metadata, hints, fechas
+// $text-hint      (#b8b5cc) → placeholders, decorativo
+// $text-disabled  (#ccc9dc) → no interactivo
+// $text-inverse   (#ffffff) → sobre fondos violeta o oscuros
+
+// ── VIOLETA — escala de uso ─────────────────────────────────
+// $violet-ghost (#f9f2ff)  → fondos de highlight, badges
+// $violet-bg    (#f4e8fe)  → fondos suaves, secciones hero
+// $violet-pale  (#e8c8fd)  → bordes violeta sutil
+// $violet-soft  (#c96dfa)  → iconos, barras de progreso, chips
+// $violet-mid   (#aa2ff7)  → hover de botones, links
+// $violet       (#950FF5)  → BASE — botones primarios, CTA, links
+// $violet-rich  (#7c0dcc)  → active / pressed states
+// $violet-deep  (#6b08b0)  → texto sobre fondos violeta claros
+
+// ── VIOLETA — Transparencias ───────────────────────────────
+// $violet-hover-bg   (rgba(149, 15, 245, 0.06)) → hover de nav items
+// $violet-active-bg  (rgba(149, 15, 245, 0.10)) → active / selected bg
+// $violet-focus-ring (rgba(149, 15, 245, 0.18)) → focus ring de inputs
+// $violet-overlay    (rgba(149, 15, 245, 0.04)) → tinte muy sutil
+
+// ── VIOLETA — Bordes ───────────────────────────────────────
+// $border-violet         (rgba(149, 15, 245, 0.20)) → borde suave
+// $border-violet-default (rgba(149, 15, 245, 0.30)) → borde visible
+// $border-violet-strong  (rgba(149, 15, 245, 0.50)) → borde énfasis, focus
+// $border-violet-active  (rgba(149, 15, 245, 0.70)) → borde activo, selected
+
+// ── GOLD — SOLO decorativo, NUNCA texto ─────────────────────
+// $gold          (#e8a030) → estrellas de rating, iconos
+// $gold-hover    (#f0aa38) → hover de elementos gold
+// $gold-dim      (#c4841f) → variante oscura — sobre fondos claros
+// $gold-soft     (#f5c878) → suave — barras, indicadores
+// $gold-pale     (#faebd0) → muy claro — fondos de badge gold
+// $gold-bg       (rgba(232, 160, 48, 0.09)) → fondo tenue — stat cards
+// $gold-bg-hover (rgba(232, 160, 48, 0.16)) → hover en elementos gold
+// $gold-border   (rgba(232, 160, 48, 0.22)) → borde gold
+// $gold-border-pg (rgba(232, 160, 48, 0.35)) → borde gold más visible
+
+// ── BORDES (escala de opacidad) ───────────────────────────
+// $border-subtle  (rgba(22, 20, 31, 0.07)) → separadores casi invisibles
+// $border-default (rgba(22, 20, 31, 0.12)) → borde estándar de inputs y cards
+// $border-strong  (rgba(22, 20, 31, 0.20)) → borde de énfasis, focus rings
+// $border-heavy   (rgba(22, 20, 31, 0.32)) → borde visible en contextos oscuros
+
+// ── RADIOS ───────────────────────────────────────────────────
+// $radius-xs   (3px)   → kbd, scrollbar thumb
+// $radius-sm   (4px)   → thumbnails, chips pequeños
+// $radius-md   (6px)   → botones, inputs, nav items, badges
+// $radius-lg   (10px)  → cards, panels, stat cards
+// $radius-xl   (14px)  → modales, hero sections
+// $radius-2xl  (20px)  → imagen de película en detalle, cards grandes
+// $radius-full (999px) → pills, avatars, tags
+
+// ── SOMBRAS ─────────────────────────────────────────────────
+// $shadow-sm  → hover de items, elementos flotantes pequeños
+// $shadow-md  → cards en reposo
+// $shadow-lg  → cards en hover, dropdowns
+// $shadow-xl  → modales, sidebars
+// $shadow-violet → botones primarios violeta (CTA)
+// $shadow-violet-lg → CTAs muy prominentes
+
+// ── ESPACIADO ───────────────────────────────────────────────
+// $space-1  (2px)   → micro ajustes
+// $space-2  (4px)   → gaps muy pequeños
+// $space-3  (6px)   → nav items gap, chips
+// $space-4  (8px)   → padding pequeño, gap compacto
+// $space-5  (10px)  → padding compacto
+// $space-6  (12px)  → gap estándar, padding inputs
+// $space-7  (14px)  → padding medio
+// $space-8  (16px)  → padding estándar
+// $space-9  (18px)  → padding medio-grande
+// $space-10 (20px)  → padding grande
+// $space-12 (24px)  → padding muy grande
+// $space-14 (28px)  → padding extra grande (igual a $view-padding)
+// $space-16 (32px)  → padding enorme
+// $space-18 (36px)  → secciones verticales
+// $space-20 (40px)  → secciones grandes
+// $space-24 (48px)  → secciones muy grandes
+// $space-32 (64px)  → secciones enormes
+
+// ── TIPOGRAFÍA — Familias ───────────────────────────────────
+// $font-display ('Syne')    → títulos, logos, encabezados
+// $font-body    ('DM Sans') → body, labels, navegación, lectura
+
+// ── TIPOGRAFÍA — Tamaños ───────────────────────────────────
+// $font-size-xxs  (10px) → micro texto
+// $font-size-xs   (11px) → labels muy pequeños
+// $font-size-sm   (12px) → metadata, hints
+// $font-size-md   (13px) → texto pequeño
+// $font-size-body (13.5px) → body estándar
+// $font-size-base (14px) → base
+// $font-size-lg   (15px) → texto medio
+// $font-size-xl   (17px) → subtítulos
+// $font-size-2xl  (18px) → subtítulos grandes
+// $font-size-3xl  (20px) → títulos pequeños
+// $font-size-4xl  (22px) → títulos medianos
+// $font-size-5xl  (24px) → títulos grandes
+// $font-size-6xl  (28px) → títulos muy grandes
+// $font-size-7xl  (32px) → títulos enormes
+// $font-size-8xl  (40px) → display titles
+// $font-size-9xl  (52px) → hero titles
+
+// ── TIPOGRAFÍA — Pesos ─────────────────────────────────────
+// $font-weight-light     (300) → uso raro
+// $font-weight-regular   (400) → body
+// $font-weight-medium    (500) → labels, metadata
+// $font-weight-semibold  (600) → subtítulos, emphasis
+// $font-weight-bold      (700) → títulos, CTAs
+// $font-weight-extrabold (800) → display titles, logos
+
+// ── LAYOUT ───────────────────────────────────────────────────
+// $topbar-height  (60px)  → altura del topbar
+// $view-padding   (28px)  → padding horizontal de contenedores
+// $content-max-w  (1200px) → max-width del contenido público
+
+// ── BREAKPOINTS ─────────────────────────────────────────────
+// $bp-xs  (480px)  → mobile muy pequeño
+// $bp-sm  (640px)  → mobile
+// $bp-md  (768px)  → tablet
+// $bp-lg  (1024px) → desktop
+// $bp-xl  (1280px) → desktop grande
+// $bp-2xl (1440px) → desktop muy grande
+
+// ── TRANSICIONES — Velocidades ─────────────────────────────
+// $transition-speed-fast    (0.10s) → cambios rápidos (color)
+// $transition-speed-default (0.12s) → transiciones estándar
+// $transition-speed-medium  (0.15s) → opacity, shadow, transform
+// $transition-speed-slow    (0.20s) → animaciones complejas
+
+// ── TRANSICIONES — Easing ───────────────────────────────────
+// $transition-easing-default → ease
+// $transition-easing-out     → cubic-bezier(0.16, 1, 0.3, 1)
+// $transition-easing-in-out  → cubic-bezier(0.4, 0, 0.2, 1)
+
+// ── TRANSICIONES — Compuestas ───────────────────────────────
+// $transition-default → all 0.12s ease
+// $transition-bg      → background-color 0.10s ease
+// $transition-border  → border-color 0.12s ease
+// $transition-color   → color 0.10s ease
+// $transition-opacity → opacity 0.15s ease
+// $transition-shadow  → box-shadow 0.15s ease
+// $transition-transform → transform 0.15s cubic-bezier(0.16, 1, 0.3, 1)
+
+// ── Z-INDEX ─────────────────────────────────────────────────
+// $z-base     (1)   → contenido normal
+// $z-dropdown (50)  → dropdowns
+// $z-sticky   (60)  → elementos sticky (topbar)
+// $z-overlay  (80)  → overlays
+// $z-modal    (100) → modales
+// $z-toast    (120) → notificaciones
+// $z-tooltip  (130) → tooltips
+
+// ── GRIDS — Layout público ───────────────────────────────────
+// $grid-movies-xl → repeat(5, 1fr)    // Desktop grande
+// $grid-movies-lg → repeat(4, 1fr)    // Desktop normal
+// $grid-movies-md → repeat(3, 1fr)    // Tablet
+// $grid-movies-sm → repeat(2, 1fr)    // Mobile
+
+// $grid-stats-cols → repeat(4, 1fr)
+// $grid-two-col    → 1fr 1fr
+// $grid-detail     → 200px 1fr         // Poster + info
+// $grid-aside      → 1fr 320px         // Contenido + aside
+
+// $grid-gap-xs  (8px)  → gap muy pequeño
+// $grid-gap-sm  (12px) → gap pequeño
+// $grid-gap-md  (16px) → gap estándar
+// $grid-gap-lg  (20px) → gap grande
+// $grid-gap-xl  (24px) → gap muy grande
+// $grid-gap-2xl (32px) → gap enorme
+
+// ── DIMENSIONES — Componentes ───────────────────────────────
+// Logo:
+//   $logo-mark-size (30px), $logo-mark-size-lg (40px)
+
+// Avatar:
+//   $avatar-size-xs (24px), $avatar-size-sm (30px)
+//   $avatar-size-md (40px), $avatar-size-lg (64px)
+
+// Topbar / Nav:
+//   $topbar-btn-size (30px), $search-bar-width (210px)
+//   $nav-height-desktop (35px)
+
+// Botones:
+//   $btn-padding-y (8px), $btn-padding-x (16px)
+//   $btn-padding-sm-y (6px), $btn-padding-sm-x (12px)
+//   $btn-gap (7px), $btn-icon-size (15px)
+
+// Inputs:
+//   $input-padding-y (9px), $input-padding-x (13px)
+//   $input-height (38px)
+
+// Cards:
+//   $card-header-padding (16px 20px)
+//   $card-body-padding (18px 20px)
+
+// Poster de película:
+//   $poster-thumb-w (34px), $poster-thumb-h (50px)
+//   $poster-sm-w (80px), $poster-sm-h (120px)
+//   $poster-md-w (130px), $poster-md-h (195px)
+//   $poster-lg-w (200px), $poster-lg-h (300px)
+
+// ── PATRONES DE USO COMUNES ─────────────────────────────────
+
+// Contenedor principal:
+// .container {
+//   max-width: $content-max-w;
+//   margin: 0 auto;
+//   padding: 0 $view-padding;
+// }
+
+// Botón primario:
+// .btn-primary {
+//   background: $violet;
+//   color: $text-inverse;
+//   border: none;
+//   border-radius: $radius-md;
+//   padding: $btn-padding-y $btn-padding-x;
+//   font-weight: $font-weight-bold;
+//   transition: $transition-default;
+//   
+//   &:hover {
+//     background: $violet-mid;
+//     transform: translateY(-1px);
+//   }
+// }
+
+// Input estándar:
+// .input {
+//   background: $bg-raised;
+//   border: 1px solid $border-default;
+//   border-radius: $radius-md;
+//   padding: $input-padding-y $input-padding-x;
+//   color: $text-primary;
+//   transition: $transition-default;
+//   
+//   &:focus {
+//     outline: none;
+//     border-color: $violet;
+//     box-shadow: 0 0 0 3px $violet-focus-ring;
+//   }
+// }
+
+// Card estándar:
+// .card {
+//   background: $bg-surface;
+//   border-radius: $radius-lg;
+//   padding: $card-body-padding;
+//   box-shadow: $shadow-md;
+//   transition: $transition-shadow;
+//   
+//   &:hover {
+//     box-shadow: $shadow-lg;
+//   }
+// }
+
+// Responsive desktop-first:
+// .element {
+//   // Desktop styles
+   
+//   @media (max-width: $bp-md) {
+//     // Tablet/mobile styles
+//   }
+// }
+
+// ── REGLAS CRÍTICAS ─────────────────────────────────────────
+// 1. NUNCA usar gold como texto — solo decorativo
+// 2. Siempre usar variables de color, nunca hardcodear hex
+// 3. Usar $space-* en lugar de px/rem para espaciado
+// 4. Usar $bp-* en lugar de valores numéricos para breakpoints
+// 5. Usar $text-inverse sobre fondos oscuros, no #ffffff
+// 6. Usar $transition-* para transiciones, no valores custom
+// 7. Usar $shadow-* para sombras, no box-shadow custom
+// 8. Usar $radius-* para bordes redondeados
+// 9. Seguir patrón desktop-first (max-width en media queries)
+// 10. $font-display para títulos, $font-body para lectura

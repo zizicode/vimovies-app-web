@@ -1,0 +1,366 @@
+.AboutPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+
+  &__header {
+    background: linear-gradient(135deg, #8B5CF6 0%, #6d28d9 100%);
+    padding: 3rem 1rem 4rem;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: 60px 60px;
+    }
+  }
+
+  &__header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  &__title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 0.75rem 0;
+    letter-spacing: -0.02em;
+  }
+
+  &__subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-weight: 400;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__container {
+    max-width: 1000px;
+    margin: -2.5rem auto 0;
+    padding: 0 1rem 3rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__section {
+    margin-bottom: 2rem;
+  }
+
+  // Founder Card
+  &__founder-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  &__founder-avatar {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #6d28d9 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__founder-info {
+    flex: 1;
+  }
+
+  &__founder-name {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1c1e21;
+    margin: 0 0 0.25rem 0;
+  }
+
+  &__founder-role {
+    font-size: 1rem;
+    color: #8B5CF6;
+    font-weight: 600;
+    margin: 0 0 0.75rem 0;
+  }
+
+  &__founder-bio {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  // Mission Card
+  &__mission-card {
+    background: linear-gradient(135deg, #8B5CF6 0%, #6d28d9 100%);
+    border-radius: 16px;
+    padding: 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: 40px 40px;
+    }
+  }
+
+  &__mission-icon {
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    z-index: 1;
+
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__section-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 1rem 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__section-text {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.7;
+    margin: 0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  // Values Grid
+  &__grid-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1c1e21;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+  }
+
+  &__values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  &__value-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -8px rgba(139, 92, 246, 0.3);
+    }
+  }
+
+  &__value-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #6d28d9 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-bottom: 1rem;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__value-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1c1e21;
+    margin: 0 0 0.5rem 0;
+  }
+
+  &__value-text {
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  // CTA Card
+  &__cta-card {
+    background: white;
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  &__cta-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1c1e21;
+    margin: 0 0 1rem 0;
+  }
+
+  &__cta-text {
+    font-size: 1.125rem;
+    color: #6b7280;
+    line-height: 1.7;
+    margin: 0 0 2rem 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #8B5CF6 0%, #6d28d9 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px -4px rgba(139, 92, 246, 0.5);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .AboutPage {
+    &__header {
+      padding: 2rem 1rem 3rem;
+    }
+
+    &__title {
+      font-size: 2.25rem;
+    }
+
+    &__subtitle {
+      font-size: 1rem;
+    }
+
+    &__container {
+      margin: -2rem auto 0;
+      padding: 0 1rem 2rem;
+    }
+
+    &__section {
+      margin-bottom: 1.5rem;
+    }
+
+    &__founder-card {
+      flex-direction: column;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    &__founder-avatar {
+      margin: 0 auto;
+    }
+
+    &__founder-name {
+      font-size: 1.5rem;
+    }
+
+    &__mission-card {
+      padding: 2rem 1.5rem;
+    }
+
+    &__section-title {
+      font-size: 1.5rem;
+    }
+
+    &__section-text {
+      font-size: 1rem;
+    }
+
+    &__grid-title {
+      font-size: 1.5rem;
+    }
+
+    &__values-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    &__cta-card {
+      padding: 2rem 1.5rem;
+    }
+
+    &__cta-title {
+      font-size: 1.5rem;
+    }
+
+    &__cta-text {
+      font-size: 1rem;
+    }
+
+    &__cta-button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}

@@ -1,9 +1,30 @@
+@use './variables.scss' as *;
 @use './fonts.scss';
 
-*{
-    margin:0;
-    padding:0;
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     word-wrap: break-word;
-    font-family: "Raleway", sans-serif;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+body {
+    font-family: $font-body;
+    background-color: $bg-root;
+    color: $text-primary;
+}
+
+.app-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.app-content {
+    flex: 1;
+    position: relative;
 }

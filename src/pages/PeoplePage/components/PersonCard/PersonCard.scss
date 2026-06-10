@@ -1,0 +1,75 @@
+
+.person-card {
+  background: white;
+  border: 1px solid $border-default;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  cursor: pointer;
+  transition: $transition-default;
+  text-align: left;
+
+  &:hover {
+    border-color: $border-strong;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 2/3;
+    overflow: hidden;
+    background: $bg-surface;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $text-muted;
+
+    svg {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  &__content {
+    padding: $space-4;
+  }
+
+  &__name-wrapper {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    margin-bottom: $space-2;
+  }
+
+  &__name {
+    font-family: $font-display;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $text-primary;
+    flex: 1;
+  }
+
+  &__popularity-badge {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  &__birthdate {
+    font-family: $font-body;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-regular;
+    color: $text-muted;
+  }
+}

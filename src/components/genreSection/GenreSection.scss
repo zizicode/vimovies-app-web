@@ -1,0 +1,255 @@
+// ── GenreSection.scss ─────────────────────────────────────────────────────────
+// Slider de géneros con navegación fluida, pills con gradiente por género,
+// fade-mask en los extremos del track y animación de entrada escalonada.
+
+.genre-section {
+    width: 100%;
+    padding: $space-14 0 $space-10;
+    color: $text-inverse;
+    // background-color: $violet-rich;
+    background-color: #0b0a10;
+    min-height: 180px; // Evita que el contenido inferior salte cuando cargan los géneros
+
+    // ── Contenedor ───────────────────────────────────────────────────────────
+    &__container {
+        width: 100%;
+        max-width: calc( $content-max-w - 500px);
+        margin: 0 auto;
+        padding: 0 $view-padding;
+    }
+
+    // ── Encabezado ───────────────────────────────────────────────────────────
+    &__header {
+        display: flex;
+        align-items: baseline;
+        // justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        margin-bottom: $space-10;
+
+        @media (max-width: $bp-sm) { margin-bottom: $space-14; }
+    }
+
+    &__title {
+        font-family: $font-display;
+        font-size: $font-size-8xl;
+        font-weight: $font-weight-extrabold;
+        letter-spacing: $letter-spacing-tight;
+        line-height: 1;
+        margin: 0 auto;
+    }
+
+    &__count {
+        font-family: $font-body;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        color: $text-hint;
+        letter-spacing: 0.02em;
+    }
+
+    // ── Slider wrapper ────────────────────────────────────────────────────────
+    // Posición relative para que las máscaras de fade se superpongan.
+    &__slider {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: $space-3;
+    }
+
+    // Máscara de fade izquierda (ocultada cuando se llega al inicio)
+    &__slider::before,
+    &__slider::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 56px;
+        z-index: 2;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+
+    &__slider::before {
+        left: 38px;   // justo después del botón nav izq
+        background: linear-gradient(to right, $violet-deep, transparent);
+    }
+
+    &__slider::after {
+        right: 38px;  // justo antes del botón nav der
+        background: linear-gradient(to left, $violet-deep transparent);
+    }
+
+    // Cuando está al inicio, ocultar fade izquierdo
+    &__slider--at-start::before { opacity: 0; }
+
+    // Cuando está al final, ocultar fade derecho
+    &__slider--at-end::after { opacity: 0; }
+
+    // ── Track ────────────────────────────────────────────────────────────────
+    &__track {
+        flex: 1;
+        display: flex;
+        gap: $space-3;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: $space-3 0 $space-4; // espacio para sombra inferior de pills
+
+        // Ocultar scrollbar (mantener funcional)
+        scrollbar-width: none;
+        &::-webkit-scrollbar { display: none; }
+    }
+
+    // ── Genre pill ───────────────────────────────────────────────────────────
+    &__genre {
+        display: inline-flex;
+        align-items: center;
+        gap: $space-2;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: $radius-full;
+        padding: $space-3 $space-6;
+
+        font-family: $font-body;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        letter-spacing: 0.01em;
+        white-space: nowrap;
+        color: rgba(255, 255, 255, 0.75);
+
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(8px);
+
+        transition:
+            background 0.22s ease,
+            color 0.22s ease,
+            border-color 0.22s ease,
+            transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow 0.22s ease;
+
+        // Punto de color por género (var CSS inyectada desde el componente)
+        &::before {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--genre-color, rgba(255, 255, 255, 0.3));
+            flex-shrink: 0;
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.09);
+            border-color: rgba(255, 255, 255, 0.18);
+            color: $text-inverse;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+
+            &::before {
+                transform: scale(1.3);
+                box-shadow: 0 0 8px var(--genre-color, rgba(255, 255, 255, 0.3));
+            }
+        }
+
+        // Estado activo / seleccionado
+        &--active {
+            background: var(--genre-color-dim, rgba($violet, 0.18));
+            border-color: var(--genre-color, $violet);
+            color: $text-inverse;
+            box-shadow:
+                0 0 0 1px var(--genre-color, $violet),
+                0 6px 20px rgba(0, 0, 0, 0.35);
+
+            &::before {
+                background: var(--genre-color, $violet);
+                box-shadow: 0 0 6px var(--genre-color, $violet);
+            }
+
+            &:hover { transform: translateY(-2px); }
+        }
+    }
+
+    // ── Botones de navegación ────────────────────────────────────────────────
+    &__nav {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        z-index: 3;   // por encima de las máscaras de fade
+
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: $radius-full;
+        background: rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        backdrop-filter: blur(12px);
+
+        transition:
+            background 0.2s ease,
+            border-color 0.2s ease,
+            color 0.2s ease,
+            transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+            opacity 0.2s ease;
+
+        svg { transition: transform 0.16s ease; }
+
+        &:hover {
+            background: $violet;
+            border-color: $violet;
+            color: $text-inverse;
+            transform: scale(1.08);
+            box-shadow: $shadow-violet;
+        }
+        &:active { transform: scale(0.95); }
+
+        // Deshabilitado en los extremos
+        &:disabled,
+        &--hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        &--prev:hover svg { transform: translateX(-2px); }
+        &--next:hover svg { transform: translateX(2px); }
+    }
+
+    // ── Animación de entrada escalonada ──────────────────────────────────────
+    @keyframes genre-pill-in {
+        from {
+            opacity: 0;
+            transform: translateY(6px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    &__genre {
+        opacity: 0;
+        animation: genre-pill-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+
+        @for $i from 1 through 20 {
+            &:nth-child(#{$i}) {
+                animation-delay: #{($i - 1) * 0.04}s;
+            }
+        }
+    }
+
+    // ── Responsive ───────────────────────────────────────────────────────────
+    @media (max-width: $bp-md) {
+        &__nav { display: none; } // en mobile se scroll libremente sin botones
+        &__slider::before,
+        &__slider::after { display: none; }
+        &__track { gap: $space-2; }
+        &__genre { padding: $space-2 $space-5; font-size: $font-size-xs; }
+    }
+}

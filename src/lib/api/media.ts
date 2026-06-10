@@ -18,10 +18,8 @@ export const mediaApi = {
   },
 
   // Detalle por slug
-  getBySlug: async (slug: string, region?: string) => {
-    const response = await apiClient.get<ApiResponse<Media>>(`/media/${slug}`, {
-      params: { region }
-    })
+  getBySlug: async (slug: string) => {
+    const response = await apiClient.get<ApiResponse<Media>>(`/media/${slug}`)
     return response.data
   },
 

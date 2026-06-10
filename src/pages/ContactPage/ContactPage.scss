@@ -1,0 +1,312 @@
+.ContactPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+
+  &__header {
+    background: linear-gradient(135deg, #8B5CF6 0%, #6d28d9 100%);
+    padding: 2.5rem 1rem 4rem;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+      background-size: 60px 60px;
+    }
+  }
+
+  &__header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.02em;
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-weight: 400;
+  }
+
+  &__container {
+    max-width: 1200px;
+    margin: -2.5rem auto 0;
+    padding: 0 1rem 3rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+  }
+
+  // Información de contacto
+  &__info {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  &__info-section {
+    margin-bottom: 1.5rem;
+  }
+
+  &__info-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1c1e21;
+    margin: 0 0 1rem 0;
+  }
+
+  &__contact-item {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  &__contact-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #6d28d9 100%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__contact-content {
+    flex: 1;
+  }
+
+  &__contact-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #6b7280;
+    margin: 0 0 0.25rem 0;
+  }
+
+  &__contact-value {
+    font-size: 1rem;
+    color: #1c1e21;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  &__contact-value[href] {
+    color: #8B5CF6;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #6d28d9;
+      text-decoration: underline;
+    }
+  }
+
+  &__social-section {
+    margin-bottom: 0;
+  }
+
+  &__social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: #f9fafb;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &:hover {
+      background: linear-gradient(135deg, #8B5CF6 0%, #6d28d9 100%);
+      color: white;
+      transform: translateX(4px);
+    }
+  }
+
+  // Formulario
+  &__form-section {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  &__form-card {
+    height: 100%;
+  }
+
+  &__form-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1c1e21;
+    margin: 0 0 1.5rem 0;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__form-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #374151;
+  }
+
+  &__form-input,
+  &__form-textarea {
+    padding: 0.625rem 0.875rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-family: system-ui, -apple-system, sans-serif;
+    transition: all 0.2s ease;
+    background: #f9fafb;
+
+    &:focus {
+      outline: none;
+      border-color: #8B5CF6;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    }
+
+    &::placeholder {
+      color: #9ca3af;
+    }
+  }
+
+  &__form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  &__form-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #8B5CF6 0%, #6d28d9 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 0.25rem;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .ContactPage {
+    &__header {
+      padding: 2rem 1rem 3rem;
+    }
+
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__subtitle {
+      font-size: 0.9rem;
+    }
+
+    &__container {
+      margin: -2rem auto 0;
+      padding: 0 1rem 2rem;
+    }
+
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    &__info,
+    &__form-section {
+      padding: 1.25rem;
+    }
+
+    &__contact-icon {
+      width: 36px;
+      height: 36px;
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    &__info-title,
+    &__form-title {
+      font-size: 1.1rem;
+    }
+
+    &__form-submit {
+      width: 100%;
+    }
+  }
+}

@@ -1,34 +1,219 @@
-{
+﻿{
+  "_schema": "SCHEMA DE LOCALES - Estructura: seccion.componente.clave",
+  "nav": {
+    "topbar": {
+      "links": {
+        "home": "Inicio",
+        "movies": "Películas",
+        "genres": "Géneros",
+        "actors": "Actores",
+        "premieres": "Estrenos",
+        "blog": "Blog",
+        "about": "Sobre nosotros"
+      },
+      "actions": {
+        "changeLanguage": "Cambiar idioma",
+        "search": "Buscar",
+        "searchInput": "Buscar película, articulos..."
+      }
+    }
+  },
   "common": {
     "actions": {
       "search": "Buscar",
-      "save": "Guardar",
-      "cancel": "Cancelar"
-    }
-  },
-  "app": {
-    "title": "Vimovies",
-    "subtitle": "Te recomiendo ver",
-    "language": "Idioma",
-    "country": "País",
-    "locale": "Locale",
-    "welcome": "Bienvenido",
-    "change_language": "Cambiar idioma"
-  },
-  "movie": {
-    "info": {
-      "runtime": "{{minutes}} min",
-      "year": "{{year}}"
+      "clear": "Limpiar"
     },
-    "sections": {
-      "cast": "Reparto",
-      "director": "Director",
-      "genres": "Géneros"
+    "labels": {
+      "results": "resultados"
     }
   },
   "search": {
-    "results": "{{count}} resultado para \"{{query}}\"",
-    "results_plural": "{{count}} resultados para \"{{query}}\"",
-    "no_results": "No se encontraron resultados"
+    "placeholder": "Buscar películas...",
+    "results": "resultados"
+  },
+  "genre": {
+    "loading": "Cargando...",
+    "notFound": "Género no encontrado",
+    "error": "Error al cargar el contenido",
+    "contentNotFound": "Contenido no encontrado",
+    "allMovies": "Todas las Películas",
+    "allMoviesDescription": "Explora todas las películas disponibles en Vimovies",
+    "search": {
+      "placeholder": "Buscar películas en este género..."
+    },
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
+    "results": {
+      "showing": "Mostrando",
+      "of": "de",
+      "movies": "películas"
+    },
+    "noResults": {
+      "search": "No se encontraron resultados para tu búsqueda",
+      "empty": "No hay películas disponibles en este género"
+    }
+  },
+  "movies": {
+    "title": "Películas",
+    "loading": "Cargando...",
+    "error": "Error al cargar películas",
+    "retry": "Reintentar",
+    "search": {
+      "placeholder": "Buscar películas..."
+    },
+    "filters": {
+      "genre": "Género",
+      "allGenres": "Todos los géneros",
+      "year": "Año",
+      "allYears": "Todos los años",
+      "sortBy": "Ordenar por",
+      "popularity": "Popularidad",
+      "releaseDate": "Fecha de estreno",
+      "rating": "Valoración"
+    },
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
+    "results": {
+      "showing": "Mostrando",
+      "of": "de",
+      "movies": "películas"
+    },
+    "noResults": {
+      "search": "No se encontraron resultados para tu búsqueda",
+      "empty": "No hay películas disponibles"
+    },
+    "card": {
+      "viewDetails": "Ver Detalles"
+    }
+  },
+  "person": {
+    "loading": "Cargando persona...",
+    "notFound": "Persona no encontrada",
+    "error": "Error al cargar el contenido",
+    "biography": "Biografía",
+    "born": "Nacimiento",
+    "birthplace": "Lugar de nacimiento",
+    "known_for": "Conocido/a por",
+    "as_actor": "Como actor/actriz",
+    "as_director": "Como director/a",
+    "as_writer": "Como escritor/a",
+    "no_movies": "Sin películas registradas"
+  },
+  "article": {
+    "loading": "Cargando artículo...",
+    "notFound": "Artículo no encontrado",
+    "error": "Error al cargar el contenido",
+    "read_more": "Leer más",
+    "published": "Publicado",
+    "related": "Artículos relacionados"
+  },
+  "series": {
+    "loading": "Cargando serie...",
+    "notFound": "Serie no encontrada",
+    "error": "Error al cargar el contenido",
+    "seasons": "Temporadas",
+    "episodes": "Episodios",
+    "status": "Estado",
+    "first_air": "Primera emisión"
+  },
+  "media": {
+    "loading": "Cargando...",
+    "notFound": "Contenido no encontrado",
+    "error": "Error al cargar el contenido",
+    "rating": "Calificación",
+    "genres": "Géneros",
+    "cast": "Reparto",
+    "director": "Director",
+    "trailer": "Tráiler",
+    "where_to_watch": "Dónde ver",
+    "runtime": "Duración",
+    "release_date": "Fecha de estreno",
+    "overview": "Sinopsis",
+    "faqs": "Preguntas frecuentes",
+    "minutes": "minutos",
+    "votes": "votos",
+    "streaming": "Streaming",
+    "rent": "Alquiler",
+    "buy": "Compra",
+    "editorial_review": "Reseña editorial"
+  },
+  "pages": {
+    "contact": {
+      "title": "Contacto | ViMovies",
+      "description": "Ponte en contacto con el equipo de ViMovies. Estamos aquí para ayudarte.",
+      "heading": "Contacto",
+      "subtitle": "Estamos aquí para ayudarte. Envíanos un mensaje y te responderemos lo antes posible.",
+      "infoTitle": "Información de contacto",
+      "emailLabel": "Correo electrónico",
+      "followUs": "Síguenos",
+      "formTitle": "Envíanos un mensaje",
+      "emailPlaceholder": "tu@email.com",
+      "subjectLabel": "Asunto",
+      "subjectPlaceholder": "¿Sobre qué quieres hablar?",
+      "messageLabel": "Mensaje",
+      "messagePlaceholder": "Escribe tu mensaje aquí...",
+      "submitBtn": "Enviar mensaje"
+    },
+    "about": {
+      "title": "Sobre Nosotros | ViMovies",
+      "description": "Conoce a ViMovies, nuestra misión y nuestra pasión por el cine y las recomendaciones de películas.",
+      "heading": "Sobre Nosotros",
+      "subtitle": "Pasión por el cine, comunidad y recomendaciones que inspiran"
+    },
+    "sitemap": {
+      "title": "Mapa del sitio | ViMovies",
+      "description": "Navega fácilmente por todas las secciones de Vimovies",
+      "heading": "Mapa del sitio",
+      "subtitle": "Navega fácilmente por todas las secciones de Vimovies",
+      "sections": {
+        "main": "Principal",
+        "info": "Información",
+        "legal": "Legal"
+      },
+      "footerText": "¿No encuentras lo que buscas?",
+      "footerLink": "Contáctanos"
+    },
+    "terms": {
+      "title": "Términos y Condiciones | ViMovies",
+      "description": "Lee nuestros Términos y Condiciones para entender tus derechos y responsabilidades al usar ViMovies."
+    },
+    "privacy": {
+      "title": "Política de Privacidad | ViMovies",
+      "description": "Aprende cómo Vimovies recopila, usa y protege tu información personal."
+    },
+    "cookies": {
+      "title": "Política de Cookies | ViMovies",
+      "description": "Aprende sobre las cookies que usa Vimovies, por qué las usamos y cómo puedes gestionar tus preferencias."
+    }
+  },
+  "people": {
+    "pageTitle": "Personas | ViMovies",
+    "pageDescription": "Descubre actores y directores en ViMovies."
+  },
+  "components": {
+    "movieTendencies": {
+      "thisWeek": "Esta semana",
+      "trends": "Tendencias",
+      "previous": "Anteriores",
+      "next": "Siguientes",
+      "saveMovie": "Guardar película",
+      "noDescription": "Sin descripción disponible",
+      "noRating": "Sin calificación"
+    },
+    "heroSection": {
+      "watchTrailer": "Ver Tráiler",
+      "save": "Guardar"
+    },
+    "castSlider": {
+      "cast": "Reparto",
+      "main": "principal",
+      "noCastInfo": "No hay información del reparto disponible",
+      "previous": "Anterior",
+      "next": "Siguiente"
+    }
   }
 }
