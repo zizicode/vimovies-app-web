@@ -2,13 +2,14 @@ import { useEffect, useMemo, useState } from 'react'
 import { SEO } from '../../hooks/useSEO'
 import HeaderMovie from '../../components/headerMovie'
 import Store from '../../store'
-import { useLocale, useT } from '../../store/locate.store'
+import { useLocale } from '../../store/locate.store'
 import {
   getPosterUrl,
   getBackdropUrl,
 } from '../../utils/image.utils'
 import { formatNumberWithPlus } from '../../utils/formatNumber'
 import { statsApi } from '../../lib/api/stats'
+import type { StatsResponse } from '../../lib/api/stats'
 import './home.scss'
 import GenreSection from '../../components/genreSection'
 import MovieTendencies from '../../components/movieTendencies'
@@ -18,7 +19,6 @@ import type { Genre } from '../../types'
 
 function Home() {
   const locale = useLocale()
-  const t = useT()
   const movies = Store.useMoviesStore((state) => state.movies)
   const genres = Store.useGenresStore((state) => state.genres)
   const loading = Store.useMoviesStore((state) => state.loading)
@@ -26,7 +26,7 @@ function Home() {
   const fetchMovies = Store.useMoviesStore((state) => state.fetchMovies)
   const fetchGenres = Store.useGenresStore((state) => state.fetchGenres)
 
-  const [stats, setStats] = useState<any>(null)
+  const [stats, setStats] = useState<StatsResponse | null>(null)
   const [statsLoading, setStatsLoading] = useState(true)
 
   // 1. Memoizamos los géneros para búsquedas rápidas O(1)

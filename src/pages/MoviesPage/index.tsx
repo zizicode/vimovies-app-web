@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { SEO } from '../../hooks/useSEO'
-import { useLocale, useT } from '../../store/locate.store'
+import { useLocale } from '../../store/locate.store'
 import { mediaApi } from '../../lib/api/media'
 import { genresApi } from '../../lib/api/genres'
 import { useGTM } from '../../hooks/useGTM'
 import MovieCard from './components/MovieCard'
+import type { Media, Genre } from '../../lib/api/types'
 import './MoviesPage.scss'
 
 interface Filters {
@@ -20,11 +21,10 @@ export default function MoviesPage() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const locale = useLocale()
-  const t = useT()
   const { trackSearch, trackFilter } = useGTM()
 
-  const [movies, setMovies] = useState<any[]>([])
-  const [genres, setGenres] = useState<any[]>([])
+  const [movies, setMovies] = useState<Media[]>([])
+  const [genres, setGenres] = useState<Genre[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
@@ -39,15 +39,55 @@ export default function MoviesPage() {
     platform: null
   })
 
+  const loadGenres = useCallback(async () => {
+    try {
+      const response = await genresApi.list()
+      if (response.success && response.data) {
+        setGenres(response.data)
+      }
+    } catch (err) {
+      console.error('Error loading genres:', err)
+    }
+  }, [])
+
+  const loadMovies = useCallback(async () => {
+    setLoading(true)
+    setError(null)
+    try {
+      const response = await mediaApi.findAll({
+        page: currentPage,
+        per_page: 20,
+        media_type: 'movie',
+        ...(filters.genre_id && { genre_id: filters.genre_id }),
+        ...(filters.search && { search: filters.search }),
+        sort_by: filters.sort_by,
+        sort_order: 'desc'
+      })
+
+      if (response.success && response.data) {
+        setMovies(response.data)
+        setTotalPages(response.meta?.pages || 1)
+        setTotal(response.meta?.total || 0)
+      } else {
+        setError('Error loading movies')
+      }
+    } catch (err) {
+      console.error('Error loading movies:', err)
+      setError('Error loading movies')
+    } finally {
+      setLoading(false)
+    }
+  }, [currentPage, filters])
+
   useEffect(() => {
     loadGenres()
-  }, [])
+  }, [loadGenres])
 
   // Leer query param genre y establecer filtro
   useEffect(() => {
     const genreSlug = searchParams.get('genre')
     if (genreSlug && genres.length > 0) {
-      const genre = genres.find((g: any) => g.slug === genreSlug)
+      const genre = genres.find((g: Genre) => g.slug === genreSlug)
       if (genre) {
         setFilters(prev => ({ ...prev, genre_slug: genreSlug, genre_id: genre.id }))
       }
@@ -58,60 +98,7 @@ export default function MoviesPage() {
 
   useEffect(() => {
     loadMovies()
-  }, [filters, currentPage])
-
-  const loadGenres = async () => {
-    try {
-      const response = await genresApi.list()
-      if (response.success && response.data) {
-        setGenres(response.data)
-      }
-    } catch (err) {
-      console.error('Error loading genres:', err)
-    }
-  }
-
-  const loadMovies = async () => {
-    setLoading(true)
-    setError(null)
-    try {
-      let response
-
-      if (filters.genre_slug) {
-        // Usar endpoint específico para filtrar por género
-        response = await mediaApi.getByGenre(
-          filters.genre_slug,
-          currentPage,
-          20,
-          locale
-        )
-      } else {
-        // Usar endpoint general
-        response = await mediaApi.list({
-          page: currentPage,
-          per_page: 20,
-          media_type: 'movie',
-          search: filters.search || undefined,
-          genre_id: filters.genre_id || undefined,
-          sort_by: filters.sort_by,
-          sort_order: 'desc'
-        })
-      }
-
-      if (response.success && response.data) {
-        setMovies(response.data)
-        setTotalPages(response.meta.pages)
-        setTotal(response.meta.total)
-      } else {
-        setError('Error loading movies')
-      }
-    } catch (err) {
-      console.error('Error loading movies:', err)
-      setError('Error loading movies')
-    } finally {
-      setLoading(false)
-    }
-  }
+  }, [loadMovies])
 
   const handleSearch = (value: string) => {
     setFilters(prev => ({ ...prev, search: value }))

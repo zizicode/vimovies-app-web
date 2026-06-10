@@ -2,10 +2,11 @@ import { Link } from 'react-router-dom'
 import { useLocale } from '../../../store/locate.store'
 import { getPosterUrl } from '../../../utils/image.utils'
 import { useGTM } from '../../../hooks/useGTM'
+import type { Media } from '../../../lib/api/types'
 import './MovieCard.scss'
 
 interface MovieCardProps {
-  movie: any
+  movie: Media
   url: string
 }
 
