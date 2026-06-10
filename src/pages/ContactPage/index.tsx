@@ -41,8 +41,8 @@ export default function ContactPage() {
   return (
     <div className="ContactPage">
       <SEO
-        title={isEnglish ? 'Contact | ViMovies' : 'Contacto | ViMovies'}
-        description={isEnglish ? 'Get in touch with the ViMovies team. We are here to help you.' : 'Ponte en contacto con el equipo de ViMovies. Estamos aquí para ayudarte.'}
+        title={isEnglish ? 'Contact | Vimovies' : 'Contacto | Vimovies'}
+        description={isEnglish ? 'Get in touch with the Vimovies team. We are here to help you.' : 'Ponte en contacto con el equipo de Vimovies. Estamos aquí para ayudarte.'}
         canonical={isEnglish ? 'https://vimovies.com/contact' : 'https://vimovies.com/contacto'}
         type="website"
         locale={isEnglish ? 'en_US' : 'es_ES'}
@@ -51,7 +51,7 @@ export default function ContactPage() {
           es: 'https://vimovies.com/contacto',
           en: 'https://vimovies.com/contact'
         }}
-      />{isEnglish ? 'Contact Information' : ''}
+      />
       <div className="ContactPage__header">
         <div className="ContactPage__header-content">
           <h1 className="ContactPage__title">{isEnglish ? 'Contact' : 'Contacto'}</h1>
@@ -61,12 +61,12 @@ export default function ContactPage() {
         </div>
       </div>
 
-      <div className="ContactPage__container">{isEnglish ? '' : 'Correo electrónico'}
+      <div className="ContactPage__container">
         <div className="ContactPage__grid">
           {/* Información de contacto */}
           <div className="ContactPage__info">
             <div className="ContactPage__info-section">
-              <h2 className="ContactPage__info-title">Información de contacto</h2>
+              <h2 className="ContactPage__info-title">{isEnglish ? 'Contact Information' : 'Información de contacto'}</h2>
               
               <div className="ContactPage__contact-item">
                 <div className="ContactPage__contact-icon">
@@ -75,7 +75,7 @@ export default function ContactPage() {
                     <polyline points="22,6 12,13 2,6"/>
                   </svg>
                 </div>
-                <div className="ContactPage__contact-c{isEnglish ? 'Follow us' : 'ontent">'}
+                <div className="ContactPage__contact-content">
                   <h3 className="ContactPage__contact-label">Email</h3>
                   <a href={`mailto:${emailBox}`} className="ContactPage__contact-value">
                     {emailBox}
@@ -85,7 +85,7 @@ export default function ContactPage() {
             </div>
 
             <div className="ContactPage__social-section">
-              <h2 className="ContactPage__info-title">Síguenos</h2>
+              <h2 className="ContactPage__info-title">{isEnglish ? 'Follow us' : 'Síguenos'}</h2>
               <div className="ContactPage__social-links">
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="ContactPage__social-link">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -103,9 +103,9 @@ export default function ContactPage() {
                   YouTube
                 </a>
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="ContactPage__social-link">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" {isEnglish ? 'strok' : 'Correo electrónico'}eWidth="2">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                  </svg>{isEnglish ? 'Send us a message' : ''}
+                  </svg>
                   Facebook
                 </a>
               </div>
@@ -115,9 +115,9 @@ export default function ContactPage() {
           {/* Formulario de contacto */}
           <div className="ContactPage__form-section">
             <div className="ContactPage__form-card">
-              <h2 className="Con{isEnglish ? 'your@email.com' : 'actPage__for'}-title">Envíanos un mensaje</h2>
+              <h2 className="ContactPage__form-title">{isEnglish ? 'Send us a message' : 'Envíanos un mensaje'}</h2>
               <form onSubmit={handleSubmit} className="ContactPage__form">
-                <div className="ContactPage__form-group">{isEnglish ? 'Subject' : ''}
+                <div className="ContactPage__form-group">
                   <label htmlFor="email" className="ContactPage__form-label">Email</label>
                   <input
                     type="email"
@@ -127,12 +127,12 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     className="ContactPage__form-input"
-                    placeholder="tu@email.com"
+                    placeholder={isEnglish ? 'your@email.com' : 'tu@email.com'}
                   />
                 </div>
 
-                <div className="ContactPage__form-group">{isEnglish ? 'ssage' : 'Me'}
-                  <label htmlFor="subject" className="ContactPage__form-label">Asunto</label>
+                <div className="ContactPage__form-group">
+                  <label htmlFor="subject" className="ContactPage__form-label">{isEnglish ? 'Subject' : 'Asunto'}</label>
                   <input
                     type="text"
                     id="subject"
@@ -143,10 +143,10 @@ export default function ContactPage() {
                     className="ContactPage__form-input"
                     placeholder={isEnglish ? 'What do you want to talk about?' : '¿Sobre qué quieres hablar?'}
                   />
-                </div>{isEnglish ? 'Write your message here...' : ''}
+                </div>
 
-                <d{isivglish ? 'Send message' : 'En className="'}ContactPage__form-group">
-                  <label htmlFor="message" className="ContactPage__form-label">Mensaje</label>
+                <div className="ContactPage__form-group">
+                  <label htmlFor="message" className="ContactPage__form-label">{isEnglish ? 'Message' : 'Mensaje'}</label>
                   <textarea
                     id="message"
                     name="message"
@@ -155,12 +155,12 @@ export default function ContactPage() {
                     required
                     rows={6}
                     className="ContactPage__form-textarea"
-                    placeholder="Escribe tu mensaje aquí..."
+                    placeholder={isEnglish ? 'Write your message here...' : 'Escribe tu mensaje aquí...'}
                   />
                 </div>
 
                 <button type="submit" className="ContactPage__form-submit">
-                  Enviar mensaje
+                  {isEnglish ? 'Send message' : 'Enviar mensaje'}
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <line x1="22" y1="2" x2="11" y2="13"/>
                     <polygon points="22 2 15 22 11 13 2 9 22 2"/>

@@ -1,18 +1,34 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
 import { SEO } from '../../hooks/useSEO'
 import { useAlternateUrls } from '../../hooks/useAlternateUrls'
-import { useLocale, useT } from '../../store/locate.store'
-import { articlesApi } from '../../lib/api/articles'
+import { useLocale } from '../../store/locate.store'
 import type { Article } from '../../lib/api/types'
 import { mockArticleDetail } from '../ArticlesPage/mock-articles'
 import MovieCard from '../MoviesPage/components/MovieCard'
 import './ArticleDetailPage.scss'
 
+interface ArticleTag {
+  name_en: string
+  name_es: string
+}
+
+interface ArticleFAQ {
+  question_en: string
+  question_es: string
+  answer_en: string
+  answer_es: string
+}
+
+interface ArticleMention {
+  movie_slug: string
+  movie_title_en: string
+  movie_title_es: string
+}
+
 export default function ArticleDetailPage() {
   const { slug } = useParams<{ slug: string }>()
   const locale = useLocale()
-  const t = useT()
   const { pathname } = useLocation()
   const { forArticle } = useAlternateUrls()
 
@@ -24,13 +40,7 @@ export default function ArticleDetailPage() {
   const isEnglish = locale === 'en'
   const currentLocale = isEnglish ? 'en_US' : 'es_ES'
 
-  useEffect(() => {
-    if (slug) {
-      loadArticle()
-    }
-  }, [slug])
-
-  const loadArticle = async () => {
+  const loadArticle = useCallback(async () => {
     setLoading(true)
     setError(null)
     try {
@@ -54,7 +64,13 @@ export default function ArticleDetailPage() {
       setError(isEnglish ? 'Error loading article' : 'Error al cargar el artículo')
       setLoading(false)
     }
-  }
+  }, [isEnglish, slug])
+
+  useEffect(() => {
+    if (slug) {
+      loadArticle()
+    }
+  }, [slug, loadArticle])
 
   const getMovieUrl = (movieSlug: string) => {
     return locale === 'en' ? `/movie/${movieSlug}` : `/pelicula/${movieSlug}`
@@ -131,7 +147,7 @@ export default function ArticleDetailPage() {
                 <div className="article-detail-page__hero-content">
                   {article.tags && article.tags.length > 0 && (
                     <div className="article-detail-page__tags">
-                      {article.tags.map((tag: any, index: number) => (
+                      {article.tags.map((tag: ArticleTag, index: number) => (
                         <span key={index} className="article-detail-page__tag">
                           {isEnglish ? tag.name_en : tag.name_es}
                         </span>
@@ -172,7 +188,7 @@ export default function ArticleDetailPage() {
                     <>
                       {article.tags && article.tags.length > 0 && (
                         <div className="article-detail-page__tags">
-                          {article.tags.map((tag: any, index: number) => (
+                          {article.tags.map((tag: ArticleTag, index: number) => (
                             <span key={index} className="article-detail-page__tag">
                               {isEnglish ? tag.name_en : tag.name_es}
                             </span>
@@ -222,7 +238,7 @@ export default function ArticleDetailPage() {
                         {isEnglish ? 'Frequently Asked Questions' : 'Preguntas Frecuentes'}
                       </h2>
                       <div className="article-detail-page__faqs-list">
-                        {article.faqs.map((faq: any, i: number) => (
+                        {article.faqs.map((faq: ArticleFAQ, i: number) => (
                           <div key={i} className="article-detail-page__faq">
                             <h3 className="article-detail-page__faq-question">
                               {isEnglish ? faq.question_en || faq.question_es : faq.question_es}
@@ -245,7 +261,7 @@ export default function ArticleDetailPage() {
                         {isEnglish ? 'Movies Mentioned' : 'Películas Mencionadas'}
                       </h3>
                       <div className="article-detail-page__mentioned-movies">
-                        {article.mentions.map((mention: any, index: number) => (
+                        {article.mentions.map((mention: ArticleMention, index: number) => (
                           mention.media && (
                             <MovieCard
                               key={index}

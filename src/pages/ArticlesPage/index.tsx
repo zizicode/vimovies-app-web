@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { SEO } from '../../hooks/useSEO'
 import { useLocale } from '../../store/locate.store'
 import { mockArticles } from './mock-articles'
 import { useGTM } from '../../hooks/useGTM'
 import ArticleCard from './components/ArticleCard/index'
+import type { Article } from '../../lib/api/types'
 import './ArticlesPage.scss'
 
 interface Filters {
@@ -15,7 +16,7 @@ export default function ArticlesPage() {
   const locale = useLocale()
   const { trackSearch, trackFilter } = useGTM()
 
-  const [articles, setArticles] = useState<any[]>([])
+  const [articles, setArticles] = useState<Article[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
@@ -27,17 +28,13 @@ export default function ArticlesPage() {
     intent: null
   })
 
-  useEffect(() => {
-    loadArticles()
-  }, [filters, currentPage])
-
-  const loadArticles = async () => {
+  const loadArticles = useCallback(async () => {
     setLoading(true)
     setError(null)
     try {
       // Usar mock para desarrollo
       setTimeout(() => {
-        setArticles(mockArticles)
+        setArticles(mockArticles as Article[])
         setTotalPages(1)
         setTotal(mockArticles.length)
         setLoading(false)
@@ -50,7 +47,7 @@ export default function ArticlesPage() {
         per_page: 12,
         locale: locale === 'en' ? 'en' : 'es',
         status: 'published',
-        ...(filters.intent && { intent: filters.intent as any }),
+        ...(filters.intent && { intent: filters.intent }),
         ...(filters.search && { search: filters.search })
       })
 
@@ -67,7 +64,11 @@ export default function ArticlesPage() {
       setError('Error loading articles')
       setLoading(false)
     }
-  }
+  }, [currentPage, filters, locale])
+
+  useEffect(() => {
+    loadArticles()
+  }, [loadArticles])
 
   const handleSearch = (value: string) => {
     setFilters(prev => ({ ...prev, search: value }))

@@ -1,10 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { SEO } from '../../hooks/useSEO'
 import { useLocale } from '../../store/locate.store'
 import { genresApi } from '../../lib/api/genres'
 import { useGTM } from '../../hooks/useGTM'
+import type { Genre } from '../../lib/api/types'
 import './GenresPage.scss'
+
+interface GenreStats {
+  slug: string
+  media_count: number
+}
 
 export default function GenresPage() {
   const { slug } = useParams<{ slug: string }>()
@@ -12,29 +18,13 @@ export default function GenresPage() {
   const locale = useLocale()
   const { trackFilter, trackNavigation } = useGTM()
 
-  const [genres, setGenres] = useState<any[]>([])
-  const [activeGenre, setActiveGenre] = useState<any>(null)
-  const [genresStats, setGenresStats] = useState<any[]>([])
+  const [genres, setGenres] = useState<Genre[]>([])
+  const [activeGenre, setActiveGenre] = useState<Genre | null>(null)
+  const [genresStats, setGenresStats] = useState<GenreStats[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
-    loadGenres()
-  }, [])
-
-  useEffect(() => {
-    if (slug && genres.length > 0) {
-      const genre = genres.find((g: any) => g.slug === slug)
-      if (genre) {
-        setActiveGenre(genre)
-      }
-    } else if (!slug && genres.length > 0) {
-      // Si no hay slug, seleccionar el primer género
-      setActiveGenre(genres[0])
-    }
-  }, [slug, genres])
-
-  const loadGenres = async () => {
+  const loadGenres = useCallback(async () => {
     setLoading(true)
     setError(null)
     try {
@@ -50,14 +40,29 @@ export default function GenresPage() {
       if (statsResponse.success && statsResponse.data) {
         setGenresStats(statsResponse.data)
       }
-
-      setLoading(false)
     } catch (err) {
       console.error('Error loading genres:', err)
       setError('Error loading genres')
+    } finally {
       setLoading(false)
     }
-  }
+  }, [])
+
+  useEffect(() => {
+    loadGenres()
+  }, [loadGenres])
+
+  useEffect(() => {
+    if (slug && genres.length > 0) {
+      const genre = genres.find((g: Genre) => g.slug === slug)
+      if (genre) {
+        setActiveGenre(genre)
+      }
+    } else if (!slug && genres.length > 0) {
+      // Si no hay slug, seleccionar el primer género
+      setActiveGenre(genres[0])
+    }
+  }, [slug, genres])
 
   const handleGenreSelect = (genreSlug: string) => {
     const genre = genres.find(g => g.slug === genreSlug)
@@ -66,16 +71,16 @@ export default function GenresPage() {
     navigate(locale === 'en' ? `/genre/${genreSlug}` : `/genero/${genreSlug}`)
   }
 
-  const getGenreName = (genre: any) => {
+  const getGenreName = (genre: Genre) => {
     return locale === 'en' ? genre.name_en : genre.name_es
   }
 
-  const getGenreDescription = (genre: any) => {
+  const getGenreDescription = (genre: Genre) => {
     return locale === 'en' ? genre.description_en : genre.description_es
   }
 
   const getGenreMovieCount = (genreSlug: string) => {
-    const stat = genresStats.find((s: any) => s.slug === genreSlug)
+    const stat = genresStats.find((s: GenreStats) => s.slug === genreSlug)
     return stat ? stat.media_count : 0
   }
 
