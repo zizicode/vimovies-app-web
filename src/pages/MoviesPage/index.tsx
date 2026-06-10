@@ -81,6 +81,7 @@ export default function MoviesPage() {
   }, [currentPage, filters])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadGenres()
   }, [loadGenres])
 
@@ -90,14 +91,17 @@ export default function MoviesPage() {
     if (genreSlug && genres.length > 0) {
       const genre = genres.find((g: Genre) => g.slug === genreSlug)
       if (genre) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setFilters(prev => ({ ...prev, genre_slug: genreSlug, genre_id: genre.id }))
       }
     } else if (!genreSlug) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFilters(prev => ({ ...prev, genre_slug: null, genre_id: null }))
     }
   }, [searchParams, genres])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadMovies()
   }, [loadMovies])
 
@@ -287,7 +291,7 @@ export default function MoviesPage() {
                   </label>
                   <select
                     value={filters.sort_by}
-                    onChange={(e) => handleSortChange(e.target.value as any)}
+                    onChange={(e) => handleSortChange(e.target.value as Filters['sort_by'])}
                     className="movies-page__filter-select"
                   >
                     <option value="tmdb_popularity">

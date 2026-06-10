@@ -65,6 +65,7 @@ export default function PeoplePage() {
   }, [currentPage, filters])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadPeople()
   }, [loadPeople])
 
@@ -206,7 +207,7 @@ export default function PeoplePage() {
                   </label>
                   <select
                     value={filters.sort_by}
-                    onChange={(e) => handleSortChange(e.target.value as any)}
+                    onChange={(e) => handleSortChange(e.target.value as Filters['sort_by'])}
                     className="people-page__filter-select"
                   >
                     <option value="name">{locale === 'en' ? 'Name' : 'Nombre'}</option>

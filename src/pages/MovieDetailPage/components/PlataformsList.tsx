@@ -34,7 +34,7 @@ const getPlatformGlow = (name: string): string => {
 
 const TMDB_LOGO_BASE = 'https://image.tmdb.org/t/p/original'
 
-const PlataformsList: React.FC<PlataformsListProps> = ({ title, platforms }) => {
+const PlataformsList: React.FC<PlataformsListProps> = ({ title: _title, platforms }) => {
     if (!platforms || platforms.length === 0) return null
 
     const sorted = [...platforms].sort((a, b) => a.display_priority - b.display_priority)

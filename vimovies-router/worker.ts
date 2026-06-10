@@ -48,7 +48,7 @@ export default {
 
       // 3. Usuario normal → React SPA en Vercel
       return await proxyToVercel(request, url)
-    } catch (_err) {
+    } catch {
       return new Response('Internal Server Error', { status: 500 })
     }
   },
