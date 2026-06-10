@@ -1,5 +1,5 @@
 import apiClient from './client'
-import type { ApiResponse, ApiPaginatedResponse, Person } from './types'
+import type { ApiResponse, Person } from './types'
 
 export const peopleApi = {
   // Listado con paginación
@@ -8,7 +8,7 @@ export const peopleApi = {
     per_page?: number
     search?: string
   }) => {
-    const response = await apiClient.get<any>('/people/search', {
+    const response = await apiClient.get<ApiResponse<Person[]>>('/people/search', {
       params: {
         q: params?.search || '*',
         page: params?.page || 1,
@@ -20,7 +20,7 @@ export const peopleApi = {
 
   // Detalle por slug
   getBySlug: async (slug: string) => {
-    const response = await apiClient.get<ApiResponse<any>>(`/people/${slug}`)
+    const response = await apiClient.get<ApiResponse<Person>>(`/people/${slug}`)
     return response.data
   },
 

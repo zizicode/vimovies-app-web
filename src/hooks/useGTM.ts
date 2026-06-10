@@ -4,12 +4,12 @@ interface GTMEvent {
   eventAction?: string;
   eventLabel?: string;
   eventValue?: number;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 declare global {
   interface Window {
-    dataLayer: any[];
+    dataLayer: unknown[];
   }
 }
 

@@ -1,9 +1,9 @@
 import { create } from 'zustand'
 import { peopleApi } from '../../lib/api/people'
-import type { Person } from '../../types'
+import type { Person } from '../../lib/api/types'
 
 interface PersonState {
-  personDetail: any | null
+  personDetail: Person | null
   isLoadingDetail: boolean
   errorDetail: string | null
   fetchPersonBySlug: (slug: string) => Promise<void>

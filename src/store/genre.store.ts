@@ -4,7 +4,7 @@ import type { GenreStats } from '../lib/api/genres'
 
 interface GenreState {
   genreData: GenreWithMediaResponse | null
-  allMediaData: any
+  allMediaData: unknown
   genresStats: GenreStats[]
   loading: boolean
   error: string | null
@@ -12,7 +12,7 @@ interface GenreState {
 
 interface GenreActions {
   setGenreData: (data: GenreWithMediaResponse | null) => void
-  setAllMediaData: (data: any) => void
+  setAllMediaData: (data: unknown) => void
   setGenresStats: (stats: GenreStats[]) => void
   setLoading: (loading: boolean) => void
   setError: (error: string | null) => void

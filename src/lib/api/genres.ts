@@ -1,5 +1,5 @@
 import apiClient from './client'
-import type { ApiResponse, ApiPaginatedResponse, Genre } from './types'
+import type { ApiResponse, Genre } from './types'
 
 export interface GenreStats {
   genre_id: number
