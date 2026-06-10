@@ -22,6 +22,8 @@ function Home() {
   const movies = Store.useMoviesStore((state) => state.movies)
   const genres = Store.useGenresStore((state) => state.genres)
   const loading = Store.useMoviesStore((state) => state.loading)
+  const isMoviesFetched = Store.useMoviesStore((state) => state.isFetched)
+  const isGenresFetched = Store.useGenresStore((state) => state.isFetched)
   const error = Store.useMoviesStore((state) => state.error)
   const fetchMovies = Store.useMoviesStore((state) => state.fetchMovies)
   const fetchGenres = Store.useGenresStore((state) => state.fetchGenres)
@@ -36,13 +38,15 @@ function Home() {
     return map
   }, [genres])
 
-  // 2. Primer useEffect: Solo se encarga de pedir los datos al Store si están vacíos
+  // 2. Primer useEffect: Solo se encarga de pedir los datos al Store si no se han cargado
   useEffect(() => {
-    if (!movies.length && !loading) {
+    if (!isMoviesFetched && !loading) {
       fetchMovies()
+    }
+    if (!isGenresFetched) {
       fetchGenres()
     }
-  }, [fetchMovies, fetchGenres, movies.length, loading])
+  }, [fetchMovies, fetchGenres, isMoviesFetched, isGenresFetched, loading])
 
   // 2.5. Cargar estadísticas del home
   useEffect(() => {

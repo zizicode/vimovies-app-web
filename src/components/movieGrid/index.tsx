@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLocale } from '../../store/locate.store';
 import { getPosterUrl, getPosterSrcSet } from '../../utils/image.utils';
 import { useGTM } from '../../hooks/useGTM';
+import { useT } from '../../store/locate.store';
 import './MovieGrid.scss';
 
 interface MediaCard {
@@ -25,6 +26,7 @@ interface MovieGridProps {
 
 const MovieGrid: React.FC<MovieGridProps> = ({ movies }) => {
   const locale = useLocale();
+  const t = useT();
   const { trackMovieClick, trackNavigation } = useGTM();
 
   const getMovieUrl = (slug: string) => {
@@ -50,44 +52,50 @@ const MovieGrid: React.FC<MovieGridProps> = ({ movies }) => {
 
         {/* El contenedor principal de la Grid */}
         <div className="movie-grid">
-          {movies.map((movie) => {
-            const title = movie.title_es || movie.title_en || '';
-            // const posterUrl = getPosterUrl(movie.poster_path, 'w185');
-            const posterSrcSet = getPosterSrcSet(movie.poster_path);
+          {movies.length === 0 ? (
+            <div className="movie-grid__empty">
+              <p>{locale === 'en' ? 'No movies available' : 'No hay películas disponibles'}</p>
+            </div>
+          ) : (
+            movies.map((movie) => {
+              const title = movie.title_es || movie.title_en || '';
+              // const posterUrl = getPosterUrl(movie.poster_path, 'w185');
+              const posterSrcSet = getPosterSrcSet(movie.poster_path);
 
-            return (
-              <Link
-                to={getMovieUrl(movie.slug)}
-                className="movie-grid__item"
-                key={movie.id}
-                onClick={() => handleMovieClick(movie)}
-              >
-                <div className="movie-grid__poster">
-                  <img
-                    src={getPosterUrl(movie.poster_path, 'w185')}
-                    srcSet={posterSrcSet}
-                    sizes="(max-width: 600px) 50vw, 185px"
-                    alt={title}
-                    width="180"
-                    height="270"
-                    className="movie-grid__img"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  {/* Capa de texto sobre el póster con gradiente */}
-                  <div className="movie-grid__overlay">
-                    <span className="movie-grid__title">{title}</span>
+              return (
+                <Link
+                  to={getMovieUrl(movie.slug)}
+                  className="movie-grid__item"
+                  key={movie.id}
+                  onClick={() => handleMovieClick(movie)}
+                >
+                  <div className="movie-grid__poster">
+                    <img
+                      src={getPosterUrl(movie.poster_path, 'w185')}
+                      srcSet={posterSrcSet}
+                      sizes="(max-width: 600px) 50vw, 185px"
+                      alt={title}
+                      width="180"
+                      height="270"
+                      className="movie-grid__img"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    {/* Capa de texto sobre el póster con gradiente */}
+                    <div className="movie-grid__overlay">
+                      <span className="movie-grid__title">{title}</span>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            );
-          })}
+                </Link>
+              );
+            })
+          )}
         </div>
 
         {/* Botón Ver Más Centrado fuera de la Grid */}
         <Link to={getMoviesPageUrl()} className="movie-grid__actions" onClick={handleViewMoreClick}>
           <button className="movie-grid__btn-more">
-            Ver Más
+            {locale === 'en' ? 'View More' : 'Ver Más'}
           </button>
         </Link>
 

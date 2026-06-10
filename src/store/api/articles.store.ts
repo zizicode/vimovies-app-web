@@ -8,7 +8,9 @@ interface ArticleState {
   loading: boolean
   isLoadingDetail: boolean
   error: string | null
+  isFetched: boolean
   fetchArticles: () => Promise<void>
+  refetchArticles: () => Promise<void>
   fetchArticleBySlug: (slug: string) => Promise<void>
 }
 
@@ -18,10 +20,11 @@ export const useArticlesStore = create<ArticleState>((set) => ({
   loading: false,
   isLoadingDetail: false,
   error: null,
+  isFetched: false,
   fetchArticles: async () => {
-    // Si ya hay artículos, no volvemos a pedir (o podrías implementar un refresh)
-    const currentArticles = useArticlesStore.getState().articles;
-    if (currentArticles.length > 0) return;
+    // Si ya se intentó cargar, no volvemos a pedir
+    const state = useArticlesStore.getState();
+    if (state.isFetched) return;
 
     try {
       set({ loading: true })
@@ -31,14 +34,37 @@ export const useArticlesStore = create<ArticleState>((set) => ({
       set({
         articles: response.data.data,
         loading: false,
+        isFetched: true,
       })
     } catch {
       set({
         error: 'Error loading articles',
         loading: false,
+        isFetched: true,
       })
     }
   },
+
+  refetchArticles: async () => {
+    try {
+      set({ loading: true })
+
+      const response = await articlesApi.getAll()
+
+      set({
+        articles: response.data.data,
+        loading: false,
+        isFetched: true,
+      })
+    } catch {
+      set({
+        error: 'Error loading articles',
+        loading: false,
+        isFetched: true,
+      })
+    }
+  },
+
   fetchArticleBySlug: async (slug: string) => {
     try {
       set({ isLoadingDetail: true, error: null })

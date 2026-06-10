@@ -21,13 +21,32 @@ $bg-card-dark: #1e293b;
 
   // 2. La Grid (display: grid)
   .movie-grid {
-    display: grid !important; 
+    display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)); // 2 columnas fijas en móvil
     gap: 1rem;
 
     @media (min-width: 500px) {
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); // Desktop adaptable
       gap: 1.5rem;
+    }
+
+    // Estado vacío
+    &__empty {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+      background-color: rgba(30, 41, 59, 0.3);
+      border-radius: 10px;
+      border: 2px dashed rgba(139, 92, 246, 0.3);
+
+      p {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 1.1rem;
+        text-align: center;
+        margin: 0;
+      }
     }
 
     // ── SOLUCIÓN AQUÍ: Ahora estos selectores coinciden exactamente con tu HTML ──

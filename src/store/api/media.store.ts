@@ -8,8 +8,10 @@ interface MoviesState {
   loading: boolean
   error: string | null
   featuredIndex: number | null
+  isFetched: boolean
   generateFeaturedMovie: () => void
   fetchMovies: () => Promise<void>
+  refetchMovies: () => Promise<void>
 }
 
 export const useMoviesStore = create<MoviesState>((set) => ({
@@ -17,6 +19,7 @@ export const useMoviesStore = create<MoviesState>((set) => ({
   loading: false,
   error: null,
   featuredIndex: 0,
+  isFetched: false,
   generateFeaturedMovie: () =>
     set((state) => ({
       featuredIndex:
@@ -29,9 +32,9 @@ export const useMoviesStore = create<MoviesState>((set) => ({
     })),
 
   fetchMovies: async () => {
-    // Si ya hay películas, no volvemos a pedir (o podrías implementar un refresh forzado)
-    const currentMovies = useMoviesStore.getState().movies;
-    if (currentMovies.length > 0) return;
+    // Si ya se intentó cargar, no volvemos a pedir
+    const state = useMoviesStore.getState();
+    if (state.isFetched) return;
 
     try {
       set({ loading: true })
@@ -42,11 +45,34 @@ export const useMoviesStore = create<MoviesState>((set) => ({
       set({
         movies: data.data,
         loading: false,
+        isFetched: true,
       })
     } catch {
       set({
         error: 'Error loading movies',
         loading: false,
+        isFetched: true,
+      })
+    }
+  },
+
+  refetchMovies: async () => {
+    try {
+      set({ loading: true })
+
+      const { data } =
+        await MoviesService.getAll()
+
+      set({
+        movies: data.data,
+        loading: false,
+        isFetched: true,
+      })
+    } catch {
+      set({
+        error: 'Error loading movies',
+        loading: false,
+        isFetched: true,
       })
     }
   },

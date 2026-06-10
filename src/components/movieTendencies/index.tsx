@@ -77,47 +77,53 @@ const MovieTendencies: React.FC = () => {
 
           {/* Track del Slider */}
           <ul className='container_movie' ref={trackRef}>
-            {movies.map((movie, index) => {
-              const title = locale === 'en' ? movie.title_en : movie.title_es;
-              const synopsis = locale === 'en' ? movie.synopsis_en : movie.synopsis_es;
-              const year = movie.release_date ? new Date(movie.release_date).getFullYear() : 'N/A';
-              const rating = movie.editorial_rating ?? 0;
-              
-              // Render de estrellas básico (máximo 5)
-              const stars = '⭐'.repeat(Math.min(5, Math.max(1, Math.round(rating / 2))));
+            {movies.length === 0 ? (
+              <li className="tendencies__empty">
+                <p>{locale === 'en' ? 'No trending movies available' : 'No hay películas en tendencia'}</p>
+              </li>
+            ) : (
+              movies.map((movie, index) => {
+                const title = locale === 'en' ? movie.title_en : movie.title_es;
+                const synopsis = locale === 'en' ? movie.synopsis_en : movie.synopsis_es;
+                const year = movie.release_date ? new Date(movie.release_date).getFullYear() : 'N/A';
+                const rating = movie.editorial_rating ?? 0;
 
-              return (
-                <Link to={getMovieUrl(movie.slug)} className='item_movies' key={movie.id}>
-                  <div className="poster">
-                    <img
-                      src={getPosterUrl(movie.poster_path, 'w185')}
-                      srcSet={getPosterSrcSet(movie.poster_path)}
-                      sizes="(max-width: 600px) 185px, 240px"
-                      alt={title ?? movie.original_title}
-                      width="240"
-                      height="360"
-                      className="poster__img"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div className="populary">#{index + 1}</div>
-                    <button className="save-button" aria-label={t('components.movieTendencies.saveMovie')} onClick={(e) => e.preventDefault()}>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
-                    </button>
-                  </div>
-                  <div className="detail">
-                    <h2>{title ?? movie.original_title}</h2>
-                    <p className="detail__synopsis">{synopsis || t('components.movieTendencies.noDescription')}</p>
-                    <div className="detail__meta">
-                      <span>{year}</span>
-                      <span>•</span>
-                      <span>{movie.runtime_minutes ? `${movie.runtime_minutes} min` : 'N/A'}</span>
+                // Render de estrellas básico (máximo 5)
+                const stars = '⭐'.repeat(Math.min(5, Math.max(1, Math.round(rating / 2))));
+
+                return (
+                  <Link to={getMovieUrl(movie.slug)} className='item_movies' key={movie.id}>
+                    <div className="poster">
+                      <img
+                        src={getPosterUrl(movie.poster_path, 'w185')}
+                        srcSet={getPosterSrcSet(movie.poster_path)}
+                        sizes="(max-width: 600px) 185px, 240px"
+                        alt={title ?? movie.original_title}
+                        width="240"
+                        height="360"
+                        className="poster__img"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <div className="populary">#{index + 1}</div>
+                      <button className="save-button" aria-label={t('components.movieTendencies.saveMovie')} onClick={(e) => e.preventDefault()}>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                      </button>
                     </div>
-                    <div className="detail__stars">{stars || t('components.movieTendencies.noRating')}</div>
-                  </div>
-                </Link>
-              );
-            })}
+                    <div className="detail">
+                      <h2>{title ?? movie.original_title}</h2>
+                      <p className="detail__synopsis">{synopsis || t('components.movieTendencies.noDescription')}</p>
+                      <div className="detail__meta">
+                        <span>{year}</span>
+                        <span>•</span>
+                        <span>{movie.runtime_minutes ? `${movie.runtime_minutes} min` : 'N/A'}</span>
+                      </div>
+                      <div className="detail__stars">{stars || t('components.movieTendencies.noRating')}</div>
+                    </div>
+                  </Link>
+                );
+              })
+            )}
           </ul>
 
           {/* Botón Next */}

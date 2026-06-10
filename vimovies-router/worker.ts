@@ -32,28 +32,34 @@ export default {
       const ua = request.headers.get('user-agent') || ''
       const isBot = BOT_PATTERN.test(ua)
 
-      // 1. Rutas estáticas SEO → siempre van a Hono
+      // 1. Rutas estáticas SEO → SIEMPRE van a Hono (sin importar si es bot o no)
       if (HONO_ROUTES.includes(url.pathname) || HONO_PATTERNS.some(pattern => pattern.test(url.pathname))) {
+        console.log(`[Worker] Sitemap route detected: ${url.pathname} - Proxying to Hono`)
         return await proxyToHono(url.pathname + url.search)
       }
 
       // 2. Bot detectado → SSR desde Hono
       if (isBot) {
+        console.log(`[Worker] Bot detected (${ua}) - Proxying to Hono render: ${url.pathname}`)
         const renderPath = '/render' + url.pathname + url.search
         try {
           const response = await proxyToHono(renderPath)
           if (response.status === 404) {
+            console.log(`[Worker] Hono render returned 404 - Using fallback`)
             return fallbackBotResponse(url.pathname)
           }
           return response
         } catch {
+          console.log(`[Worker] Hono render failed - Using fallback`)
           return fallbackBotResponse(url.pathname)
         }
       }
 
       // 3. Usuario normal → React SPA en Vercel
+      console.log(`[Worker] Normal user - Proxying to Vercel: ${url.pathname}`)
       return await proxyToVercel(request, url)
-    } catch {
+    } catch (error) {
+      console.error(`[Worker] Error:`, error)
       return new Response('Internal Server Error', { status: 500 })
     }
   },
@@ -63,6 +69,7 @@ export default {
 
 async function proxyToHono(path: string): Promise<Response> {
   const target = `${API_URL}${path}`
+  console.log(`[Worker] Proxying to Hono: ${target}`)
   try {
     const res = await fetch(target, {
       headers: {
@@ -70,8 +77,10 @@ async function proxyToHono(path: string): Promise<Response> {
         'X-Internal-Request': 'worker',
       },
     })
+    console.log(`[Worker] Hono response status: ${res.status}`)
     return res
-  } catch {
+  } catch (error) {
+    console.error(`[Worker] Proxy to Hono failed:`, error)
     return new Response('Service unavailable', { status: 503 })
   }
 }
