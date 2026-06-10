@@ -1,7 +1,8 @@
 import './PersonCard.scss'
+import type { Person } from '../../../../lib/api/types'
 
 interface PersonCardProps {
-  person: any
+  person: Person
   onClick: () => void
 }
 

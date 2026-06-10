@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { SEO } from '../../hooks/useSEO'
-import { useLocale } from '../../store/locate.store'
+import { useLocale, useT } from '../../store/locate.store'
 import { mediaApi } from '../../lib/api/media'
 import { genresApi } from '../../lib/api/genres'
 import { useGTM } from '../../hooks/useGTM'
@@ -21,6 +21,7 @@ export default function MoviesPage() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const locale = useLocale()
+  const t = useT()
   const { trackSearch, trackFilter } = useGTM()
 
   const [movies, setMovies] = useState<Media[]>([])
@@ -54,7 +55,7 @@ export default function MoviesPage() {
     setLoading(true)
     setError(null)
     try {
-      const response = await mediaApi.findAll({
+      const response = await mediaApi.list({
         page: currentPage,
         per_page: 20,
         media_type: 'movie',

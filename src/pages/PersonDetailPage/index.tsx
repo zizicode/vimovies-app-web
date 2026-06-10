@@ -2,16 +2,21 @@ import { useEffect, useState } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
 import { SEO } from '../../hooks/useSEO'
 import { useAlternateUrls } from '../../hooks/useAlternateUrls'
-import { useLocale, useT } from '../../store/locate.store'
+import { useLocale } from '../../store/locate.store'
 import { peopleApi } from '../../lib/api/people'
-import type { Person } from '../../lib/api/types'
+import type { Person, Media } from '../../lib/api/types'
 import './PersonDetailPage.scss'
+
+interface PersonCredit {
+  media: Media
+  role: string
+  character?: string
+}
 
 export default function PersonDetailPage() {
   const { slug } = useParams<{ slug: string }>()
   const { pathname } = useLocation()
   const locale = useLocale()
-  const t = useT()
   const { forPerson } = useAlternateUrls()
 
   const [person, setPerson] = useState<Person | null>(null)
@@ -226,7 +231,7 @@ export default function PersonDetailPage() {
                   {/* Actor films */}
                   {person.as_actor && person.as_actor.length > 0 && (
                     <>
-                      {person.as_actor.map((movie: any) => (
+                      {person.as_actor.map((movie: PersonCredit) => (
                         <div key={movie.id} className="PersonDetailPage__movie-card">
                           {movie.poster_path && (
                             <img
@@ -258,7 +263,7 @@ export default function PersonDetailPage() {
                   {/* Director films */}
                   {person.as_director && person.as_director.length > 0 && (
                     <>
-                      {person.as_director.map((movie: any) => (
+                      {person.as_director.map((movie: PersonCredit) => (
                         <div key={movie.id} className="PersonDetailPage__movie-card">
                           {movie.poster_path && (
                             <img
@@ -288,7 +293,7 @@ export default function PersonDetailPage() {
                   {/* Writer films */}
                   {person.as_writer && person.as_writer.length > 0 && (
                     <>
-                      {person.as_writer.map((movie: any) => (
+                      {person.as_writer.map((movie: PersonCredit) => (
                         <div key={movie.id} className="PersonDetailPage__movie-card">
                           {movie.poster_path && (
                             <img

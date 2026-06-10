@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { SEO } from '../../hooks/useSEO'
 import { useLocale } from '../../store/locate.store'
 import { peopleApi } from '../../lib/api/people'
 import { useGTM } from '../../hooks/useGTM'
 import PersonCard from './components/PersonCard'
+import type { Person } from '../../lib/api/types'
 import './PeoplePage.scss'
 
 interface Filters {
@@ -17,7 +18,7 @@ export default function PeoplePage() {
   const locale = useLocale()
   const { trackSearch, trackFilter, trackClick } = useGTM()
 
-  const [people, setPeople] = useState<any[]>([])
+  const [people, setPeople] = useState<Person[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
@@ -29,11 +30,7 @@ export default function PeoplePage() {
     sort_by: 'name'
   })
 
-  useEffect(() => {
-    loadPeople()
-  }, [filters, currentPage])
-
-  const loadPeople = async () => {
+  const loadPeople = useCallback(async () => {
     setLoading(true)
     setError(null)
     try {
@@ -44,45 +41,32 @@ export default function PeoplePage() {
       })
 
       if (response.success && response.data) {
-        let peopleList: any[] = []
+        let peopleList: Person[] = []
 
         // Manejar ambas estructuras de respuesta posibles
         if (Array.isArray(response.data)) {
           peopleList = response.data
-        } else if (response.data.items) {
-          peopleList = response.data.items || []
+        } else {
+          peopleList = response.data.people || []
         }
 
-        // Ordenar
-        peopleList = [...peopleList].sort((a, b) => {
-          switch (filters.sort_by) {
-            case 'name':
-              return a.name.localeCompare(b.name)
-            case 'popularity':
-              return (b.popularity || 0) - (a.popularity || 0)
-            case 'birthdate':
-              if (!a.birthdate) return 1
-              if (!b.birthdate) return -1
-              return new Date(b.birthdate).getTime() - new Date(a.birthdate).getTime()
-            default:
-              return 0
-          }
-        })
-
         setPeople(peopleList)
-        setTotalPages(1)
-        setTotal(peopleList.length)
-        setLoading(false)
+        setTotalPages(response.meta?.pages || 1)
+        setTotal(response.meta?.total || 0)
       } else {
         setError('Error loading people')
-        setLoading(false)
       }
     } catch (err) {
       console.error('Error loading people:', err)
       setError('Error loading people')
+    } finally {
       setLoading(false)
     }
-  }
+  }, [currentPage, filters])
+
+  useEffect(() => {
+    loadPeople()
+  }, [loadPeople])
 
   const handleSearch = (value: string) => {
     setFilters(prev => ({ ...prev, search: value }))
@@ -113,7 +97,7 @@ export default function PeoplePage() {
     return locale === 'en' ? `/person/${slug}` : `/persona/${slug}`
   }
 
-  const handlePersonClick = (person: any) => {
+  const handlePersonClick = (person: Person) => {
     trackClick('person', 'view_profile', person.name)
     navigate(getPersonUrl(person.slug))
   }
