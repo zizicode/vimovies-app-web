@@ -3,7 +3,6 @@ import { lazy, Suspense } from 'react'
 import Layout from '../components/layout'
 
 const Home = lazy(() => import('../pages/Home'))
-const MaintenancePage = lazy(() => import('../pages/MaintenancePage'))
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'))
 // const GenrePage = lazy(() => import('../pages/GenrePage'))
 const GenresPage = lazy(() => import('../pages/GenresPage'))

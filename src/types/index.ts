@@ -320,7 +320,3 @@ export interface ErrorResponse {
 // ----------------------------------------------------------------------------
 // 🚀 EJEMPLOS DE USO EN FRONTEND (RESPUESTAS ESPECÍFICAS)
 // ----------------------------------------------------------------------------
-  
-export interface MovieListResponse extends PaginatedResponse<Media> {}
-export interface MovieDetailResponse extends SingleResponse<MediaDetail> {}
-export interface SearchResponse extends PaginatedResponse<Media> {}
