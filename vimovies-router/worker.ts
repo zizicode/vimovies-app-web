@@ -6,7 +6,7 @@
 
 // ── Configura tus URLs reales aquí ──────────────────────────
 const VERCEL_URL = 'https://vimovies.com'    // Tu frontend en Vercel
-const API_URL    = 'https://vimovies-api-rest.onrender.com' // Tu API Hono en Render
+const API_URL    = 'https://api.vimovies.com' // Tu API Hono en Render
 
 // ── Patrón de bots conocidos ────────────────────────────────
 const BOT_PATTERN = /googlebot|google-inspectiontool|bingbot|slurp|duckduckbot|baiduspider|yandexbot|sogou|exabot|facebot|facebookexternalhit|twitterbot|linkedinbot|whatsapp|telegrambot|applebot|semrushbot|ahrefsbot|mj12bot|dotbot|rogerbot|screaming.frog/i
@@ -20,6 +20,11 @@ const HONO_ROUTES = [
   '/rss.xml',
 ]
 
+// ── Patrones de rutas que siempre sirven Hono ───────────────
+const HONO_PATTERNS = [
+  /^\/sitemap-.*\.xml$/, // Todos los sitemaps individuales
+]
+
 export default {
   async fetch(request: Request): Promise<Response> {
     try {
@@ -28,7 +33,7 @@ export default {
       const isBot = BOT_PATTERN.test(ua)
 
       // 1. Rutas estáticas SEO → siempre van a Hono
-      if (HONO_ROUTES.includes(url.pathname)) {
+      if (HONO_ROUTES.includes(url.pathname) || HONO_PATTERNS.some(pattern => pattern.test(url.pathname))) {
         return await proxyToHono(url.pathname + url.search)
       }
 
