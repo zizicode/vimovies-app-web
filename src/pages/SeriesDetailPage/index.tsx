@@ -4,15 +4,14 @@ import { SEO } from '../../hooks/useSEO'
 import { useAlternateUrls } from '../../hooks/useAlternateUrls'
 import { mediaApi } from '../../lib/api/media'
 import type { Media } from '../../lib/api/types'
-import { getPosterUrl, getBackdropUrl, minutesToISO8601Duration } from '../../utils/image.utils'
-import { useLocale, useT } from '../../store/locate.store'
+import { getPosterUrl, getBackdropUrl } from '../../utils/image.utils'
+import { useLocale } from '../../store/locate.store'
 import './SeriesDetailPage.scss'
 
 export default function SeriesDetailPage() {
   const { slug } = useParams<{ slug: string }>()
   const { pathname } = useLocation()
   const locale = useLocale()
-  const t = useT()
   const { forSeries } = useAlternateUrls()
   const [series, setSeries] = useState<Media | null>(null)
   const [loading, setLoading] = useState(true)

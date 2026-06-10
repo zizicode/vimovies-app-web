@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react'
 import { useParams, useLocation } from 'react-router-dom'
 import { SEO } from '../../hooks/useSEO'
 import { useAlternateUrls } from '../../hooks/useAlternateUrls'
-import { genresApi, type GenreStats, type GenreWithMediaResponse } from '../../lib/api/genres'
+import { genresApi } from '../../lib/api/genres'
 import { mediaApi } from '../../lib/api/media'
 import { useLocalizedContent } from '../../lib/i18n/content'
 import { useLocale, useT } from '../../store/locate.store'
@@ -17,7 +17,7 @@ export default function GenrePage() {
   const { pathname } = useLocation()
   const locale = useLocale()
   const t = useT()
-  const { getGenreName, getGenreDescription, getPath } = useLocalizedContent()
+  const { getGenreName, getGenreDescription } = useLocalizedContent()
   const { forGenre } = useAlternateUrls()
 
   const isEnglish = pathname.startsWith('/genre/')
@@ -45,9 +45,14 @@ export default function GenrePage() {
   const prevDepsRef = useRef<{ selectedGenreSlug: string | null; currentPage: number; searchQuery: string; showAll: boolean } | null>(null)
 
   useEffect(() => {
+    // Reset state when slug changes
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSelectedGenreSlug(slug || null)
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setShowAll(!slug)
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrentPage(1)
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSearchQuery('')
     prevDepsRef.current = null // Reset ref to force reload on slug change
   }, [slug])
@@ -133,6 +138,7 @@ export default function GenrePage() {
 
   useEffect(() => {
     if (searchQuery) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setCurrentPage(1)
     }
   }, [searchQuery])
