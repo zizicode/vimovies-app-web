@@ -80,29 +80,32 @@ export default function MoviesPage() {
     }
   }, [currentPage, filters])
 
-  // eslint-disable-next-line react-hooks/set-state-in-effect
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     loadGenres()
   }, [loadGenres])
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   // Leer query param genre y establecer filtro
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     const genreSlug = searchParams.get('genre')
     if (genreSlug && genres.length > 0) {
       const genre = genres.find((g: Genre) => g.slug === genreSlug)
       if (genre) {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
         setFilters(prev => ({ ...prev, genre_slug: genreSlug, genre_id: genre.id }))
       }
     } else if (!genreSlug) {
       setFilters(prev => ({ ...prev, genre_slug: null, genre_id: null }))
     }
   }, [searchParams, genres])
+  /* eslint-enable react-hooks/set-state-in-effect */
 
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadMovies()
   }, [loadMovies])
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const handleSearch = (value: string) => {
     setFilters(prev => ({ ...prev, search: value }))

@@ -25,6 +25,7 @@ export function PageLoader() {
 
   const isLoading = isChangingLocale || isPageLoading
 
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     if (isLoading) {
       startTimeRef.current = Date.now()
@@ -48,6 +49,7 @@ export function PageLoader() {
       return () => clearTimeout(fadeTimer)
     }
   }, [isLoading])
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   if (!visible) return null
 
