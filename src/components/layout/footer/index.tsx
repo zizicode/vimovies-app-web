@@ -7,7 +7,7 @@ import './footer.scss';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  const { t, locale } = useI18n();
+  const { t } = useI18n();
 
   const navLinks = [
     { key: 'nav.topbar.links.home', href: '/' },

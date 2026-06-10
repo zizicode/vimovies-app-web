@@ -28,7 +28,9 @@ export function PageLoader() {
   useEffect(() => {
     if (isLoading) {
       startTimeRef.current = Date.now()
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFadeOut(false)
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setVisible(true)
     } else {
       if (!startTimeRef.current) return
