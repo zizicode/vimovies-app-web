@@ -80,6 +80,7 @@ export default function MoviesPage() {
     }
   }, [currentPage, filters])
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => {
     loadGenres()
   }, [loadGenres])
@@ -94,7 +95,6 @@ export default function MoviesPage() {
         setFilters(prev => ({ ...prev, genre_slug: genreSlug, genre_id: genre.id }))
       }
     } else if (!genreSlug) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setFilters(prev => ({ ...prev, genre_slug: null, genre_id: null }))
     }
   }, [searchParams, genres])

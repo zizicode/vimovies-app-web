@@ -4,6 +4,7 @@ import { useI18n } from '../../store/locate.store';
 import Store from '../../store';
 import { MOCK_ARTICLES } from '../../mocks/RecentArticles.mocks';
 import { useGTM } from '../../hooks/useGTM';
+import type { Article } from '../../lib/api/types';
 import './RecentArticles.scss';
 
 const RecentArticles: React.FC = () => {
@@ -20,7 +21,7 @@ const RecentArticles: React.FC = () => {
     return locale === 'en' ? `/article/${slug}` : `/articulo/${slug}`;
   };
 
-  const handleArticleClick = (article: any) => {
+  const handleArticleClick = (article: Article) => {
     const title = locale === 'en' ? article.title_en : article.title_es;
     trackArticleClick(title, article.slug);
   };

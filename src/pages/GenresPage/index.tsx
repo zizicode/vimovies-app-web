@@ -62,7 +62,6 @@ export default function GenresPage() {
       }
     } else if (!slug && genres.length > 0) {
       // Si no hay slug, seleccionar el primer género
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveGenre(genres[0])
     }
   }, [slug, genres])

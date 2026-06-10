@@ -44,6 +44,7 @@ export default function GenrePage() {
   // Ref to track previous dependencies to avoid unnecessary refetches
   const prevDepsRef = useRef<{ selectedGenreSlug: string | null; currentPage: number; searchQuery: string; showAll: boolean } | null>(null)
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => {
     // Reset state when slug changes
     setSelectedGenreSlug(slug || null)
