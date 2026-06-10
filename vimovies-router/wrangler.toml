@@ -2,7 +2,7 @@
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
 
 name       = "vimovies-router"
-main       = "worker.ts"
+main       = "worker.js"
 account_id = "TU_ACCOUNT_ID"       # Encuéntralo en dash.cloudflare.com → perfil derecho
 compatibility_date = "2024-09-01"
 
