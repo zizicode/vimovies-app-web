@@ -11,16 +11,6 @@ export default defineConfig({
   ],
   build: {
     minify: 'esbuild',
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'router': ['react-router-dom'],
-          'axios': ['axios'],
-          'helmet': ['react-helmet-async'],
-        }
-      }
-    }
   },
   css: {
     modules: {
