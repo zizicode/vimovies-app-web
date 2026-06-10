@@ -81,7 +81,6 @@ export default function MoviesPage() {
   }, [currentPage, filters])
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadGenres()
   }, [loadGenres])
 

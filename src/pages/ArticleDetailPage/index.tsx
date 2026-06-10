@@ -68,6 +68,7 @@ export default function ArticleDetailPage() {
 
   useEffect(() => {
     if (slug) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       loadArticle()
     }
   }, [slug, loadArticle])

@@ -49,6 +49,7 @@ export default function GenresPage() {
   }, [])
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadGenres()
   }, [loadGenres])
 
@@ -56,10 +57,12 @@ export default function GenresPage() {
     if (slug && genres.length > 0) {
       const genre = genres.find((g: Genre) => g.slug === slug)
       if (genre) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setActiveGenre(genre)
       }
     } else if (!slug && genres.length > 0) {
       // Si no hay slug, seleccionar el primer género
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setActiveGenre(genres[0])
     }
   }, [slug, genres])

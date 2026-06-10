@@ -1,10 +1,16 @@
 import { Link } from 'react-router-dom'
 import { useLocale } from '../../../../store/locate.store'
 import { useGTM } from '../../../../hooks/useGTM'
+import type { Article } from '../../../../lib/api/types'
 import './ArticleCard.scss'
 
+interface ArticleTag {
+  name_en: string
+  name_es: string
+}
+
 interface ArticleCardProps {
-  article: any
+  article: Article
   url: string
 }
 
@@ -42,7 +48,7 @@ export default function ArticleCard({ article, url }: ArticleCardProps) {
       <div className="article-card__content">
         {article.tags && article.tags.length > 0 && (
           <div className="article-card__tags">
-            {article.tags.slice(0, 3).map((tag: any, index: number) => (
+            {article.tags.slice(0, 3).map((tag: ArticleTag, index: number) => (
               <span key={index} className="article-card__tag">
                 {locale === 'en' ? tag.name_en : tag.name_es}
               </span>
