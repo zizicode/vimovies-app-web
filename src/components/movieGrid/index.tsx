@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocale } from '../../store/locate.store';
 import { getPosterUrl, getPosterSrcSet } from '../../utils/image.utils';
 import { useGTM } from '../../hooks/useGTM';
-import { useT } from '../../store/locate.store';
 import './MovieGrid.scss';
 
 interface MediaCard {
@@ -26,8 +25,19 @@ interface MovieGridProps {
 
 const MovieGrid: React.FC<MovieGridProps> = ({ movies }) => {
   const locale = useLocale();
-  const t = useT();
   const { trackMovieClick, trackNavigation } = useGTM();
+
+  // Shuffle determinista basado en locale para evitar error de pureza
+  const shuffledMovies = useMemo(() => {
+    const shuffled = [...movies];
+    // Usar locale como seed para shuffle determinista
+    const seed = locale.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor((seed + i) % (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }, [movies, locale]);
 
   const getMovieUrl = (slug: string) => {
     return locale === 'en' ? `/movie/${slug}` : `/pelicula/${slug}`;
@@ -38,12 +48,16 @@ const MovieGrid: React.FC<MovieGridProps> = ({ movies }) => {
   };
 
   const handleMovieClick = (movie: MediaCard) => {
-    const title = movie.title_es || movie.title_en || '';
-    trackMovieClick(title, movie.slug);
+    const title = locale === 'en' ? movie.title_en : movie.title_es;
+    trackMovieClick(title || '', movie.slug);
   };
 
   const handleViewMoreClick = () => {
     trackNavigation('movies_list', 'Ver Más');
+  };
+
+  const getTitle = (movie: MediaCard) => {
+    return locale === 'en' ? movie.title_en : movie.title_es;
   };
 
   return (
@@ -52,13 +66,13 @@ const MovieGrid: React.FC<MovieGridProps> = ({ movies }) => {
 
         {/* El contenedor principal de la Grid */}
         <div className="movie-grid">
-          {movies.length === 0 ? (
+          {shuffledMovies.length === 0 ? (
             <div className="movie-grid__empty">
               <p>{locale === 'en' ? 'No movies available' : 'No hay películas disponibles'}</p>
             </div>
           ) : (
-            movies.map((movie) => {
-              const title = movie.title_es || movie.title_en || '';
+            shuffledMovies.map((movie) => {
+              const title = getTitle(movie);
               // const posterUrl = getPosterUrl(movie.poster_path, 'w185');
               const posterSrcSet = getPosterSrcSet(movie.poster_path);
 

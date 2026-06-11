@@ -1,3 +1,6 @@
 declare module "cloudflare:test" {
-	// ProvidedEnv extends Env with test-specific bindings
+	interface Env {
+		API_URL: string;
+		VERCEL_URL: string;
+	}
 }

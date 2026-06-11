@@ -32,15 +32,14 @@ export const useMoviesStore = create<MoviesState>((set) => ({
     })),
 
   fetchMovies: async () => {
-    // Si ya se intentó cargar, no volvemos a pedir
-    const state = useMoviesStore.getState();
-    if (state.isFetched) return;
-
     try {
       set({ loading: true })
 
       const { data } =
-        await MoviesService.getAll()
+        await MoviesService.getAll({
+          sort_by: 'tmdb_popularity',
+          sort_order: 'desc'
+        })
 
       set({
         movies: data.data,
@@ -61,7 +60,10 @@ export const useMoviesStore = create<MoviesState>((set) => ({
       set({ loading: true })
 
       const { data } =
-        await MoviesService.getAll()
+        await MoviesService.getAll({
+          sort_by: 'tmdb_popularity',
+          sort_order: 'desc'
+        })
 
       set({
         movies: data.data,

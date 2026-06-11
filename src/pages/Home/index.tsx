@@ -70,7 +70,22 @@ function Home() {
   const featuredMovies = useMemo(() => {
     if (movies.length === 0) return []
 
-    return movies.slice(0, 5).map((movie) => {
+    // Ordenar por popularidad y fecha de lanzamiento descendente
+    const sortedMovies = [...movies].sort((a, b) => {
+      const popularityA = a.tmdb_popularity ?? 0;
+      const popularityB = b.tmdb_popularity ?? 0;
+      const dateA = a.release_date ? new Date(a.release_date).getTime() : 0;
+      const dateB = b.release_date ? new Date(b.release_date).getTime() : 0;
+
+      // Primero por popularidad descendente
+      if (popularityA !== popularityB) {
+        return popularityB - popularityA;
+      }
+      // Luego por fecha de lanzamiento descendente (más recientes primero)
+      return dateB - dateA;
+    });
+
+    return sortedMovies.slice(0, 5).map((movie) => {
       const title = locale === 'en' ? movie.title_en : movie.title_es
       const synopsis = locale === 'en' ? movie.synopsis_en : movie.synopsis_es
       const year = movie.release_date ? new Date(movie.release_date).getFullYear() : 2024

@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 
+# Rutas que NO deben indexarse
+Disallow: /api/
+Disallow: /admin/
+Disallow: /render/
+Disallow: /*?*
+
+# Sitemaps
 Sitemap: https://vimovies.com/sitemap.xml

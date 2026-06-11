@@ -64,7 +64,7 @@ export default function ArticleDetailPage() {
       setError(isEnglish ? 'Error loading article' : 'Error al cargar el artículo')
       setLoading(false)
     }
-  }, [isEnglish, slug])
+  }, [isEnglish])
 
   useEffect(() => {
     if (slug) {

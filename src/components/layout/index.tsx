@@ -16,7 +16,7 @@ function Layout() {
   useEffect(() => {
     const pageTitle = document.title || 'Vimovies'
     trackPageView(pageTitle, location.pathname)
-  }, [location.pathname])
+  }, [location.pathname, trackPageView])
 
   return (
     <div className="app-layout">

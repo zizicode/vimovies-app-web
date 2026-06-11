@@ -22,6 +22,13 @@ const MovieTendencies: React.FC = () => {
   const [atEnd, setAtEnd] = useState(false);
   const {movies} = useMoviesStore()
 
+  // Ordenar por editorial_rating descendente
+  const sortedMovies = [...movies].sort((a, b) => {
+    const ratingA = a.editorial_rating ?? 0;
+    const ratingB = b.editorial_rating ?? 0;
+    return ratingB - ratingA;
+  });
+
   const getMovieUrl = (slug: string) => {
     return locale === 'en' ? `/movie/${slug}` : `/pelicula/${slug}`;
   };
@@ -46,7 +53,7 @@ const MovieTendencies: React.FC = () => {
       el.removeEventListener('scroll', sync);
       ro.disconnect();
     };
-  }, [movies]); // Re-sincronizar si cambian las películas
+  }, [sortedMovies]); // Re-sincronizar si cambian las películas ordenadas
 
   const scroll = (dir: 'left' | 'right') => {
     const el = trackRef.current;
@@ -77,12 +84,12 @@ const MovieTendencies: React.FC = () => {
 
           {/* Track del Slider */}
           <ul className='container_movie' ref={trackRef}>
-            {movies.length === 0 ? (
+            {sortedMovies.length === 0 ? (
               <li className="tendencies__empty">
                 <p>{locale === 'en' ? 'No trending movies available' : 'No hay películas en tendencia'}</p>
               </li>
             ) : (
-              movies.map((movie, index) => {
+              sortedMovies.map((movie, index) => {
                 const title = locale === 'en' ? movie.title_en : movie.title_es;
                 const synopsis = locale === 'en' ? movie.synopsis_en : movie.synopsis_es;
                 const year = movie.release_date ? new Date(movie.release_date).getFullYear() : 'N/A';

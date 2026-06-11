@@ -64,7 +64,7 @@ export default function ArticlesPage() {
       setError('Error loading articles')
       setLoading(false)
     }
-  }, [currentPage, filters, locale])
+  }, [])
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect

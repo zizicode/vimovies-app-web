@@ -2,7 +2,7 @@
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
 
 name = "vimovies-router"
-main = "dist/worker.js"
+main = "dist/index.js"
 compatibility_date = "2026-06-02"
 account_id = "7173f91b72aceab500acf1f6baeabf4b"
 
@@ -25,3 +25,8 @@ zone_name = "vimovies.com"
 [[routes]]
 pattern = "www.vimovies.com/*"
 zone_name = "vimovies.com"
+
+# Environment variables
+[vars]
+API_URL = "https://api.vimovies.com"
+VERCEL_URL = "https://vimovies.com"

@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import type { Media } from '../../../lib/api/types'
 import { getProfileUrl } from '../../../utils/image.utils'
@@ -16,7 +16,7 @@ export default function CastSlider({ movie }: CastSliderProps) {
   const t = useT()
   const isEnglish = locale === 'en'
 
-  const credits = movie.credits?.slice(0, 20) ?? []
+  const credits = useMemo(() => movie.credits?.slice(0, 20) ?? [], [movie.credits])
 
   useEffect(() => {
     const checkScroll = () => {

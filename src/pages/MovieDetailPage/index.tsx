@@ -59,7 +59,7 @@ export default function MovieDetailPage() {
     }
 
     fetchMovie()
-  }, [slug, isEnglish, pathname])
+  }, [slug, isEnglish, pathname, setPageLoading, trackPageView])
 
   return (
     <div className="movie-detail">

@@ -143,8 +143,8 @@
   },
   "pages": {
     "contact": {
-      "title": "Contact | ViMovies",
-      "description": "Get in touch with the ViMovies team. We are here to help you.",
+      "title": "Contact | Vimovies",
+      "description": "Get in touch with the Vimovies team. We are here to help you.",
       "heading": "Contact",
       "subtitle": "We are here to help you. Send us a message and we will respond as soon as possible.",
       "infoTitle": "Contact Information",
@@ -159,16 +159,16 @@
       "submitBtn": "Send message"
     },
     "about": {
-      "title": "About Us | ViMovies",
-      "description": "Learn about ViMovies, our mission, and our passion for cinema and movie recommendations.",
+      "title": "About Us | Vimovies",
+      "description": "Learn about Vimovies, our mission, and our passion for cinema and movie recommendations.",
       "heading": "About Us",
       "subtitle": "Passion for cinema, community, and inspiring recommendations"
     },
     "sitemap": {
-      "title": "Sitemap | ViMovies",
-      "description": "Navigate easily through all sections of ViMovies",
+      "title": "Sitemap | Vimovies",
+      "description": "Navigate easily through all sections of Vimovies",
       "heading": "Sitemap",
-      "subtitle": "Navigate easily through all sections of ViMovies",
+      "subtitle": "Navigate easily through all sections of Vimovies",
       "sections": {
         "main": "Main",
         "info": "Information",
@@ -178,26 +178,26 @@
       "footerLink": "Contact us"
     },
     "terms": {
-      "title": "Terms of Service | ViMovies",
-      "description": "Read our Terms of Service to understand your rights and responsibilities when using ViMovies."
+      "title": "Terms of Service | Vimovies",
+      "description": "Read our Terms of Service to understand your rights and responsibilities when using Vimovies."
     },
     "privacy": {
-      "title": "Privacy Policy | ViMovies",
-      "description": "Learn how ViMovies collects, uses, and protects your personal information."
+      "title": "Privacy Policy | Vimovies",
+      "description": "Learn how Vimovies collects, uses, and protects your personal information."
     },
     "cookies": {
-      "title": "Cookie Policy | ViMovies",
-      "description": "Learn about the cookies ViMovies uses, why we use them, and how you can manage your preferences."
+      "title": "Cookie Policy | Vimovies",
+      "description": "Learn about the cookies Vimovies uses, why we use them, and how you can manage your preferences."
     }
   },
   "people": {
-    "pageTitle": "People | ViMovies",
-    "pageDescription": "Discover actors and directors on ViMovies."
+    "pageTitle": "People | Vimovies",
+    "pageDescription": "Discover actors and directors on Vimovies."
   },
   "components": {
     "movieTendencies": {
       "thisWeek": "This week",
-      "trends": "Trends",
+      "trends": "Popular movies",
       "previous": "Previous",
       "next": "Next",
       "saveMovie": "Save movie",

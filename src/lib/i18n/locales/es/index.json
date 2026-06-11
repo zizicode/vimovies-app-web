@@ -143,8 +143,8 @@
   },
   "pages": {
     "contact": {
-      "title": "Contacto | ViMovies",
-      "description": "Ponte en contacto con el equipo de ViMovies. Estamos aquí para ayudarte.",
+      "title": "Contacto | Vimovies",
+      "description": "Ponte en contacto con el equipo de Vimovies. Estamos aquí para ayudarte.",
       "heading": "Contacto",
       "subtitle": "Estamos aquí para ayudarte. Envíanos un mensaje y te responderemos lo antes posible.",
       "infoTitle": "Información de contacto",
@@ -159,13 +159,13 @@
       "submitBtn": "Enviar mensaje"
     },
     "about": {
-      "title": "Sobre Nosotros | ViMovies",
-      "description": "Conoce a ViMovies, nuestra misión y nuestra pasión por el cine y las recomendaciones de películas.",
+      "title": "Sobre Nosotros | Vimovies",
+      "description": "Conoce a Vimovies, nuestra misión y nuestra pasión por el cine y las recomendaciones de películas.",
       "heading": "Sobre Nosotros",
       "subtitle": "Pasión por el cine, comunidad y recomendaciones que inspiran"
     },
     "sitemap": {
-      "title": "Mapa del sitio | ViMovies",
+      "title": "Mapa del sitio | Vimovies",
       "description": "Navega fácilmente por todas las secciones de Vimovies",
       "heading": "Mapa del sitio",
       "subtitle": "Navega fácilmente por todas las secciones de Vimovies",
@@ -178,26 +178,26 @@
       "footerLink": "Contáctanos"
     },
     "terms": {
-      "title": "Términos y Condiciones | ViMovies",
-      "description": "Lee nuestros Términos y Condiciones para entender tus derechos y responsabilidades al usar ViMovies."
+      "title": "Términos y Condiciones | Vimovies",
+      "description": "Lee nuestros Términos y Condiciones para entender tus derechos y responsabilidades al usar Vimovies."
     },
     "privacy": {
-      "title": "Política de Privacidad | ViMovies",
+      "title": "Política de Privacidad | Vimovies",
       "description": "Aprende cómo Vimovies recopila, usa y protege tu información personal."
     },
     "cookies": {
-      "title": "Política de Cookies | ViMovies",
+      "title": "Política de Cookies | Vimovies",
       "description": "Aprende sobre las cookies que usa Vimovies, por qué las usamos y cómo puedes gestionar tus preferencias."
     }
   },
   "people": {
-    "pageTitle": "Personas | ViMovies",
-    "pageDescription": "Descubre actores y directores en ViMovies."
+    "pageTitle": "Personas | Vimovies",
+    "pageDescription": "Descubre actores y directores en Vimovies."
   },
   "components": {
     "movieTendencies": {
       "thisWeek": "Esta semana",
-      "trends": "Tendencias",
+      "trends": "Películas más populares",
       "previous": "Anteriores",
       "next": "Siguientes",
       "saveMovie": "Guardar película",
