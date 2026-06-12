@@ -23,7 +23,7 @@ const RecentArticles: React.FC = () => {
 
   const handleArticleClick = (article: Article) => {
     const title = locale === 'en' ? article.title_en : article.title_es;
-    trackArticleClick(title, article.slug);
+    trackArticleClick(title ?? "No disponible", article.slug);
   };
 
   const handleViewMoreClick = () => {

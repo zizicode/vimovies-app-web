@@ -61,18 +61,34 @@ export interface Rating {
   fetched_at?: string
 }
 
+export interface WatchPlatform {
+  id: number
+  slug: string
+  name_en: string
+  name_es: string
+  logo_url: string | null
+  platform_type: string
+  affiliate_url_en: string | null
+  affiliate_url_es: string | null
+}
+
 export interface WatchProvider {
   id: string
   media_id: string
   platform_id: number
   region_code: string
+
   is_streaming: boolean
   is_rent: boolean
   is_buy: boolean
+
   rent_price_usd: number | null
   buy_price_usd: number | null
-  affiliate_url: string | null
+
   watch_url: string
+  affiliate_url: string | null
+
+  platform: WatchPlatform
 }
 
 export interface Video {
@@ -91,18 +107,21 @@ export interface FAQ {
   display_order?: number
 }
 
+export interface MediaMinimal {
+  id: number
+  slug: string
+  title_es: string
+  title_en: string
+  poster_path: string
+  release_date: string
+  editorial_rating?: number | null
+}
+
 export interface MediaMention {
   media_id: string
   mention_type: 'primary' | 'supporting' | 'mentioned'
   display_order?: number
-  media?: {
-    id: number
-    slug: string
-    title_es: string
-    title_en: string
-    poster_path: string
-    release_date: string
-  }
+  media?: MediaMinimal
 }
 
 export interface Tag {
