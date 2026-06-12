@@ -163,7 +163,7 @@ function Home() {
   return (
     <div className="Home">
       <SEO
-        title={locale === 'en' ? 'Vimovies - Movies & Series for Streaming' : 'Vimovies - Películas y Series para Streamings'}
+        title={locale === 'en' ? 'Vimovies | Movies & Series for Streaming' : 'Vimovies | Películas y Series para Streamings'}
         description={locale === 'en' ? 'Discover the best movies and series on Netflix, Disney+, HBO and more streaming platforms.' : 'Descubre las mejores películas y series disponibles en Netflix, Disney+, HBO y más plataformas de streaming.'}
         canonical="https://vimovies.com/"
         type="website"
