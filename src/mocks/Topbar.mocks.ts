@@ -4,7 +4,6 @@ export const topbarMocks = {
     { key: 'nav.topbar.links.movies', href: '/peliculas' },
     { key: 'nav.topbar.links.genres', href: '/generos' },
     { key: 'nav.topbar.links.actors', href: '/actores' },
-    { key: 'nav.topbar.links.premieres', href: '/estrenos' },
     { key: 'nav.topbar.links.blog', href: '/articles' },
     { key: 'nav.topbar.links.about', href: '/sobre-nosotros' },
   ],

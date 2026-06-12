@@ -4,7 +4,7 @@ export const MOCK_PLATFORMS: Platform[] = [
   {
     provider_id: 0,
     provider_name: 'Ver Ahora',
-    logo_path: null,
+    logo_path: "",
     display_priority: 0,
   },
   {

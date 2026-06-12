@@ -1,6 +1,9 @@
 import axios from 'axios'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
+// En desarrollo usar localhost, en producción usar ruta relativa para que Vercel rewrite funcione
+const API_URL = import.meta.env.MODE === 'development'
+  ? (import.meta.env.VITE_API_URL || 'http://localhost:3000/api')
+  : '/api'
 
 export const apiClient = axios.create({
   baseURL: API_URL,

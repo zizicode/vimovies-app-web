@@ -3,7 +3,7 @@ import { useParams, useLocation } from 'react-router-dom'
 import { SEO } from '../../hooks/useSEO'
 import { useAlternateUrls } from '../../hooks/useAlternateUrls'
 import { useLocale } from '../../store/locate.store'
-import type { Article } from '../../lib/api/types'
+import type { Article, MediaMention } from '../../lib/api/types'
 import { mockArticleDetail } from '../ArticlesPage/mock-articles'
 import MovieCard from '../MoviesPage/components/MovieCard'
 import './ArticleDetailPage.scss'
@@ -20,11 +20,6 @@ interface ArticleFAQ {
   answer_es: string
 }
 
-interface ArticleMention {
-  movie_slug: string
-  movie_title_en: string
-  movie_title_es: string
-}
 
 export default function ArticleDetailPage() {
   const { slug } = useParams<{ slug: string }>()
@@ -262,7 +257,7 @@ export default function ArticleDetailPage() {
                         {isEnglish ? 'Movies Mentioned' : 'Películas Mencionadas'}
                       </h3>
                       <div className="article-detail-page__mentioned-movies">
-                        {article.mentions.map((mention: ArticleMention, index: number) => (
+                        {article.mentions?.map((mention: MediaMention, index: number) => (
                           mention.media && (
                             <MovieCard
                               key={index}

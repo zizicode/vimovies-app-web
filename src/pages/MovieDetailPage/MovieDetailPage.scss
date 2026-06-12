@@ -476,6 +476,8 @@
   width: 100%;
   padding: $space-8 $view-padding;
   background: $violet-deep;
+  position:relative;
+  z-index: 61;
 
   .plataforms_inner {
     max-width: $content-max-w;
@@ -489,25 +491,21 @@
     font-weight: $font-weight-bold;
     color: $text-inverse;
     margin-bottom: $space-8;
-
-    span {
-      // color: $text-primary;
-    }
   }
 
-  .plataforms_chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $space-6; // gap más compacto para que respire bien en 2 líneas
-    align-items: center;
-    row-gap: $space-4; // espacio vertical entre filas ligeramente mayor
-  }
+  // .plataforms_chips {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   gap: $space-6; // gap más compacto para que respire bien en 2 líneas
+  //   align-items: center;
+  //   row-gap: $space-4; // espacio vertical entre filas ligeramente mayor
+  // }
 
 
   @media (max-width: $bp-lg) {
-    .plataforms_chips {
-      justify-content: space-between;
-    }
+    // .plataforms_chips {
+    //   justify-content: space-between;
+    // }
 
     .plataforms_title {
       text-align: center;
@@ -524,140 +522,140 @@
 
   }
 
-  .platform_chip {
-    display: inline-flex;
-    align-items: center;
-    gap: $space-4;
-    padding: 6px 14px 6px 8px;
-    border-radius: $radius-sm;
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    background: $violet-hover-bg;
-    // background: rgba(255, 255, 255, 0.06);
-    cursor: pointer;
-    transition: $transition-default;
-    white-space: nowrap;
-    // altura fija para que ambas filas sean exactamente iguales
-    height: 38px;
+  // .platform_chip {
+  //   display: inline-flex;
+  //   align-items: center;
+  //   gap: $space-4;
+  //   padding: 6px 14px 6px 8px;
+  //   border-radius: $radius-sm;
+  //   border: 1px solid rgba(255, 255, 255, 0.10);
+  //   background: $violet-hover-bg;
+  //   // background: rgba(255, 255, 255, 0.06);
+  //   cursor: pointer;
+  //   transition: $transition-default;
+  //   white-space: nowrap;
+  //   // altura fija para que ambas filas sean exactamente iguales
+  //   height: 38px;
 
-    &:hover {
-      background: rgba(255, 255, 255, 0.11);
-      border-color: rgba(255, 255, 255, 0.22);
-      transform: translateY(-1px);
-    }
-  }
+  //   &:hover {
+  //     background: rgba(255, 255, 255, 0.11);
+  //     border-color: rgba(255, 255, 255, 0.22);
+  //     transform: translateY(-1px);
+  //   }
+  // }
 
-  .platform_chip__logo {
-    width: 22px;
-    height: 22px;
-    border-radius: $radius-sm;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: $font-display;
-    font-size: 8px;
-    font-weight: $font-weight-bold;
-    flex-shrink: 0;
-    overflow: hidden;
+  // .platform_chip__logo {
+  //   width: 22px;
+  //   height: 22px;
+  //   border-radius: $radius-sm;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   font-family: $font-display;
+  //   font-size: 8px;
+  //   font-weight: $font-weight-bold;
+  //   flex-shrink: 0;
+  //   overflow: hidden;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: $radius-sm;
-    }
-  }
+  //   img {
+  //     width: 100%;
+  //     height: 100%;
+  //     object-fit: contain;
+  //     border-radius: $radius-sm;
+  //   }
+  // }
 
-  .platform_chip__play {
-    width: 20px;
-    height: 20px;
-    // border-radius: $radius-full;
-    // background: $green;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
+  // .platform_chip__play {
+  //   width: 20px;
+  //   height: 20px;
+  //   // border-radius: $radius-full;
+  //   // background: $green;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   flex-shrink: 0;
+  // }
 
-  .platform_chip__name {
-    font-family: $font-body;
-    font-size: $font-size-md;
-    font-weight: $font-weight-medium;
-    color: rgba(255, 255, 255, 0.82);
-    line-height: 1;
-  }
+  // .platform_chip__name {
+  //   font-family: $font-body;
+  //   font-size: $font-size-md;
+  //   font-weight: $font-weight-medium;
+  //   color: rgba(255, 255, 255, 0.82);
+  //   line-height: 1;
+  // }
 
-  // El divisor desaparece si hay wrap para no quedar solo en una línea
-  .chips_divider {
-    width: 1px;
-    height: 20px;
-    background: rgba(255, 255, 255, 0.52);
-    flex-shrink: 0;
+  // // El divisor desaparece si hay wrap para no quedar solo en una línea
+  // .chips_divider {
+  //   width: 1px;
+  //   height: 20px;
+  //   background: rgba(255, 255, 255, 0.52);
+  //   flex-shrink: 0;
 
-    @media (max-width: $bp-lg) {
-      display: none;
-    }
-  }
+  //   @media (max-width: $bp-lg) {
+  //     display: none;
+  //   }
+  // }
 
-  .platform_chip--cta {
-    background: $violet-ghost;
-    border: 1px solid $violet;
-    padding: 6px 16px 6px 10px;
-    height: 38px;
-    animation: heartbeat 1s $transition-easing-in-out infinite;
+  // .platform_chip--cta {
+  //   background: $violet-ghost;
+  //   border: 1px solid $violet;
+  //   padding: 6px 16px 6px 10px;
+  //   height: 38px;
+  //   animation: heartbeat 1s $transition-easing-in-out infinite;
 
-    &:hover {
-      background: $violet-rich;
-      border-color: $violet-ghost;
-      transform: translateY(-1px);
-      animation: none;
-      box-shadow: 0 4px 20px rgba(22, 163, 74, 0.5);
+  //   &:hover {
+  //     background: $violet-rich;
+  //     border-color: $violet-ghost;
+  //     transform: translateY(-1px);
+  //     animation: none;
+  //     box-shadow: 0 4px 20px rgba(22, 163, 74, 0.5);
 
-      // .platform_chip__play {
-      //   background: rgba(255, 255, 255, 0.25);
-      // }
-    }
+  //     // .platform_chip__play {
+  //     //   background: rgba(255, 255, 255, 0.25);
+  //     // }
+  //   }
 
-    .platform_chip__name {
-      color: $text-primary;
-      font-weight: $font-weight-semibold;
-    }
+  //   .platform_chip__name {
+  //     color: $text-primary;
+  //     font-weight: $font-weight-semibold;
+  //   }
 
-    &:hover svg {
-      color: $text-inverse;
-    }
+  //   &:hover svg {
+  //     color: $text-inverse;
+  //   }
 
-    &:hover .platform_chip__name {
-      color: $text-inverse;
-    }
-  }
+  //   &:hover .platform_chip__name {
+  //     color: $text-inverse;
+  //   }
+  // }
 
-  .platform_chip--cta .platform_chip__play {
+  // .platform_chip--cta .platform_chip__play {
 
-    // background: rgba(22, 163, 74, 0.20);
-    // border: 1px solid rgba(22, 163, 74, 0.35);
+  //   // background: rgba(22, 163, 74, 0.20);
+  //   // border: 1px solid rgba(22, 163, 74, 0.35);
 
-    svg {
-      width: 25px !important;
-    }
-  }
+  //   svg {
+  //     width: 25px !important;
+  //   }
+  // }
 
-  @keyframes heartbeat {
-    0% {
-      box-shadow: 0 0 0 0px rgba(134, 239, 172, 0.45);
-    }
+  // @keyframes heartbeat {
+  //   0% {
+  //     box-shadow: 0 0 0 0px rgba(134, 239, 172, 0.45);
+  //   }
 
-    40% {
-      box-shadow: 0 0 0 6px rgba(134, 239, 172, 0.22);
-    }
+  //   40% {
+  //     box-shadow: 0 0 0 6px rgba(134, 239, 172, 0.22);
+  //   }
 
-    70% {
-      box-shadow: 0 0 0 10px rgba(134, 239, 172, 0.10);
-    }
+  //   70% {
+  //     box-shadow: 0 0 0 10px rgba(134, 239, 172, 0.10);
+  //   }
 
-    100% {
-      box-shadow: 0 0 0 0px rgba(134, 239, 172, 0);
-    }
-  }
+  //   100% {
+  //     box-shadow: 0 0 0 0px rgba(134, 239, 172, 0);
+  //   }
+  // }
 }
 
 // ─────────────────────────────────────────

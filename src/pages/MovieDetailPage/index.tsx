@@ -16,14 +16,13 @@ import EditorialReview from './components/EditorialReview'
 import FaqAccordion from './components/FaqAccordion'
 import './MovieDetailPage.scss'
 import PlataformsList from './components/PlataformsList'
-import { MOCK_PLATFORMS } from '../../mocks/plataforms.mock'
 
 export default function MovieDetailPage() {
   const { slug } = useParams<{ slug: string }>()
   const locale = useLocale()
   const { pathname } = useLocation()
   const { forMovie } = useAlternateUrls()
-  const { setPageLoading } = usePageLoaderStore()
+  const { setPageLoading, isPageLoading } = usePageLoaderStore()
   const { trackPageView } = useGTM()
   const [movie, setMovie] = useState<Media | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -64,7 +63,11 @@ export default function MovieDetailPage() {
   return (
     <div className="movie-detail">
       {/* Error State */}
-      {error && (
+      {isPageLoading ? (
+        <div className="movie-detail__loading">
+          <p>{locale === 'en' ? 'Loading...' : 'Cargando información...'}</p>
+        </div>
+      ) : error && (
         <div className="movie-detail__error">
           <div className="movie-detail__error-content">
             <h2>{error}</h2>
@@ -146,7 +149,7 @@ export default function MovieDetailPage() {
           <HeroSection movie={movie} />
 
           {/* Plataformas */}
-          <PlataformsList title={movie.title_es}  platforms={MOCK_PLATFORMS}/>
+          <PlataformsList watch_providers={movie.watch_providers} locale={locale} />
 
           {/* 2. Stats Bar - Valoración y Fecha Estreno */}
           {/* <QuickStatsBar movie={movie} /> */}
@@ -156,7 +159,7 @@ export default function MovieDetailPage() {
             <TabsSection movie={movie} />
           </div>
 
-          
+
 
           {/* 6. Editorial Review */}
           <EditorialReview movie={movie} />

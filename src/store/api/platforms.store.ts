@@ -22,6 +22,7 @@ export const usePlatformsStore = create<PlatformState>((set) => ({
       set({ loading: true })
 
       const { data } = await PlatformsService.getAll()
+      console.log(data)
 
       set({
         platforms: data.data,

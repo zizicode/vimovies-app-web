@@ -1,9 +1,7 @@
+import { useCallback } from 'react';
+
 interface GTMEvent {
   event: string;
-  eventCategory?: string;
-  eventAction?: string;
-  eventLabel?: string;
-  eventValue?: number;
   [key: string]: unknown;
 }
 
@@ -13,79 +11,61 @@ declare global {
   }
 }
 
+const push = (event: GTMEvent) => {
+  if (typeof window !== 'undefined' && Array.isArray(window.dataLayer)) {
+    window.dataLayer.push(event);
+  }
+};
+
 export const useGTM = () => {
-  const pushEvent = (event: GTMEvent) => {
-    if (typeof window !== 'undefined' && window.dataLayer) {
-      window.dataLayer.push(event);
-    }
-  };
+  const pushEvent = useCallback((event: GTMEvent) => {
+    push(event);
+  }, []);
 
-  const trackPageView = (pageTitle: string, pagePath: string) => {
-    pushEvent({
-      event: 'page_view',
-      page_title: pageTitle,
-      page_path: pagePath,
-    });
-  };
+  // Solo usar si tu SPA necesita disparar page_view manualmente en cambios de ruta.
+  // Si GTM ya lo maneja con historyChange trigger, elimina esto.
+  const trackPageView = useCallback((page_title: string, page_path: string) => {
+    push({ event: 'page_view', page_title, page_path });
+  }, []);
 
-  const trackClick = (category: string, action: string, label?: string) => {
-    pushEvent({
-      event: 'click',
-      eventCategory: category,
-      eventAction: action,
-      eventLabel: label,
-    });
-  };
+  const trackClick = useCallback((
+    category: string,
+    action: string,
+    label?: string
+  ) => {
+    push({ event: 'click', category, action, ...(label && { label }) });
+  }, []);
 
-  const trackMovieClick = (movieTitle: string, movieSlug: string) => {
-    pushEvent({
-      event: 'movie_click',
-      eventCategory: 'content',
-      eventAction: 'view_movie',
-      eventLabel: movieTitle,
-      movie_slug: movieSlug,
-    });
-  };
+  const trackMovieClick = useCallback((title: string, slug: string) => {
+    push({ event: 'movie_click', content_type: 'movie', title, slug });
+  }, []);
 
-  const trackArticleClick = (articleTitle: string, articleSlug: string) => {
-    pushEvent({
-      event: 'article_click',
-      eventCategory: 'content',
-      eventAction: 'view_article',
-      eventLabel: articleTitle,
-      article_slug: articleSlug,
-    });
-  };
+  const trackArticleClick = useCallback((title: string, slug: string) => {
+    push({ event: 'article_click', content_type: 'article', title, slug });
+  }, []);
 
-  const trackNavigation = (destination: string, label?: string) => {
-    pushEvent({
-      event: 'navigation',
-      eventCategory: 'navigation',
-      eventAction: 'click',
-      eventLabel: label || destination,
+  const trackNavigation = useCallback((destination: string, label?: string) => {
+    push({
+      event: 'navigation_click',
       destination,
+      ...(label && { label }),
     });
-  };
+  }, []);
 
-  const trackSearch = (searchTerm: string, resultCount?: number) => {
-    pushEvent({
+  const trackSearch = useCallback((
+    search_term: string,
+    result_count?: number
+  ) => {
+    push({
       event: 'search',
-      eventCategory: 'search',
-      eventAction: 'submit',
-      eventLabel: searchTerm,
-      search_term: searchTerm,
-      result_count: resultCount,
+      search_term,
+      ...(result_count !== undefined && { result_count }),
     });
-  };
+  }, []);
 
-  const trackFilter = (filterType: string, filterValue: string) => {
-    pushEvent({
-      event: 'filter',
-      eventCategory: 'filter',
-      eventAction: filterType,
-      eventLabel: filterValue,
-    });
-  };
+  const trackFilter = useCallback((filter_type: string, filter_value: string) => {
+    push({ event: 'filter_apply', filter_type, filter_value });
+  }, []);
 
   return {
     pushEvent,

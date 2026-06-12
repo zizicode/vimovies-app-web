@@ -1,0 +1,346 @@
+// ── CONTENEDOR ───────────────────────────────────────────────
+.container_plataforms {
+  padding-top: $space-12;
+}
+
+.plataforms_title {
+  font-family: $font-body;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: $text-muted;
+  margin-bottom: $space-10;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-widest;
+}
+
+.plataforms_chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3;
+  align-items: center;
+  justify-content: center;
+  
+  // Asegurar que el divider no rompa el centrado
+  .chips_divider {
+    margin: 0 $space-1;
+  }
+}
+
+// ── BASE CHIP ────────────────────────────────────────────────
+.platform_chip {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3 $space-8;
+  background: $bg-surface;
+  border: 1px solid $border-default;
+  border-radius: $radius-full;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: $font-body;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $text-secondary;
+  white-space: nowrap;
+  transition:
+    border-color 0.18s ease,
+    box-shadow   0.18s ease,
+    color        0.18s ease,
+    transform    0.15s $transition-easing-out;
+
+  &:hover {
+    border-color : rgba(var(--platform-glow), 0.55);
+    box-shadow   : 0 0 0 3px rgba(var(--platform-glow), 0.10),
+                   0 4px 12px rgba(var(--platform-glow), 0.14);
+    color        : $text-primary;
+    transform    : translateY(-1px);
+
+    .platform_chip__logo img {
+      transform  : scale(1.08);
+      filter     : brightness(1.08);
+    }
+  }
+
+  &:active {
+    transform  : translateY(0px);
+    box-shadow : 0 0 0 2px rgba(var(--platform-glow), 0.20);
+  }
+}
+
+// ── LOGO ─────────────────────────────────────────────────────
+.platform_chip__logo {
+  width        : 22px;
+  height       : 22px;
+  border-radius: $radius-sm;
+  overflow     : hidden;
+  display      : flex;
+  align-items  : center;
+  justify-content: center;
+  flex-shrink  : 0;
+
+  img {
+    width     : 100%;
+    height    : 100%;
+    object-fit: contain;
+    transition: transform 0.18s $transition-easing-out,
+                filter   0.18s ease;
+  }
+
+  span {
+    font-size  : $font-size-xs;
+    font-weight: $font-weight-bold;
+    color      : $text-muted;
+  }
+}
+
+.platform_chip__play {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  color          : inherit;
+  transition     : transform 0.15s $transition-easing-out;
+}
+
+.platform_chip__name {
+  font-size  : $font-size-sm;
+  font-weight: $font-weight-medium;
+  line-height: 1;
+}
+
+// ── DIVIDER ──────────────────────────────────────────────────
+.chips_divider {
+  width      : 1px;
+  height     : 20px;
+  background : $border-default;
+  flex-shrink: 0;
+  margin     : 0 $space-2;
+}
+
+// ── CTA — EXT (siempre primero, estilo violeta con latido) ───────
+.platform_chip--ext {
+  background   : $violet;
+  border-color : $violet;
+  color        : $text-inverse;
+  font-weight  : $font-weight-semibold;
+  box-shadow   : $shadow-violet;
+  padding      : $space-4 $space-10;
+  animation    : pulse-ext 1s ease-in-out infinite;
+
+  .platform_chip__play {
+    color: $text-inverse;
+  }
+
+  &:hover {
+    background   : $violet-mid;
+    border-color : $violet-mid;
+    color        : $text-inverse;
+    box-shadow   : $shadow-violet-lg,
+                   0 0 0 3px rgba(149, 15, 245, 0.20);
+    transform    : translateY(-2px);
+    animation-play-state: paused;
+
+    .platform_chip__play {
+      transform: scale(1.2);
+    }
+  }
+
+  &:active {
+    background : $violet-rich;
+    transform  : translateY(0px);
+    box-shadow : $shadow-violet;
+  }
+}
+
+// ── CTA general (otros botones principales) ───────────────────
+.platform_chip--cta {
+  background   : $violet;
+  border-color : $violet;
+  color        : $text-inverse;
+  font-weight  : $font-weight-semibold;
+  box-shadow   : $shadow-violet;
+  padding      : $space-4 $space-10;
+
+  .platform_chip__play {
+    color: $text-inverse;
+  }
+
+  &:hover {
+    background   : $violet-mid;
+    border-color : $violet-mid;
+    color        : $text-inverse;
+    box-shadow   : $shadow-violet-lg,
+                   0 0 0 3px rgba(149, 15, 245, 0.20);
+    transform    : translateY(-2px);
+
+    .platform_chip__play {
+      transform: scale(1.2);
+    }
+  }
+
+  &:active {
+    background : $violet-rich;
+    transform  : translateY(0px);
+    box-shadow : $shadow-violet;
+  }
+}
+
+// ── SELECT (chip con dropdown) ────────────────────────────────
+.platform_chip--select {
+  position: relative;
+}
+
+.platform_chip__trigger {
+  display    : inline-flex;
+  align-items: center;
+  gap        : $space-2;
+  background : transparent;
+  border     : none;
+  padding    : 0;
+  cursor     : pointer;
+  color      : inherit;
+  font       : inherit;
+  outline    : none;
+}
+
+.platform_chip__chevron {
+  display    : flex;
+  align-items: center;
+  opacity    : 0.5;
+  transition : transform 0.20s $transition-easing-out,
+               opacity   0.15s ease;
+
+  &--open {
+    transform : rotate(180deg);
+    opacity   : 0.9;
+  }
+}
+
+// ── DROPDOWN (simple y estable) ───────────────────────────────
+.platform_chip--select {
+  position: relative;
+}
+
+.platform_chip__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 160px;
+  max-height: 180px;
+  background: $bg-surface;
+  border: 1px solid $border-default;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  z-index: 61;
+  overflow-y: auto;
+  padding: $space-1 0;
+
+  // Entrada animada
+  animation: dropdown-in 0.16s $transition-easing-out both;
+}
+
+@keyframes dropdown-in {
+  from {
+    opacity  : 0;
+    transform: translateY(-6px) scale(0.97);
+  }
+  to {
+    opacity  : 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.platform_chip__option {
+  display    : flex;
+  align-items: center;
+  gap        : $space-6;
+  width      : 100%;
+  padding    : $space-5 $space-8;
+  background : transparent;
+  border     : none;
+  cursor     : pointer;
+  text-align : left;
+  font-family: $font-body;
+  font-size  : $font-size-sm;
+  color      : $text-secondary;
+  transition : background-color 0.12s ease,
+               color            0.12s ease,
+               padding-left     0.15s $transition-easing-out;
+
+  &:hover {
+    background  : $violet-hover-bg;
+    color       : $violet;
+    padding-left: $space-10;
+
+    .platform_chip__option-logo img {
+      transform: scale(1.1);
+      filter   : brightness(1.1);
+    }
+  }
+
+  &:active {
+    background: $violet-active-bg;
+  }
+}
+
+.platform_chip__option-logo {
+  width        : 20px;
+  height       : 20px;
+  border-radius: $radius-xs;
+  overflow     : hidden;
+  flex-shrink  : 0;
+
+  img {
+    width     : 100%;
+    height    : 100%;
+    object-fit: contain;
+    transition: transform 0.15s $transition-easing-out,
+                filter   0.15s ease;
+  }
+
+  span {
+    font-size  : $font-size-xs;
+    font-weight: $font-weight-bold;
+    color      : $text-muted;
+  }
+}
+
+.platform_chip__option-name {
+  font-size  : $font-size-sm;
+  font-weight: $font-weight-medium;
+  white-space: nowrap;
+  flex       : 1;
+}
+
+.platform_chip__option-badge {
+  font-size    : $font-size-xs;
+  font-weight  : $font-weight-medium;
+  color        : $text-muted;
+  background   : $bg-raised;
+  border       : 1px solid $border-subtle;
+  border-radius: $radius-sm;
+  padding      : 1px $space-3;
+}
+
+// ── ANIMACIONES ─────────────────────────────────────────────────────
+@keyframes dropdown-in {
+  from {
+    opacity  : 0;
+    transform: translateY(-6px) scale(0.97);
+  }
+  to {
+    opacity  : 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse-ext {
+  0% {
+    box-shadow: $shadow-violet;
+  }
+  50% {
+    box-shadow: $shadow-violet-lg, 0 0 0 6px rgba(149, 15, 245, 0.08);
+  }
+  100% {
+    box-shadow: $shadow-violet;
+  }
+}
