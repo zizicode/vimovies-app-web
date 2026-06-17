@@ -6,6 +6,7 @@ import { mediaApi } from '../../lib/api/media'
 import type { Media } from '../../lib/api/types'
 import { getPosterUrl, getBackdropUrl } from '../../utils/image.utils'
 import { useLocale } from '../../store/locate.store'
+import { ResourceValidator } from '../../components/ResourceValidator'
 import './SeriesDetailPage.scss'
 
 export default function SeriesDetailPage() {
@@ -50,20 +51,15 @@ export default function SeriesDetailPage() {
   }, [slug, isEnglish])
 
   return (
-    <div className="SeriesDetailPage">
-      {loading && (
-        <p className="SeriesDetailPage__loading">{isEnglish ? 'Loading series...' : 'Cargando serie...'}</p>
-      )}
-
-      {!loading && error && (
-        <p className="SeriesDetailPage__error">{error}</p>
-      )}
-
-      {!loading && !series && !error && (
-        <p className="SeriesDetailPage__not-found">{isEnglish ? 'Series not found' : 'Serie no encontrada'}</p>
-      )}
-
-      {series && (
+    <ResourceValidator
+      isLoading={loading}
+      error={error}
+      resourceType="series"
+      slug={slug || ''}
+      locale={currentLocale}
+    >
+      <div className="SeriesDetailPage">
+        {series && (
         <>
           <SEO
             title={`${isEnglish ? series.title_en : series.title_es} - Vimovies`}
@@ -133,6 +129,7 @@ export default function SeriesDetailPage() {
           </div>
         </>
       )}
-    </div>
+      </div>
+    </ResourceValidator>
   )
 }

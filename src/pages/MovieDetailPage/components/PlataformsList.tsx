@@ -50,9 +50,9 @@ const getPlatformLogo = (slug: string): string | null => {
 }
 
 const resolveUrl = (provider: WatchProvider, locale: 'es' | 'en'): string =>
+  provider.watch_url ??
   provider.affiliate_url ??
   (locale === 'es' ? provider.platform.affiliate_url_es : provider.platform.affiliate_url_en) ??
-  provider.watch_url ??
   '#'
 
 const resolveName = (platform: WatchPlatform, locale: 'es' | 'en'): string =>

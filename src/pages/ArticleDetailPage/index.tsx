@@ -4,6 +4,7 @@ import { SEO } from '../../hooks/useSEO'
 import { useAlternateUrls } from '../../hooks/useAlternateUrls'
 import { useLocale } from '../../store/locate.store'
 import type { Article, MediaMention } from '../../lib/api/types'
+import { ResourceValidator } from '../../components/ResourceValidator'
 import { mockArticleDetail } from '../ArticlesPage/mock-articles'
 import MovieCard from '../MoviesPage/components/MovieCard'
 import './ArticleDetailPage.scss'
@@ -73,29 +74,15 @@ export default function ArticleDetailPage() {
   }
 
   return (
-    <div className="article-detail-page">
-      {loading && (
-        <div className="article-detail-page__loading">
-          <div className="article-detail-page__spinner"></div>
-        </div>
-      )}
-
-      {!loading && error && (
-        <div className="article-detail-page__error">
-          <p>{error}</p>
-          <button onClick={loadArticle} className="article-detail-page__retry-btn">
-            {isEnglish ? 'Retry' : 'Reintentar'}
-          </button>
-        </div>
-      )}
-
-      {!loading && !article && !error && (
-        <div className="article-detail-page__not-found">
-          <p>{isEnglish ? 'Article not found' : 'Artículo no encontrado'}</p>
-        </div>
-      )}
-
-      {article && (
+    <ResourceValidator
+      isLoading={loading}
+      error={error}
+      resourceType="article"
+      slug={slug || ''}
+      locale={currentLocale}
+    >
+      <div className="article-detail-page">
+        {article && (
         <>
           <SEO
             title={`${isEnglish ? article.title_en || article.title_es : article.title_es} - Vimovies`}
@@ -275,6 +262,7 @@ export default function ArticleDetailPage() {
           </div>
         </>
       )}
-    </div>
+      </div>
+    </ResourceValidator>
   )
 }

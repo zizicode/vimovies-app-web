@@ -8,6 +8,7 @@ import type { Media } from '../../lib/api/types'
 import { getBackdropUrl, minutesToISO8601Duration } from '../../utils/image.utils'
 import { useLocale } from '../../store/locate.store'
 import { usePageLoaderStore } from '../../store/pageLoader.store'
+import { ResourceValidator } from '../../components/ResourceValidator'
 import HeroSection from './components/HeroSection'
 // import QuickStatsBar from './components/QuickStatsBar'
 import TabsSection from './components/TabsSection'
@@ -61,29 +62,14 @@ export default function MovieDetailPage() {
   }, [slug, isEnglish, pathname, setPageLoading, trackPageView])
 
   return (
-    <div className="movie-detail">
-      {/* Error State */}
-      {isPageLoading ? (
-        <div className="movie-detail__loading">
-          <p>{locale === 'en' ? 'Loading...' : 'Cargando información...'}</p>
-        </div>
-      ) : error && (
-        <div className="movie-detail__error">
-          <div className="movie-detail__error-content">
-            <h2>{error}</h2>
-            <p>{locale === 'en' ? 'We could not find the movie you are looking for.' : 'No pudimos encontrar la película que buscas.'}</p>
-          </div>
-        </div>
-      )}
-
-      {!error && !movie && (
-        <div className="movie-detail__error">
-          <div className="movie-detail__error-content">
-            <h2>{locale === 'en' ? 'Movie not found' : 'Película no encontrada'}</h2>
-            <p>{locale === 'en' ? 'We could not find the movie you are looking for.' : 'No pudimos encontrar la película que buscas.'}</p>
-          </div>
-        </div>
-      )}
+    <ResourceValidator
+      isLoading={isPageLoading}
+      error={error}
+      resourceType="movie"
+      slug={slug || ''}
+      locale={currentLocale}
+    >
+      <div className="movie-detail">
 
       {/* Movie Content */}
       {movie && (
@@ -168,6 +154,7 @@ export default function MovieDetailPage() {
           <FaqAccordion movie={movie} />
         </>
       )}
-    </div>
+      </div>
+    </ResourceValidator>
   )
 }

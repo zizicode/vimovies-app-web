@@ -103,6 +103,9 @@ export default function GenresPage() {
         en: 'https://vimovies.com/genres'
       }
 
+  // If slug is provided but genre not found, show noindex
+  const shouldNoindex = slug && !activeGenre && !loading
+
   return (
     <div className="genres-page">
       <SEO
@@ -111,6 +114,7 @@ export default function GenresPage() {
         canonical={canonical}
         type="website"
         locale={locale === 'en' ? 'en_US' : 'es_ES'}
+        noindex={shouldNoindex}
         image={activeGenre?.cover_image_url || 'https://vimovies.com/web-app-manifest-512x512.png'}
         alternates={alternates}
         jsonLd={{

@@ -9,7 +9,10 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "build": "npm run type-check && npm run lint && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:seo": "playwright test seo-noindex.spec.ts",
+    "test:seo:debug": "playwright test seo-noindex.spec.ts --debug",
+    "test:install": "playwright install chromium"
   },
   "dependencies": {
     "axios": "^1.16.1",
@@ -22,6 +25,7 @@
   "devDependencies": {
     "@babel/core": "^7.29.0",
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.60.0",
     "@rolldown/plugin-babel": "^0.2.3",
     "@types/babel__core": "^7.20.5",
     "@types/node": "^24.12.3",

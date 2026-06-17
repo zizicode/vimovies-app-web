@@ -1,0 +1,10 @@
+# Environment for testing
+# Copy this to .env and adjust values for your testing setup
+
+# Base URL for testing
+# For local testing: http://localhost:4173 (vite preview default)
+# For production testing: https://vimovies.com
+BASE_URL=http://localhost:4173
+
+# Uncomment for production testing
+# BASE_URL=https://vimovies.com

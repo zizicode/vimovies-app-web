@@ -5,6 +5,7 @@ import { useAlternateUrls } from '../../hooks/useAlternateUrls'
 import { useLocale } from '../../store/locate.store'
 import { peopleApi } from '../../lib/api/people'
 import type { Person, Media } from '../../lib/api/types'
+import { ResourceValidator } from '../../components/ResourceValidator'
 import './PersonDetailPage.scss'
 
 interface PersonCredit {
@@ -61,20 +62,15 @@ export default function PersonDetailPage() {
   }, [slug, isEnglish])
 
   return (
-    <div className="PersonDetailPage">
-      {loading && (
-        <p className="PersonDetailPage__loading">{isEnglish ? 'Loading person...' : 'Cargando persona...'}</p>
-      )}
-
-      {!loading && error && (
-        <p className="PersonDetailPage__error">{error}</p>
-      )}
-
-      {!loading && !person && !error && (
-        <p className="PersonDetailPage__not-found">{isEnglish ? 'Person not found' : 'Persona no encontrada'}</p>
-      )}
-
-      {person && (
+    <ResourceValidator
+      isLoading={loading}
+      error={error}
+      resourceType="person"
+      slug={slug || ''}
+      locale={currentLocale}
+    >
+      <div className="PersonDetailPage">
+        {person && (
         <>
           <SEO
             title={`${person.name} - Vimovies`}
@@ -325,6 +321,7 @@ export default function PersonDetailPage() {
           </div>
         </>
       )}
-    </div>
+      </div>
+    </ResourceValidator>
   )
 }
